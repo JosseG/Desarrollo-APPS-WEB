@@ -29,7 +29,8 @@ create table if not exists tb_producto
 create table if not exists tb_tipoinventario
 (
     id_tipoinventario int auto_increment primary key,
-    nombre_tipoinventario varchar(10) not null   
+    nombre_tipoinventario varchar(10) not null,
+    estado boolean not null
 );
 
 create table if not exists tb_sucursal
@@ -133,7 +134,8 @@ create table if not exists tb_proveedor
 	email varchar(50) unique null,
 	direccion varchar(100) null,
 	departamento varchar(35)not null,
-	telefono varchar(15) not null
+	telefono varchar(15) not null,
+    estado boolean not null
 );
 
 create table if not exists tb_ordencompra 
@@ -146,6 +148,7 @@ create table if not exists tb_ordencompra
 	condicionespago varchar(25) not null,
 	transporte char(20) null,
 	valortotal_orden float not null,
+    estado boolean not null,
 	foreign key (id_proveedor) references tb_proveedor(id_proveedor)
 );
 
@@ -156,9 +159,14 @@ create table if not exists tb_detalleordencompra
 	id_producto char(10) not null,
 	cantidad int not null,
 	precio_unitario float not null,
+    estado boolean not null,
 	foreign key(id_orden_compra) references tb_ordencompra(id_orden_compra),
 	foreign key(id_producto) references tb_producto(id_producto)
 );
+
+
+
+
 
 
 
