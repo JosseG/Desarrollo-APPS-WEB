@@ -97,7 +97,7 @@ create table if not exists tb_usuario
 	foreign key (id_cargo) references tb_cargo(id_cargo)  
 );
 
-create table if not exists tb_acceso_menu
+create table if not exists tb_menu
 (
     id_menu    int auto_increment primary key,
     des_menu   varchar(55)  null,
@@ -111,7 +111,7 @@ create table if not exists tb_acceso
 	id_menu  int not null,
 	nombre_acceso varchar(60) not null,
 	estado boolean not null,
-    foreign key(id_menu) references tb_acceso_menu(id_menu)
+    foreign key(id_menu) references tb_menu(id_menu)
 );
 
 
@@ -128,13 +128,13 @@ create table if not exists tb_acceso_cargo
 create table if not exists tb_proveedor 
 (
 	id_proveedor int auto_increment primary key,
-	razon_social varchar(50) unique not null,
-	nombe_comercial varchar(60) not null,
-	numero_ruc varchar(15) unique not null,
-	email varchar(50) unique null,
-	direccion varchar(100) null,
-	departamento varchar(35)not null,
-	telefono varchar(15) not null,
+	razon_social_proveedor varchar(50) unique not null,
+	nombre_comercial_proveedor varchar(60) not null,
+	numero_ruc_proveedor varchar(15) unique not null,
+	email_proveedor varchar(50) unique null,
+	direccion_proveedor varchar(100) null,
+	departamento_proveedor varchar(35)not null,
+	telefono_proveedor varchar(15) not null,
     estado boolean not null
 );
 
