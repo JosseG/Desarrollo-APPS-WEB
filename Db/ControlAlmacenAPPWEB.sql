@@ -23,8 +23,13 @@ create table if not exists tb_producto
 	estado boolean not null,
     foreign key(id_tipoprod) references tb_tipoproducto(id_tipoprod)
 );
+insert into tb_tipoproducto(nombre_tipoprod,estado) values ('comestible',true);
 
+select * from tb_tipoproducto;
 
+insert into tb_producto values ('PR00000001',1,'0000123','Cereal bar','Costa',true);
+
+select * from tb_producto;
 
 create table if not exists tb_tipoinventario
 (

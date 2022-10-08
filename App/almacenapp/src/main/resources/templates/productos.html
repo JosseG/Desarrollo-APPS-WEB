@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="vh-100 vw-100">
+
+
+    <div class="w-75 h-50 mx-auto my-5">
+    <a href="/productos/agregar" type="button" class="btn btn-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle" viewBox="0 0 16 16">
+            <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z"></path>
+        </svg>
+        Ingresar producto
+    </a>
+        <div style="height: 30px"></div>
+
+      <table class="table table-bordered border-primary">
+        <thead >
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Accion</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="c : ${productos}">
+          <th th:text="${c.getId()}"></th>
+          <td th:text="${c.getDescripcion()}"></td>
+          <td><a href="/productos/agregar" class="mx-1">actualizar</a><a href="#" class="mx-1">eliminar</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

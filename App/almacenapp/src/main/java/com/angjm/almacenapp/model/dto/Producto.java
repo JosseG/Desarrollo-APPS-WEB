@@ -9,17 +9,23 @@ import lombok.Data;
 public class Producto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_menu", nullable = false)
-    private int id;
+    @Column(name = "id_producto", nullable = false)
+    private String id;
 
-    @Column(name = "des_menu", nullable = false)
+    @Column(name = "id_tipoprod", nullable = false)
+    private int idTipoProducto;
+
+    @Column(name = "codigobar_producto")
+    private String codigoBarras;
+
+    @Column(name = "descripcion_producto")
     private String descripcion;
 
-    @Column(name = "icono_menu", nullable = false)
-    private String icono;
+    @Column(name = "marca_producto")
+    private String marca;
 
-    @Column(name = "estado", nullable = false)
+
+    @Column(name = "estado")
     private boolean estado = true;
 
 }

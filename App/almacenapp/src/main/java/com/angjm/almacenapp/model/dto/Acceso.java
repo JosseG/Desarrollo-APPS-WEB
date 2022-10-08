@@ -4,6 +4,7 @@ package com.angjm.almacenapp.model.dto;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
 @Data
 @Entity
 @Table(name = "tb_acceso")
@@ -21,5 +22,7 @@ public class Acceso {
 
     @Column(name = "estado", nullable = false)
     private boolean estado = true;
+
+
 
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="vh-100 vw-100 d-flex">
+    <div class="m-auto w-25">
+        <form action="/productos/agregar/" method="post">
+            <h2 class="text-center">Producto</h2>
+            <div class="mb-3">
+                <label for="inputId" class="form-label">Id</label>
+                <input type="email" class="form-control" id="inputId" >
+            </div>
+            <div class="mb-3">
+                <label for="inputIdTipoProducto" class="form-label">IdTipoProducto</label>
+                <input type="email" class="form-control" id="inputIdTipoProducto" >
+            </div>
+            <div class="mb-3">
+                <label for="inputCodigoBarras" class="form-label">Código de barras</label>
+                <input type="email" class="form-control" id="inputCodigoBarras" >
+            </div>
+            <div class="mb-3">
+                <label for="inputDescripcion" class="form-label">Descripción</label>
+                <input type="email" class="form-control" id="inputDescripcion" >
+            </div>
+            <div class="mb-3">
+                <label for="inputMarca" class="form-label">Marca</label>
+                <input type="email" class="form-control" id="inputMarca" >
+            </div>
+            <div class="mb-3">
+                <label for="inputEstado" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="inputEstado">
+            </div>
+            <button type="submit" name="btnIngresar" value="enviar" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
