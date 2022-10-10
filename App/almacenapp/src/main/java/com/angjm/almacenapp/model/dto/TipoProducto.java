@@ -2,9 +2,15 @@ package com.angjm.almacenapp.model.dto;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-@Data
+import java.util.ArrayList;
+import java.util.List;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_tipoproducto")
 public class TipoProducto {
@@ -20,6 +26,9 @@ public class TipoProducto {
 
     @Column(name = "estado", nullable = false)
     private boolean estado = true;
+
+    /*@OneToMany(fetch=FetchType.LAZY, mappedBy="tipoProducto")
+    private List<Producto> productos = new ArrayList<>(0);*/
 
 
 }

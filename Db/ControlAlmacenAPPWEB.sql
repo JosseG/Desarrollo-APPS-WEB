@@ -8,7 +8,7 @@ use ControlAlmacen;
 create table if not exists tb_tipoproducto
 (
     id_tipoprod int auto_increment primary key,
-    nombre_tipoprod varchar(10) unique  not null,
+    nombre_tipoprod varchar(20) unique  not null,
     estado boolean not null
 );
 
@@ -24,6 +24,8 @@ create table if not exists tb_producto
     foreign key(id_tipoprod) references tb_tipoproducto(id_tipoprod)
 );
 insert into tb_tipoproducto(nombre_tipoprod,estado) values ('comestible',true);
+insert into tb_tipoproducto(nombre_tipoprod,estado) values ('no comestible',true);
+insert into tb_tipoproducto(nombre_tipoprod,estado) values ('acido',true);
 
 select * from tb_tipoproducto;
 
@@ -66,6 +68,17 @@ create table if not exists tb_empleado
 	estado boolean not null,
 	foreign key (id_almacen) references tb_almacen(id_almacen)
 );
+
+insert into tb_sucursal values ('SC00000001','Selva Central',true);
+select * from tb_sucursal;
+
+insert into tb_almacen values ('AL00000001','SC00000001','Fundado en 2018','Av Las Palmas, Lurin',true);
+select * from tb_almacen;
+
+insert into tb_empleado values ('EM00000001','AL00000001','Mauricio','Jimenez','mau@gmail.com','994545661',true);
+select * from tb_empleado;
+
+
 
 create table if not exists tb_inventario
 (

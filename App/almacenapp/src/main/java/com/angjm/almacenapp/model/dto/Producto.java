@@ -2,8 +2,12 @@ package com.angjm.almacenapp.model.dto;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.*;
 
-@Data
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_producto")
 public class Producto {
@@ -11,9 +15,6 @@ public class Producto {
     @Id
     @Column(name = "id_producto", nullable = false)
     private String id;
-
-    @Column(name = "id_tipoprod", nullable = false)
-    private int idTipoProducto;
 
     @Column(name = "codigobar_producto")
     private String codigoBarras;
@@ -24,8 +25,11 @@ public class Producto {
     @Column(name = "marca_producto")
     private String marca;
 
-
     @Column(name = "estado")
     private boolean estado = true;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tipoprod")
+    private TipoProducto tipoProducto;
 
 }

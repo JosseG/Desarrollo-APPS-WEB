@@ -7,33 +7,31 @@
 </head>
 <body class="vh-100 vw-100 d-flex">
     <div class="m-auto w-25">
-        <form action="/productos/agregar/" method="post">
+        <form action="" th:action="@{/productos/agregar}" method="post" th:object="${producto}">
             <h2 class="text-center">Producto</h2>
             <div class="mb-3">
                 <label for="inputId" class="form-label">Id</label>
-                <input type="email" class="form-control" id="inputId" >
+                <input type="text" class="form-control" th:field="*{id}" id="inputId" >
             </div>
             <div class="mb-3">
                 <label for="inputIdTipoProducto" class="form-label">IdTipoProducto</label>
-                <input type="email" class="form-control" id="inputIdTipoProducto" >
+                <select id="inputIdTipoProducto" th:field="*{tipoProducto}" >
+                    <option th:each="tipo : ${tipoProductos}"  th:value="${tipo.getId()}" th:text="${tipo.getNombre()}">1</option>
+                </select>
             </div>
             <div class="mb-3">
-                <label for="inputCodigoBarras" class="form-label">Código de barras</label>
-                <input type="email" class="form-control" id="inputCodigoBarras" >
+                <label for="inputCodigoBarras" class="form-label" >Código de barras</label>
+                <input type="text" th:field="*{codigoBarras}" class="form-control" id="inputCodigoBarras" >
             </div>
             <div class="mb-3">
-                <label for="inputDescripcion" class="form-label">Descripción</label>
-                <input type="email" class="form-control" id="inputDescripcion" >
+                <label for="inputDescripcion" class="form-label" >Descripción</label>
+                <input type="text" th:field="*{descripcion}" class="form-control" id="inputDescripcion" >
             </div>
             <div class="mb-3">
-                <label for="inputMarca" class="form-label">Marca</label>
-                <input type="email" class="form-control" id="inputMarca" >
+                <label for="inputMarca" class="form-label" >Marca</label>
+                <input type="text" th:field="*{marca}" class="form-control" id="inputMarca" >
             </div>
-            <div class="mb-3">
-                <label for="inputEstado" class="form-label">Estado</label>
-                <input type="text" class="form-control" id="inputEstado">
-            </div>
-            <button type="submit" name="btnIngresar" value="enviar" class="btn btn-primary">Submit</button>
+            <button type="submit" name="btnIngresar" value="enviar" class="btn btn-primary">Enviar</button>
 
         </form>
     </div>

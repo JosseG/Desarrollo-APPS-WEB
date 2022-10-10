@@ -13,19 +13,25 @@ import lombok.Data;
 public class Empleado {
 
     @Id
-    @Column(name = "id_almacen", nullable = false)
+    @Column(name = "id_empleado", nullable = false)
     private String id;
 
-    @Column(name = "id_sucursal", nullable = false)
-    private String idSucursal;
+    @Column(name = "id_almacen", nullable = false)
+    private String idAlmacen;
 
-    @Column(name = "desc_almacen", nullable = false)
-    private String descripcion;
+    @Column(name = "nombre_empleado", nullable = false)
+    private String nombre;
 
-    @Column(name = "direccion_almacen", nullable = false)
-    private String direccion;
+    @Column(name = "apellido_empleado", nullable = false)
+    private String apellido;
 
-    @Column(name = "estado", nullable = false)
+    @Column(name = "correo_empleado", nullable = false)
+    private String correo;
+
+    @Column(name = "telefono_empleado", nullable = false)
+    private String telefono;
+
+    @Column(name = "estado")
     private boolean estado = true;
 
 }

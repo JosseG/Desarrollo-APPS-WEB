@@ -27,10 +27,10 @@
         </thead>
         <tbody>
 
-        <tr th:each="c : ${productos}">
-          <th th:text="${c.getId()}"></th>
+        <tr th:each="c : ${productos}" th:style="${c.estado? 'color: black;' : 'color: red;'}">
+          <th th:text="${c.getId()}" ></th>
           <td th:text="${c.getDescripcion()}"></td>
-          <td><a href="/productos/agregar" class="mx-1">actualizar</a><a href="#" class="mx-1">eliminar</a></td>
+          <td><a th:href="@{/productos/actualizar/__${c.getId()}__}" class="mx-1">actualizar</a><a th:href="@{/productos/eliminar/__${c.getId()}__}" class="mx-1">eliminar</a></td>
         </tr>
         </tbody>
       </table>
