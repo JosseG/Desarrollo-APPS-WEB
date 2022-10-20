@@ -15,10 +15,13 @@ public class Acceso {
     private String id;
 
     @Column(name = "id_menu", nullable = false)
-    private String idMenu;
+    private int idMenu;
 
     @Column(name = "nombre_acceso", nullable = false)
     private String nombre;
+    
+    @Column(name = "url_acceso", nullable = false)
+    private String url_acceso;
 
     @Column(name = "estado", nullable = false)
     private boolean estado = true;

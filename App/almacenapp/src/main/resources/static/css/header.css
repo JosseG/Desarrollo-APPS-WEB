@@ -1,0 +1,32 @@
+@charset "ISO-8859-1";
+.fondonavsup {
+	background-image: radial-gradient(circle at 119.64% 37.72%, #18344a 0, #010912 50%,#000000 100%);
+	
+}
+.fondonavbody {
+background-image: radial-gradient(circle at 119.64% 95.72%, #000 0, #010912 80%,#000000 100%);
+}
+.men {
+	background: green;
+	padding: 2px;
+	width: 90%;
+	height: 100%;
+}
+.navbar-brand__sup {
+	width: 220px;
+	height: 70px;
+}
+.navbar-brand__brand {
+	width: 50px;
+}
+.navbar-brand__icon {
+	width: 50px;
+	height: 50px;
+	align-self: center;
+}
+.marg-top {
+	margin-top: 95px;
+}
+.iframeheader{
+	width: 100% !important;
+}

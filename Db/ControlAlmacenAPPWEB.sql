@@ -123,14 +123,35 @@ create table if not exists tb_menu
     estado boolean not null
 );
 
+INSERT INTO  tb_menu (id_menu,des_menu,icono_menu,estado)
+VALUES (1,'Mantenimiento','fas fa-boxes text-light me-3',1),
+	   (2,'Transacciones','fas fa-truck-loading text-light me-3',1),
+       (3,'Consultas','fas fa-dna text-light me-3',1),
+       (4,'Reportes','fas fa-barcode text-light me-3',1),
+       (5,'Chat','fa-solid fa-comment-dots me-3',1),
+       (6,'Nosotros','fas fa-users text-light me-3',1),
+       (7,'Configuracion','fa-solid fa-screwdriver-wrench me-3',1);
+       
+
+
 create table if not exists tb_acceso
 (
 	id_acceso char(10) primary key,
 	id_menu  int not null,
-	nombre_acceso varchar(60) not null,
+    nombre_acceso  varchar(60) not null,
+	url_acceso varchar(100) not null,
 	estado boolean not null,
     foreign key(id_menu) references tb_menu(id_menu)
 );
+
+INSERT INTO tb_acceso (id_acceso,id_menu,nombre_acceso,url_acceso,estado)
+VALUES(1,1,'Orden de Compra','ordencompa/cargarTodos',1),
+(2,1,'Producto','productos/cargarTodos',1),
+(3,1,'Usuarios','usuario/cargarTodos',1),
+(4,2,'Orden Ingreso','ingresos/cargarTodos',1),
+(5,2,'Salidas','salidas/cargarTodos',1);
+select * from tb_acceso;
+
 
 
 create table if not exists tb_acceso_cargo
@@ -155,6 +176,8 @@ create table if not exists tb_proveedor
 	telefono_proveedor varchar(15) not null,
     estado boolean not null
 );
+INSERt into tb_proveedor values(1,'Compunet S.A.C','Compunet','12345678984','Compunet@gmail.com','los portales 2003 Cercado','Lima','123456253',1);
+
 
 create table if not exists tb_ordencompra 
 (
@@ -169,6 +192,19 @@ create table if not exists tb_ordencompra
     estado boolean not null,
 	foreign key (id_proveedor) references tb_proveedor(id_proveedor)
 );
+select * from  tb_ordencompra;
+insert into  tb_ordencompra VALUES(1,1,'OC-00001','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(2,1,'OC-00002','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(3,1,'OC-00003','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(4,1,'OC-00004','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(5,1,'OC-00005','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(6,1,'OC-00006','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(7,1,'OC-00007','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(8,1,'OC-00008','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(9,1,'OC-00009','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(10,1,'OC-000010','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(11,1,'OC-000011','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
+insert into  tb_ordencompra VALUES(12,1,'OC-000012','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
 
 create table if not exists tb_detalleordencompra 
 (

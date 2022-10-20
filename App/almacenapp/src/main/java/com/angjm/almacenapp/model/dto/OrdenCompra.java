@@ -8,7 +8,7 @@ import java.sql.Date;
 
 @Data
 @Entity
-@Table(name = "tb_orden_compra")
+@Table(name = "tb_ordencompra")
 public class OrdenCompra {
 
     @Id
@@ -39,5 +39,10 @@ public class OrdenCompra {
 
     @Column(name = "estado", nullable = false)
     private boolean estado = true;
+    
+    @ManyToOne
+	@JoinColumn(name="id_proveedor",insertable = false,updatable = false)
+    private Proveedor objProveedor;
+   
 
 }
