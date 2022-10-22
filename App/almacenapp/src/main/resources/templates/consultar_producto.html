@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace ="componentes/style :: head_html">
+<meta charset="UTF-8" >
+<title>Consulta de Producto</title>
+</head>
+<body>
+	<div class="container-fluid">
+	<nav th:replace="componentes/header :: Nav"></nav>
+		<div class="row m-2 text-center">
+		
+		    <div class="col-2 vh-auto" style="background-color:  #E0FFFF;">
+		   	 <div th:replace="componentes/menu :: menu_html"></div>
+		    </div>
+		
+		<div class="col-10"><!-- Criterios de Búsqueda -->
+		<div class="partOne" style="background-color:white;padding: 20px; margin-top: 13px;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+			<form >
+				<div class="d-flex justify-content-evenly">
+					    <div class="d-flex">
+					   	  <div class="d-flex" style="padding: 12px 30px 0 0">
+					       <label for="exampleInputPassword1" >Consultar producto por:</label>
+					 	  </div>
+					 	  <div class="d-flex" style="padding:7px">
+						    <select class="form-select" name="buscarPro" id="idBuscarPro" style="color:#8F8F8F; font-size:15px">
+								  <option value="" selected>Seleccione</option>
+								<!-- falta añadir -->	  <option value=""> </option>
+								 
+								  
+							</select>	
+						</div>
+						</div>
+					    <div class="" style="padding-top:6px">
+					      <button type="button" class="btn btn-secondary mb-2" id="btn-consultar">Consultar</button>
+					    </div>
+				  </div>
+				  
+			</form>
+			</div>
+  		
+  		
+  		<!-- Seccion listado -->
+  		<div class="partTwo" style="background-color:white;padding: 20px;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;margin-top: 60px">
+  			<div class="col col-sm-12 mt-4 table-responsive">
+			
+		    	<table id="example" class="table table-striped" style="width:100%">
+				   <thead>
+				   <tr  class="table-primary"	>
+					    <th>Código</th>
+					    <th>Código Barra</th>
+		                <th>Descripción</th>
+		                <th>Marca</th>
+		                <th>Estado</th>
+		                <th>Tipo</th>
+		                
+		               
+		            </tr>
+				  </thead>
+				  <tbody>
+				 	 <tr th:each= "p : ${lstProducto}">
+										<td th:text="${p.id}"></td>
+										<td th:text="${p.codigoBarras}"></td>
+										<td th:text="${p.descripcion}"></td>
+										<td th:text="${p.marca}"></td>
+										<td th:text="${p.estado}"></td>
+										<td th:text="${p.tipoProducto.nombre}"></td>
+					
+						</tr>
+			      </tbody>
+				</table>
+	  		</div>
+		</div>
+		</div>	
+		    
+		</div>
+			  <!-- Footer -->
+   <div th:replace="componentes/footer :: footer_html"></div>
+	
+	</div>
+	
+	<script th:replace="componentes/script :: scripts_html"></script>
+   
+
+</body>
+</html>

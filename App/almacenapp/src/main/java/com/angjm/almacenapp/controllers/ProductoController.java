@@ -1,7 +1,6 @@
 package com.angjm.almacenapp.controllers;
 
 
-import com.angjm.almacenapp.model.dao.IDao;
 import com.angjm.almacenapp.model.dto.Producto;
 import com.angjm.almacenapp.repository.IProductoRepository;
 import com.angjm.almacenapp.repository.ITipoProductoRepository;
@@ -85,6 +84,14 @@ public class ProductoController {
         }
 
         return "redirect:/productos";
+    }
+    
+    //abrir pagina consulta producto (falta definir el combo)
+   @GetMapping("/consulta/producto")
+    public String abrirConsultPro(Model model) {
+	  model.addAttribute("lstProducto",productoRepository.findAll());
+    
+	   return "consultar_producto";
     }
 
 

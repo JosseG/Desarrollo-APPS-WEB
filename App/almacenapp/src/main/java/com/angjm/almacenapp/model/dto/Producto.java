@@ -1,7 +1,6 @@
 package com.angjm.almacenapp.model.dto;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.*;
 
 @Setter
