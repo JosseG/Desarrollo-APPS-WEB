@@ -14,29 +14,25 @@
 		    </div>
 		<!-- Criterios de Búsqueda -->
 		<div class="col-10">
+			
+		<h1 style="padding-top:15px;padding-bottom:15px">Consulta de Inventario por Tipo</h1>
+		
 		<div class="partOne" style="background-color:white;padding: 20px; margin-top: 13px;
 			box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
-			<form >
-				<div class="d-flex justify-content-evenly">
-					    <div class="d-flex">
-					   	  <div class="d-flex" style="padding: 12px 30px 0 0">
-					       <label for="exampleInputPassword1" >Consultar inventario por:</label>
-					 	  </div>
-					 	  <div class="d-flex" style="padding:7px">
-						    <select class="form-select" name="buscarPro" id="idBuscarPro" style="color:#8F8F8F; font-size:15px">
-								  <option value="" selected>Seleccione</option>
-							<!-- falta añadir -->	  <option value=""> </option>
-								 
-								  
-							</select>	
-						</div>
-						</div>
-					    <div class="" style="padding-top:6px">
-					      <button type="button" class="btn btn-secondary mb-2" id="btn-consultar">Consultar</button>
-					    </div>
-				  </div>
-				  
-			</form>
+		<!-- th:object="${inve}"-->	<form class="row g-3" action="/consulta/inventario"  method="get">
+			  <div class="col-auto" style="padding-top: 11px">
+			 	<label for="exampleInputPassword1" >Consultar por:</label>
+			 
+			  </div>
+			  <div class="col-auto" style="padding-top: 8px">
+			 <!--  th:field="*{}"  -->    <input type="text"  class="form-control" id="inputPassword2" placeholder="Ingrese tipo de inventario">			  
+				
+			  </div>
+			  <div class="col-auto" style="padding-top: 8px">
+			    
+			    <button type="submit" class="btn btn-secondary mb-3" id="btn-consultar">Consultar</button>
+			  </div>
+		</form>
 			</div>
   		
   		

@@ -86,13 +86,22 @@ public class ProductoController {
         return "redirect:/productos";
     }
     
-    //abrir pagina consulta producto (falta definir el combo)
+    //CONSULTA DE PRODUCTO
+    
+    //abrir pagina consulta producto 
    @GetMapping("/consulta/producto")
     public String abrirConsultPro(Model model) {
-	  model.addAttribute("lstProducto",productoRepository.findAll());
-    
+	  model.addAttribute("produc",new Producto());
 	   return "consultar_producto";
     }
-
+   
+   //Filtrar por marca
+   @GetMapping("/buscarPorMarca")
+   public String buscarPorMarca(@RequestParam String marca, Model model,@ModelAttribute("produc") Producto producto) {
+		  model.addAttribute("productoMarca",productoRepository.findByMarca(marca));
+		   return "consultar_producto";
+	    }
+	   
+   
 
 }

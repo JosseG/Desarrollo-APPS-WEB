@@ -2,16 +2,12 @@ package com.angjm.almacenapp.model.dto;
 
 
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.Data;
-
-@Data
+import jakarta.persistence.*;
+import lombok.*;
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_inventario")
 public class Inventario {
