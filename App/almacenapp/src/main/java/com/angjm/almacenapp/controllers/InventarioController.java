@@ -5,21 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.angjm.almacenapp.model.dto.Inventario;
 import com.angjm.almacenapp.model.dto.Producto;
-import com.angjm.almacenapp.repository.IAlmacenRepository;
-import com.angjm.almacenapp.repository.IEmpleadoRepository;
+
 import com.angjm.almacenapp.repository.IInventarioRepository;
-import com.angjm.almacenapp.repository.IProductoRepository;
-import com.angjm.almacenapp.repository.ITipoInventarioRepository;
 
 @Controller
 public class InventarioController {
 	@Autowired
 	private IInventarioRepository repoInve;
-	@Autowired
+	/*@Autowired
 	private ITipoInventarioRepository repoTipoInve;
 	
 	@Autowired
@@ -27,37 +25,49 @@ public class InventarioController {
 	@Autowired
 	private IAlmacenRepository repoAlmacen;
 	@Autowired
-	private IEmpleadoRepository repoEmpleado;
+	private IEmpleadoRepository repoEmpleado;*/
 	//CONSULTA DE INVENTARIO
 	
 	//abrir pagina de consulta inventario (prueba)
 	@GetMapping("/consulta/inventario")
 	public String paginaConsultInve(Model model) {
-		  model.addAttribute("lstInventario",repoInve.findAll());		
+		  model.addAttribute("inve",new Inventario());		
 		  return "consultar_inventario";
 	}
     
 
-   //Filtrar por tipo inventario( aún no está definido el inventario)
-/*   @GetMapping("/buscarPorTipoInventario")
-   public String buscarPorTipo(@RequestParam String tipo, Model model,@ModelAttribute("inve") Inventario inventario) {
-		  model.addAttribute("inventarioTipo",repoInve.findByTipo(tipo));
+   //Filtrar por tipo inventario
+  @GetMapping("/buscarPorTipoInventario")
+   public String buscarPorTipo(@RequestParam String estado, Model model,@ModelAttribute("inve") Inventario inventario) {
+		//  model.addAttribute("inventarioTipo",repoInve.findAllByObjTipoInveNombre(nombre));
+	  model.addAttribute("inventarioEstado",repoInve.findAllByEstado(estado));
 		  return "consultar_inventario";	    
    }
-	   */
+	   
 	
-	@GetMapping("/inventario/cargar")
+	@GetMapping("/inventario/cargarListado")
 	public String abrirPagProd(Model model) {
 		model.addAttribute("producto", new Producto());
-		//linea para agregar datos a combos.
+		// para cargar combo, solo si hay o se elimina
+		model.addAttribute("lst", repoInve.findAll()); 
 		return "";
 	}
 
+	//listado
 	@GetMapping("/inventario/listado")
-	public String listaInventario(Model model) {
-		// metodo para listar, si lo hubiera
-		model.addAttribute("lstInventario", repoInve.findAll());
+	public String abrirListado(Model model) {
+		model.addAttribute("listadoInventarios", repoInve.findAll()); 
 		return "";
 	}
 	
+	@PostMapping("/inventario/grabar")
+	public String grabarInventario(@ModelAttribute Inventario inventa) {
+		repoInve.save(inventa);
+		return "";
+	}
+	@PostMapping("/inventario/editar")
+	public String editarInventario(@ModelAttribute Inventario in, Model model) {
+		model.addAttribute("inventario", repoInve.findById(in.getId())); 
+		return "";
+	}
 }

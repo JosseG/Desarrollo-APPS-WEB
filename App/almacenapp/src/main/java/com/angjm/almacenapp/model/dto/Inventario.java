@@ -20,7 +20,7 @@ public class Inventario {
     private String idProducto;
 
     @Column(name = "id_tipoinventario", nullable = false)
-    private int idTipoInventario;
+    private String idTipoInventario;
 
     @Column(name = "id_almacen", nullable = false)
     private String idAlmacen;
@@ -35,7 +35,7 @@ public class Inventario {
     private String descripcion;
 
     @Column(name = "estado", nullable = false)
-    private boolean estado = true;
+    private String estado;
     
     @ManyToOne
     @JoinColumn(name="id_tipoinventario", insertable=false, updatable=false)

@@ -12,7 +12,6 @@ create table if not exists tb_tipoproducto
     estado boolean not null
 );
 
-
 create table if not exists tb_producto
 (
 	id_producto char(10) primary key,
@@ -35,10 +34,12 @@ select * from tb_producto;
 
 create table if not exists tb_tipoinventario
 (
-    id_tipoinventario int auto_increment primary key,
+    id_tipoinventario char(10) primary key,
     nombre_tipoinventario varchar(10) not null,
     estado boolean not null
 );
+insert into tb_tipoinventario values('TI00000001','nombre1',true);
+
 
 create table if not exists tb_sucursal
 (
@@ -84,17 +85,18 @@ create table if not exists tb_inventario
 (
     id_inventario int auto_increment primary key,
     id_producto char(10) not null,
-    id_tipoinventario int not null,
+    id_tipoinventario char(10) not null,
     id_almacen char(10) not null,
     id_empleado char(10) not null,
     cantidad_inventario int not null,   
     descripcion_inventario varchar(120) not null,
-    estado boolean not null,
+    estado char(10) not null,
     foreign key (id_producto) references tb_producto (id_producto),
     foreign key (id_tipoinventario) references tb_tipoinventario (id_tipoinventario),
     foreign key (id_almacen) references tb_almacen (id_almacen),
     foreign key (id_empleado) references tb_empleado (id_empleado)
 );
+insert into tb_inventario values(1,'PR00000001','TI00000001','AL00000001','EM00000001',2,'descripcion','activo');
 
 create table if not exists tb_cargo
 (
