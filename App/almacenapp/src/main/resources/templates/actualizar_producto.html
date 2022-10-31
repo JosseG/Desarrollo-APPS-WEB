@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="vh-100 vw-100 d-flex">
 <div class="m-auto w-25">
-  <form action="" th:action="@{/productos/actualizar}" method="post" th:object="${producto}">
-    <h2 class="text-center">Producto</h2>
-    <div class="mb-3">
-      <label for="inputId" class="form-label">Id</label>
-      <input type="text" class="form-control" th:field="*{id}" id="inputId" >
-    </div>
-    <div class="mb-3">
-      <label for="inputIdTipoProducto" class="form-label">IdTipoProducto</label>
-      <select id="inputIdTipoProducto" th:field="*{tipoProducto}" >
-        <option th:each="tipo : ${tipoProductos}"  th:value="${tipo.getId()}" th:selected="*{tipoProducto.getId()}" th:text="${tipo.getNombre()}">1</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="inputCodigoBarras" class="form-label" >Código de barras</label>
-      <input type="text" th:field="*{codigoBarras}" class="form-control" id="inputCodigoBarras" >
-    </div>
-    <div class="mb-3">
-      <label for="inputDescripcion" class="form-label" >Descripción</label>
-      <input type="text" th:field="*{descripcion}" class="form-control" id="inputDescripcion" >
-    </div>
-    <div class="mb-3">
-      <label for="inputMarca" class="form-label" >Marca</label>
-      <input type="text" th:field="*{marca}" class="form-control" id="inputMarca" >
-    </div>
-    <button type="submit" name="btnIngresar" value="enviar" class="btn btn-primary">Enviar</button>
+    <form action="" th:action="@{/productos/actualizar}" method="post" th:object="${producto}">
+        <h2 class="text-center">Producto</h2>
+        <div class="mb-3">
+            <label for="inputId" class="form-label">Id</label>
+            <input type="text" class="form-control" th:field="*{id}" id="inputId">
+        </div>
+        <div class="mb-3">
+            <label for="inputIdTipoProducto" class="form-label">IdTipoProducto</label>
+            <select id="inputIdTipoProducto" th:field="*{tipoProducto}">
+                <option th:each="tipo : ${tipoProductos}" th:value="${tipo.getId()}"
+                        th:selected="*{tipoProducto.getId()}" th:text="${tipo.getNombre()}">1
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="inputCodigoBarras" class="form-label">Código de barras</label>
+            <input type="text" th:field="*{codigoBarras}" class="form-control" id="inputCodigoBarras">
+        </div>
+        <div class="mb-3">
+            <label for="inputDescripcion" class="form-label">Descripción</label>
+            <input type="text" th:field="*{descripcion}" class="form-control" id="inputDescripcion">
+        </div>
+        <div class="mb-3">
+            <label for="inputMarca" class="form-label">Marca</label>
+            <input type="text" th:field="*{marca}" class="form-control" id="inputMarca">
+        </div>
+        <button type="submit" name="btnIngresar" value="enviar" class="btn btn-primary">Enviar</button>
 
-  </form>
+    </form>
 </div>
 <script src="/js/bootstrap.bundle.min.js"></script>
 

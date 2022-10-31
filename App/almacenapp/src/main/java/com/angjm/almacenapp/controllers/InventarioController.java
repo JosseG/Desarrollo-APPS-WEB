@@ -70,4 +70,13 @@ public class InventarioController {
 		model.addAttribute("inventario", repoInve.findById(in.getId())); 
 		return "";
 	}
+
+	@GetMapping(value = "/inventario/orden/genera")
+	public String generarOrden(Model model){
+		model.addAttribute("Nom","Jose");
+		return "transaccion_ac";
+	}
+
+
+
 }
