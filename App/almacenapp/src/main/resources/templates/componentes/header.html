@@ -5,50 +5,49 @@
 
 <body>
 
-	<nav th:fragment="Nav"
-		class="navbar sticky-top navbar-dark fondonavsup justify-content-between">
-		<div class="container-fluid">
+<nav th:fragment="Nav"
+	 class="navbar sticky-top navbar-dark fondonavsup justify-content-between">
+	<div class="container-fluid">
 
-			<div class="d-flex d-content-start m-0">
-				<!--Brand-->
-				<a href="#" class="navbar-brand d-flex "> <img
+		<div class="d-flex d-content-start m-0">
+			<!--Brand-->
+			<a href="#" class="navbar-brand d-flex "> <img
 					src="/img/logo.png" all="we share" loading="lazy"
-					class="navbar-brand__sup text-light rounded-pill w-50 h-75 my-auto" />
-				</a>
-				
-		
-				
-			</div>
+					class="navbar-brand__sup text-light rounded-pill w-50 h-75 my-auto"/>
+			</a>
 
-			<div class="btn-group">
-				<c:if test="${sessionScope.usuario !=null}">
-					<button type="button"
+
+		</div>
+
+		<div class="btn-group">
+			<c:if test="${sessionScope.usuario !=null}">
+				<button type="button"
 						class="btn bg-dark text-white dropdown-menu-dark dropdown-toggle btn btn-round btn-theme"
 						data-bs-toggle="dropdown" data-bs-display="static"
 						aria-expanded="false">
-						${sessionScope.usuario.login_usuario}<i
-							class="fa-solid fa-arrow-down ms-2"></i>
-					</button>
+					${sessionScope.usuario.login_usuario}<i
+						class="fa-solid fa-arrow-down ms-2"></i>
+				</button>
 
-					<ul
+				<ul
 						class="dropdown-menu dropdown-menu-lg-end fondonavbody dropdown-menu-dark ms-5">
-						<li><a tabindex="0" class="dropdown-item text-center"
-							href="#" role="button" data-bs-toggle="popover"
-							data-bs-trigger="hover focus" data-bs-placement="left"
-							title="Bienvenido al Sistema"
-							data-bs-content="  ${sessionScope.usuario.nombre} ${sessionScope.usuario.apellido}">
+					<li><a tabindex="0" class="dropdown-item text-center"
+						   href="#" role="button" data-bs-toggle="popover"
+						   data-bs-trigger="hover focus" data-bs-placement="left"
+						   title="Bienvenido al Sistema"
+						   data-bs-content="  ${sessionScope.usuario.nombre} ${sessionScope.usuario.apellido}">
 
-								<i class="fa fa-user mt-2 me-2"></i>
-						</a></li>
+						<i class="fa fa-user mt-2 me-2"></i>
+					</a></li>
 
-						<li><a class="dropdown-item text-center"
-							href="ServletUsuario?tipo=CERRAR"><i
-								class="fa fa-lock mt-2 me-2"></i>Salir</a></li>
-					</ul>
-				</c:if>
-			</div>
-
+					<li><a class="dropdown-item text-center"
+						   href="ServletUsuario?tipo=CERRAR"><i
+							class="fa fa-lock mt-2 me-2"></i>Salir</a></li>
+				</ul>
+			</c:if>
 		</div>
-	</nav>
+
+	</div>
+</nav>
 </body>
 </html>

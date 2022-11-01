@@ -74,8 +74,14 @@ public class InventarioController {
 	@GetMapping(value = "/inventario/orden/genera")
 	public String generarOrden(Model model){
 		model.addAttribute("Nom","Jose");
-		return "transaccion_ac";
+		return "transaccion";
 	}
+
+	@GetMapping(value = "/inventario/orden/preview")
+	public String mostrarPreview(Model model){
+		return "preview_o_inventario";
+	}
+
 
 
 
