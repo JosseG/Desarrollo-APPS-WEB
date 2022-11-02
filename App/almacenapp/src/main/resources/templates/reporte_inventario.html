@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title> Reporte Inventario</title>
+<head th:replace="componentes/style :: head_html"></head>
+
+<body>
+
+
+<div class="container-fluid">
+    <nav th:replace="componentes/header :: Nav"></nav>
+
+    <div class="row m-2 text-center">
+
+        <div class="col-2 vh-auto" style="background-color:  #E0FFFF;">
+            <div th:replace="componentes/menu :: menu_html"></div>
+        </div>
+
+
+        <div class="col-10" style="background-color:  #F8F8FF;">
+            <div class="mt-5 p-5 d-grid gap-2 col-6 mx-auto">
+                <button type="button" class="btn btn-dark btn-generaFichaDevol btn-roud" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Generar Reporte Inventario
+                </button>
+            </div>
+
+            <div class="col col-sm-12 mt-4 table-responsive">
+                <table id="tbexample" class="table table-striped mb-2" style="width: 100%; font-size: 10px">
+                    <thead class="table-dark">
+                    <tr class="table-primary">
+                        <th>NRO_INVEN</th>
+                        <th>PRODUCTO</th>
+                        <th>TIPO_INVEN</th>
+                        <th>ALMACEN</th>
+                        <th>EMPLEADO</th>
+                        <th>CANT_INVEN</th>
+                        <th>DESC_INVEN</th>
+                        <th>ESTADO</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="row : ${lsReporteInventario}" class="align-middle shadow-lg p-3 mb-5 bg-body rounded"
+                        style="font-size: 10px">
+                        <td th:text="${row.NumReporteInventario}"></td>
+                        <td th:text="${row.producto.nombre}"></td>
+                        <td th:text="${row.tipo_inventario}"></td>
+                        <td th:text="${row.almacen}"></td>
+                        <td th:text="${row.id.empleado}"></td>
+                        <td th:text="${row.cantidad.inventario}"></td>
+                        <td th:text="${row.descripcion.inventario}"></td>
+                        <td th:text="${row.estado}"></td>
+
+                        <td class="px-0 text-center">
+                            <button type="button" class="btn btn-outline-dark btn-editar  text-center px-2 py-0"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fas fa-edit"></i></button>
+                        </td>
+                        <td class="px-0 text-center">
+                            <button type="button" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
+                                    data-bs-toggle="modal" data-bs-target="#modalVerDetalleDevolucion">
+                                <i class="fas fa-binoculars"></i></button>
+                        </td>
+                        <td class="px-0 text-center">
+                            <button type="button"
+                                    class="btn btn-outline-danger btn-eliminar-Devolucion text-center px-2 py-0"
+                                    data-bs-toggle="modal" data-bs-target="#modalElimimar">
+                                <i class="fas fa-backspace"></i></button>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Footer -->
+            <div th:replace="componentes/footer :: footer_html"></div>
+        </div>
+
+
+        <!-- Scripts -->
+        <div th:replace="componentes/script :: scripts_html"></div>
+    </div>
+</div>
+</body>
+
+</html>

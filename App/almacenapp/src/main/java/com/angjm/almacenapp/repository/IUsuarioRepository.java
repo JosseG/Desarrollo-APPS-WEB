@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-    boolean findUsuarioByAlias(String alias);
-    boolean findUsuarioByContrasena(String contrasena);
+
+    boolean existsUsuarioByAlias(String alias);
+    boolean existsUsuarioByContrasena(String contrasena);
 
 }

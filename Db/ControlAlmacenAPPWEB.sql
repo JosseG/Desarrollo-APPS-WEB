@@ -104,6 +104,7 @@ create table if not exists tb_cargo
 	nombre_cargo varchar(30) not null,
 	estado boolean not null
 );
+insert into tb_cargo values('CG00000001','Administrador',true);
 
 create table if not exists tb_usuario
 (
@@ -116,6 +117,8 @@ create table if not exists tb_usuario
 	foreign key (id_empleado) references tb_empleado(id_empleado),
 	foreign key (id_cargo) references tb_cargo(id_cargo)  
 );
+
+insert into tb_usuario values(null,'EM00000001','CG00000001','admin@email.com','admin',true);
 
 create table if not exists tb_menu
 (
