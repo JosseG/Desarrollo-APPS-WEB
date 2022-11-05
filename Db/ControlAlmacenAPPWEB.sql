@@ -78,6 +78,8 @@ select * from tb_almacen;
 
 insert into tb_empleado values ('EM00000001','AL00000001','Mauricio','Jimenez','mau@gmail.com','994545661',true);
 select * from tb_empleado;
+insert into tb_empleado values ('EM00000002','AL00000001','Raul','Suarez','raus@gmail.com','994545000',true);
+select * from tb_empleado;
 
 
 
@@ -110,15 +112,15 @@ create table if not exists tb_usuario
 (
 	id_usuario int auto_increment primary key, 
 	id_empleado char(10) not null,
-	id_cargo char(10) not null,
-	alias_usuario varchar(30) not null unique,
-	contrasena_usuario varchar(50) not null,
+	/*id_cargo char(10) not null,*/
+	alias_usuario varchar(50) not null unique,
+	contrasena_usuario varchar(250) not null,
     estado boolean not null,
-	foreign key (id_empleado) references tb_empleado(id_empleado),
-	foreign key (id_cargo) references tb_cargo(id_cargo)  
+	foreign key (id_empleado) references tb_empleado(id_empleado)
+	/*foreign key (id_cargo) references tb_cargo(id_cargo)  */
 );
 
-insert into tb_usuario values(null,'EM00000001','CG00000001','admin@email.com','admin',true);
+
 
 create table if not exists tb_menu
 (
@@ -225,9 +227,33 @@ create table if not exists tb_detalleordencompra
 
 
 
+create table tb_rol (
+	id_rol int auto_increment primary key, 
+	nombre_rol varchar(50) not null
+);
+
+create table tb_rol_usuario (
+	id_rol int not null,
+    id_usuario int not null,
+    primary key(id_rol,id_usuario),
+    foreign key(id_rol) references tb_rol(id_rol),
+    foreign key(id_usuario) references tb_usuario(id_usuario)
+);
 
 
 
+insert into tb_usuario (id_empleado,alias_usuario,contrasena_usuario,estado) values('EM00000001','admin@email.com','$2a$04$uMOWE.EgIiwwEFZXiD3WQehFS.jFMllDpqWQtJ/1Am5jh/MaMuP2a',true);
+insert into tb_usuario (id_empleado,alias_usuario,contrasena_usuario,estado) values('EM00000002','vendedor@email.com','$2a$04$4O9PBqLSYtvd5gaA9TyH9uc4IdyvjqSKVXGY/G62wKCsv8gUUVZZ.',true);
+
+INSERT INTO tb_rol (nombre_rol) VALUES ("ROLE_ADMINISTRADOR");
+INSERT INTO tb_rol (nombre_rol) VALUES ("ROLE_VENDEDOR");
+INSERT INTO tb_rol (nombre_rol) VALUES ("ROLE_ASISTENTE");
+INSERT INTO tb_rol_usuario VALUES (1,1);
+INSERT INTO tb_rol_usuario VALUES (2,1);
+INSERT INTO tb_rol_usuario VALUES (2,2);
 
 
+select * from tb_usuario;
+select * from tb_rol;
+select * from tb_rol_usuario;
 

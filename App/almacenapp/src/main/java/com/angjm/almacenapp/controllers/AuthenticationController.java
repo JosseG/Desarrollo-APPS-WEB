@@ -32,20 +32,29 @@ public class AuthenticationController {
     }
 
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public String verificarLogin(@ModelAttribute SoloCuenta usuario, Model model){
 
         boolean rAlias=usuarioRepository.existsUsuarioByAlias(usuario.getUsuario());
         boolean rContrasena=usuarioRepository.existsUsuarioByContrasena(usuario.getContrasena());
+        if(!rAlias){
+            model.addAttribute("errorAlias",true);
+            model.addAttribute("cuenta",new SoloCuenta());
+            return "login";
+        }
+        if(!rContrasena){
+            model.addAttribute("errorPass",true);
+            model.addAttribute("cuenta",new SoloCuenta());
+            return "login";
+        }
 
-        return rAlias && rContrasena ? "transaccion":"redirect:/";
-    }
+        return "transaccion";
+    }*/
 
     @GetMapping("/")
     public String irInicio(){
         return "redirect:/login";
     }
-
 
 
 }

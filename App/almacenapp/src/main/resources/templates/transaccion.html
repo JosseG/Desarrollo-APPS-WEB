@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="componentes/style :: head_html">
 
@@ -16,12 +16,14 @@
         </div>
 
 
-        <div class="col-10 d-flex orden-main" style="background-color: #f8f8ff">
+
+        <div class="col-10 d-flex orden-main" sec:authorize="hasRole('ADMINISTRADOR')" style="background-color: #f8f8ff">
             <div class="orden-main_title">
                 <h1>Transacción</h1>
             </div>
             <div class="orden-container">
                 <div class="orden-subcontainer">
+                    <h1 th:inline="text">Hello </h1>
                     <h2 class="text-center fw-bold">INVENTARIO</h2>
                     <form th:action="@{/inventario/orden/preview}" method="get">
                         <div class="transaccion_orden-body">
@@ -151,6 +153,10 @@
                             </div>
                         </div>
                     </div>
+
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
 
                     <!-- -->
                 </div>

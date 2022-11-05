@@ -1,8 +1,11 @@
 package com.angjm.almacenapp.model.dto;
 
 
-import jakarta.persistence.*;
+
 import lombok.Data;
+
+import jakarta.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -17,8 +20,8 @@ public class Usuario {
     @Column(name = "id_empleado", nullable = false)
     private String idEmpleado;
 
-    @Column(name = "id_cargo", nullable = false)
-    private String idCargo;
+   /*@Column(name = "id_cargo", nullable = false)
+    private String idCargo;*/
 
     @Column(name = "alias_usuario", nullable = false)
     private String alias;
@@ -28,5 +31,12 @@ public class Usuario {
 
     @Column(name = "estado", nullable = false)
     private boolean estado = true;
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="tb_rol_usuario",
+            joinColumns=@JoinColumn(name="id_usuario"),
+            inverseJoinColumns=@JoinColumn(name="id_rol"))
+    private Set<Rol> rol;
 
 }
