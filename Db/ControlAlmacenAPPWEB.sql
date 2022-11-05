@@ -102,22 +102,19 @@ insert into tb_inventario values(1,'PR00000001','TI00000001','AL00000001','EM000
 
 create table if not exists tb_cargo
 (
-	id_cargo char(10) primary key,
-	nombre_cargo varchar(30) not null,
+	id_cargo int auto_increment primary key,
+	nombre_cargo varchar(60) not null,
 	estado boolean not null
 );
-insert into tb_cargo values('CG00000001','Administrador',true);
 
 create table if not exists tb_usuario
 (
 	id_usuario int auto_increment primary key, 
 	id_empleado char(10) not null,
-	/*id_cargo char(10) not null,*/
 	alias_usuario varchar(50) not null unique,
 	contrasena_usuario varchar(250) not null,
     estado boolean not null,
 	foreign key (id_empleado) references tb_empleado(id_empleado)
-	/*foreign key (id_cargo) references tb_cargo(id_cargo)  */
 );
 
 
@@ -164,7 +161,7 @@ select * from tb_acceso;
 create table if not exists tb_acceso_cargo
 (
 	id_acceso char(10),
-	id_cargo char(10),
+	id_cargo int,
     estado boolean not null,
 	primary key (id_acceso,id_cargo),
 	foreign key (id_acceso) references tb_acceso(id_acceso),
@@ -227,33 +224,37 @@ create table if not exists tb_detalleordencompra
 
 
 
-create table tb_rol (
-	id_rol int auto_increment primary key, 
-	nombre_rol varchar(50) not null
-);
-
-create table tb_rol_usuario (
-	id_rol int not null,
+create table tb_cargo_usuario (
+	id_cargo int not null,
     id_usuario int not null,
-    primary key(id_rol,id_usuario),
-    foreign key(id_rol) references tb_rol(id_rol),
+    primary key(id_cargo,id_usuario),
+    foreign key(id_cargo) references tb_cargo(id_cargo),
     foreign key(id_usuario) references tb_usuario(id_usuario)
 );
 
-
+create table if not exists persistent_logins (
+	username varchar(64) not null,
+	series varchar(64) primary key,
+	token varchar(64) not null,
+	last_used timestamp not null
+);
 
 insert into tb_usuario (id_empleado,alias_usuario,contrasena_usuario,estado) values('EM00000001','admin@email.com','$2a$04$uMOWE.EgIiwwEFZXiD3WQehFS.jFMllDpqWQtJ/1Am5jh/MaMuP2a',true);
 insert into tb_usuario (id_empleado,alias_usuario,contrasena_usuario,estado) values('EM00000002','vendedor@email.com','$2a$04$4O9PBqLSYtvd5gaA9TyH9uc4IdyvjqSKVXGY/G62wKCsv8gUUVZZ.',true);
 
-INSERT INTO tb_rol (nombre_rol) VALUES ("ROLE_ADMINISTRADOR");
-INSERT INTO tb_rol (nombre_rol) VALUES ("ROLE_VENDEDOR");
-INSERT INTO tb_rol (nombre_rol) VALUES ("ROLE_ASISTENTE");
-INSERT INTO tb_rol_usuario VALUES (1,1);
-INSERT INTO tb_rol_usuario VALUES (2,1);
-INSERT INTO tb_rol_usuario VALUES (2,2);
+
+INSERT INTO tb_cargo (nombre_cargo,estado) VALUES ("ROLE_ADMINISTRADOR",true);
+INSERT INTO tb_cargo (nombre_cargo,estado) VALUES ("ROLE_VENDEDOR",true);
+INSERT INTO tb_cargo (nombre_cargo,estado) VALUES ("ROLE_ASISTENTE",true);
+INSERT INTO tb_cargo_usuario VALUES (1,1);
+INSERT INTO tb_cargo_usuario VALUES (2,1);
+INSERT INTO tb_cargo_usuario VALUES (2,2);
 
 
 select * from tb_usuario;
-select * from tb_rol;
-select * from tb_rol_usuario;
+select * from tb_cargo_usuario;
+
+
+
+select * from persistent_logins;
 

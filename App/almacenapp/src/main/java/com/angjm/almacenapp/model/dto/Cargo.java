@@ -1,10 +1,7 @@
 package com.angjm.almacenapp.model.dto;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -13,8 +10,9 @@ import lombok.Data;
 public class Cargo {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_cargo", nullable = false)
-    private String id;
+    private int id;
 
     @Column(name = "nombre_cargo", nullable = false)
     private String nombre;

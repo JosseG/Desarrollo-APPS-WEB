@@ -20,8 +20,6 @@ public class Usuario {
     @Column(name = "id_empleado", nullable = false)
     private String idEmpleado;
 
-   /*@Column(name = "id_cargo", nullable = false)
-    private String idCargo;*/
 
     @Column(name = "alias_usuario", nullable = false)
     private String alias;
@@ -34,9 +32,9 @@ public class Usuario {
 
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="tb_rol_usuario",
+    @JoinTable(name="tb_cargo_usuario",
             joinColumns=@JoinColumn(name="id_usuario"),
-            inverseJoinColumns=@JoinColumn(name="id_rol"))
-    private Set<Rol> rol;
+            inverseJoinColumns=@JoinColumn(name="id_cargo"))
+    private Set<Cargo> cargo;
 
 }
