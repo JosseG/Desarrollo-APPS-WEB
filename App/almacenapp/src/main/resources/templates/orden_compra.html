@@ -17,12 +17,39 @@
 
 
         <div class="col-10" style="background-color:  #F8F8FF;">
-            <div class="mt-5 p-5 d-grid gap-2 col-6 mx-auto">
-                <button type="button" class="btn btn-dark btn-generaFichaDevol btn-roud" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">Generar Orden de Compra
-                </button>
+          
+          <div class="container shadow-lg rounded-3 p-2 mt-5  " style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
+            <div  class="row align-items-center d-flex justify-content-between">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-2">
+                            <i class="far fa-list-alt"></i>
+                            </div>
+                            <div class="col-10 text-start">
+                                <h6 class="fw-bold text-dark">Listado de Ordenes de Compra</h6>
+                 
+                            </div>
+                        </div>
+                   </div>
+                 
+                <div class="col-5 d-flex justify-content-end">
+                    <div class="row p-1 justify-content-end">
+                        <div class="col-10">
+                             <button type="button" class="btn btn-generaFichaDevol btn-roud border border border-success" data-bs-toggle="modal"
+                       					 data-bs-target="#exampleModal">Generar Orden de Compra
+               				 </button>
+                        </div>
+                        <div class="col-2 col-xs-12">
+                           <img src="/img/ordenCompra.svg" class="d-none d-md-block" style="width: 35px"/>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
-
+            </div>
+			
+			<div th:replace="componentes/RegistrarOC:: ModalRegistrar_OC_html"></div>
+			
             <div class="col col-sm-12 mt-4 table-responsive">
                 <table id="tbexample" class="table table-striped mb-2" style="width: 100%; font-size: 10px">
                     <thead class="table-dark">

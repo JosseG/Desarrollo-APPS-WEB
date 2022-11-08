@@ -77,9 +77,9 @@ insert into tb_almacen values ('AL00000001','SC00000001','Fundado en 2018','Av L
 select * from tb_almacen;
 
 insert into tb_empleado values ('EM00000001','AL00000001','Mauricio','Jimenez','mau@gmail.com','994545661',true);
-select * from tb_empleado;
 insert into tb_empleado values ('EM00000002','AL00000001','Raul','Suarez','raus@gmail.com','994545000',true);
 select * from tb_empleado;
+
 
 
 
@@ -112,11 +112,10 @@ create table if not exists tb_usuario
 	id_usuario int auto_increment primary key, 
 	id_empleado char(10) not null,
 	alias_usuario varchar(50) not null unique,
-	contrasena_usuario varchar(250) not null,
+	contrasena_usuario varchar(350) not null,
     estado boolean not null,
 	foreign key (id_empleado) references tb_empleado(id_empleado)
 );
-
 
 
 create table if not exists tb_menu
@@ -149,12 +148,14 @@ create table if not exists tb_acceso
 );
 
 INSERT INTO tb_acceso (id_acceso,id_menu,nombre_acceso,url_acceso,estado)
-VALUES(1,1,'Orden de Compra','ordencompa/cargarTodos',1),
+VALUES(1,1,'Orden de Compra','/ordenCompra/cargarTodos',1),
 (2,1,'Producto','productos/cargarTodos',1),
 (3,1,'Usuarios','usuario/cargarTodos',1),
 (4,2,'Orden Ingreso','ingresos/cargarTodos',1),
 (5,2,'Salidas','salidas/cargarTodos',1);
 select * from tb_acceso;
+
+
 
 
 
@@ -241,7 +242,7 @@ create table if not exists persistent_logins (
 
 insert into tb_usuario (id_empleado,alias_usuario,contrasena_usuario,estado) values('EM00000001','admin@email.com','$2a$04$uMOWE.EgIiwwEFZXiD3WQehFS.jFMllDpqWQtJ/1Am5jh/MaMuP2a',true);
 insert into tb_usuario (id_empleado,alias_usuario,contrasena_usuario,estado) values('EM00000002','vendedor@email.com','$2a$04$4O9PBqLSYtvd5gaA9TyH9uc4IdyvjqSKVXGY/G62wKCsv8gUUVZZ.',true);
-
+select * from tb_usuario;
 
 INSERT INTO tb_cargo (nombre_cargo,estado) VALUES ("ROLE_ADMINISTRADOR",true);
 INSERT INTO tb_cargo (nombre_cargo,estado) VALUES ("ROLE_VENDEDOR",true);
@@ -256,5 +257,5 @@ select * from tb_cargo_usuario;
 
 
 
-select * from persistent_logins;
+
 
