@@ -86,7 +86,7 @@ select * from tb_empleado;
 create table if not exists tb_inventario
 (
     id_inventario int auto_increment primary key,
-    id_producto char(10) not null,
+    id_ordenCompra char(10) not null,
     id_tipoinventario char(10) not null,
     id_almacen char(10) not null,
     id_empleado char(10) not null,
