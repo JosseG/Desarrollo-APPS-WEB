@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="style :: head_html"></head>
+<!--<head th:replace="style :: head_html"></head>-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/customcss/index.css">
+</head>
 
 <body>
 
-<nav th:fragment="Nav"
+<header th:fragment="Nav">
+    <section class="nav-container">
+        <img class="logo" src="/img/logo.png">
+        <div class="user-container">
+            <h3 class="h3__name_nav">Josefina Humala</h3>
+            <h4 class="h4__name_nav">Administradora</h4>
+        </div>
+    </section>
+</header>
+
+<!--<nav th:fragment="Nav"
      class="navbar sticky-top navbar-dark fondonavsup justify-content-between">
     <div class="container-fluid">
 
         <div class="d-flex d-content-start m-0">
-            <!--Brand-->
+            &lt;!&ndash;Brand&ndash;&gt;
             <a href="#" class="navbar-brand d-flex "> <img
                     src="/img/logo.png" all="we share" loading="lazy"
                     class="navbar-brand__sup text-light rounded-pill w-50 h-75 my-auto"/>
@@ -48,6 +64,7 @@
         </div>
 
     </div>
-</nav>
+</nav>-->
+<script src="/customjs/main.js"></script>
 </body>
 </html>

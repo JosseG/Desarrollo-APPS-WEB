@@ -83,5 +83,9 @@ public class InventarioController {
         return "preview_o_inventario";
     }
 
+    @GetMapping(value = "/inventario/reportes")
+    public String reporteInventarios(Model model) {
+        return "reporte_inventario";
+    }
 
 }

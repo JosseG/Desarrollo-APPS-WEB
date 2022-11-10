@@ -1,149 +1,158 @@
 <!DOCTYPE html>
-<html  lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
 
-<head th:replace="componentes/style :: head_html">
-
+    <link th:href="@{/customcss/estilos.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"><!--
+    <link th:href="@{/css/header.css}" rel="stylesheet">-->
+    <link rel="stylesheet" href="/customcss/index.css">
 </head>
-<link th:href="@{/customcss/estilos.css}" rel="stylesheet">
 <body>
-<div class="container-fluid">
+
     <nav th:replace="componentes/header :: Nav"></nav>
 
-    <div class="row mx-2 my-5">
+    <div class="container__all">
 
-        <div class="col-2 vh-auto" style="background-color:  #E0FFFF;">
-            <div th:replace="componentes/menu :: menu_html"></div>
-        </div>
+        <!--        <div class="col-2 vh-auto" style="background-color:  #E0FFFF;">
+
+                </div>-->
+        <div th:replace="componentes/menu :: menu_html"></div>
 
 
 
-        <div class="col-10 d-flex orden-main" sec:authorize="hasRole('ADMINISTRADOR')" style="background-color: #f8f8ff">
-            <div class="orden-main_title">
-                <h1>Transacción</h1>
+
+        <section class="container__section">
+            <div style="height: 150px; overflow: hidden;">
+                <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                    <path d="M0.00,49.98 C88.88,184.05 274.54,31.09 500.00,49.98 L500.00,0.00 L0.00,0.00 Z"
+                          style="stroke: none; fill: #22282F;"></path>
+                </svg>
             </div>
-            <div class="orden-container">
-                <div class="orden-subcontainer">
-                    <h1 th:inline="text">Hello </h1>
-                    <h2 class="text-center fw-bold">INVENTARIO</h2>
-                    <form th:action="@{/inventario/orden/preview}" method="get">
-                        <div class="transaccion_orden-body">
-                            <div class="row row_t-bodytype">
-                                <div class="col">
-                                    <div class="box-bodytype b-b-1 tipo" val="1">
-                                        <p class="m-0">INGRESO</p>
+            <div class="s">
+                <div class="orden-container">
+                    <div class="orden-subcontainer">
+                    <!--
+                        <h1 th:inline="text">Hello </h1>--><!--
+                        <h2 class="text-center fw-bold">INVENTARIO</h2>-->
+                        <form th:action="@{/inventario/orden/preview}" method="get">
+                            <div class="transaccion_orden-body">
+                                <div class="row row_t-bodytype">
+                                    <div class="col">
+                                        <div class="box-bodytype b-b-1 tipo" val="1">
+                                            <p class="m-0">INGRESO</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="box-bodytype b-b-2 tipo" val="2">
+                                            <p class="m-0">SALIDA</p>
+                                        </div>
+                                    </div>
+                                    <input type="text" id="tipoinventario" style="visibility: hidden; display: none"/>
+                                </div>
+                                <div class="row row_t-bodymain">
+                                    <div class="box-bodymain">
+                                        <div class="box-bm box-bm-almacen">
+                                            <span> Almacen </span>
+                                            <div class="minibox-bm row">
+                                                <div class="col-8">
+                                                    <label class="form-label">Código</label>
+                                                    <input class="form-control" type="text" name="" disabled/>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="form-label">Sucursal</label>
+                                                    <input class="form-control" type="text" name="" disabled/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-bm box-bm-producto">
+                                            <span> Producto </span>
+                                            <div class="minibox-bm row">
+                                                <div class="col-8">
+                                                    <label class="form-label">Código de barras</label>
+                                                    <input class="form-control" type="text" name="" disabled/>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="form-label">Marca</label>
+                                                    <input class="form-control" type="text" name="" disabled/>
+                                                </div>
+                                            </div>
+                                            <div class="minibox-bm row mt-4 mb-2">
+                                                <div class="col">
+                                                    <label class="form-label">Descripción</label>
+                                                    <input class="form-control" type="text" name="" disabled/>
+                                                </div>
+                                            </div>
+                                            <div class="add-product" data-bs-toggle="modal"
+                                                 data-bs-target="#exampleModalLong1"><img th:src="@{/img/ic_add.svg}"
+                                                                                          alt=""></div>
+                                        </div>
+                                        <div class="box-bm box-bm-inventario">
+                                            <span> Inventario </span>
+                                            <div class="minibox-bm row">
+                                                <div class="col-4">
+                                                    <label class="form-label">Código</label>
+                                                    <input class="form-control" type="text" name="" disabled/>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="form-label">Año</label>
+                                                    <input class="form-control" type="text" name="" disabled/>
+                                                </div>
+                                            </div>
+                                            <div class="minibox-bm row mt-4 mb-2">
+                                                <div class="col-7">
+                                                    <label class="form-label">Descripción</label>
+                                                    <textarea id="countMe" style="resize: none" rows="2"
+                                                              class="form-control" type="text" name=""></textarea>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="form-label">Cantidad</label>
+                                                    <input class="form-control" type="text" name=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btn-bm">
+                                            <button type="submit" data-bs-toggle="modal" data-bs-target="#exampleModalLong2"
+                                                    class="btn btn-dark">
+                                                Enviar
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="box-bodytype b-b-2 tipo" val="2">
-                                        <p class="m-0">SALIDA</p>
-                                    </div>
-                                </div>
-                                <input type="text" id="tipoinventario" style="visibility: hidden; display: none"/>
                             </div>
-                            <div class="row row_t-bodymain">
-                                <div class="box-bodymain">
-                                    <div class="box-bm box-bm-almacen">
-                                        <span> Almacen </span>
-                                        <div class="minibox-bm row">
-                                            <div class="col-8">
-                                                <label class="form-label">Código</label>
-                                                <input class="form-control" type="text" name="" disabled/>
-                                            </div>
-                                            <div class="col">
-                                                <label class="form-label">Sucursal</label>
-                                                <input class="form-control" type="text" name="" disabled/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box-bm box-bm-producto">
-                                        <span> Producto </span>
-                                        <div class="minibox-bm row">
-                                            <div class="col-8">
-                                                <label class="form-label">Código de barras</label>
-                                                <input class="form-control" type="text" name="" disabled/>
-                                            </div>
-                                            <div class="col">
-                                                <label class="form-label">Marca</label>
-                                                <input class="form-control" type="text" name="" disabled/>
-                                            </div>
-                                        </div>
-                                        <div class="minibox-bm row mt-4 mb-2">
-                                            <div class="col">
-                                                <label class="form-label">Descripción</label>
-                                                <input class="form-control" type="text" name="" disabled/>
-                                            </div>
-                                        </div>
-                                        <div class="add-product" data-bs-toggle="modal"
-                                             data-bs-target="#exampleModalLong1"><img th:src="@{/img/ic_add.svg}"
-                                                                                      alt=""></div>
-                                    </div>
-                                    <div class="box-bm box-bm-inventario">
-                                        <span> Inventario </span>
-                                        <div class="minibox-bm row">
-                                            <div class="col-4">
-                                                <label class="form-label">Código</label>
-                                                <input class="form-control" type="text" name="" disabled/>
-                                            </div>
-                                            <div class="col">
-                                                <label class="form-label">Año</label>
-                                                <input class="form-control" type="text" name="" disabled/>
-                                            </div>
-                                        </div>
-                                        <div class="minibox-bm row mt-4 mb-2">
-                                            <div class="col-7">
-                                                <label class="form-label">Descripción</label>
-                                                <textarea id="countMe" style="resize: none" rows="2"
-                                                          class="form-control" type="text" name=""></textarea>
-                                            </div>
-                                            <div class="col">
-                                                <label class="form-label">Cantidad</label>
-                                                <input class="form-control" type="text" name=""/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="btn-bm">
-                                        <button type="submit" data-bs-toggle="modal" data-bs-target="#exampleModalLong2"
-                                                class="btn btn-dark">
-                                            Enviar
+                        </form>
+
+                        <div class="modal fade" id="exampleModalLong1" role="dialog" style="color: black;"
+                             data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" style="width: 30px;" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">X</span>
                                         </button>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!--   -->
+                                    <div class="modal-body">
+                                        <div class="form-body">
+                                            <div class="row">
+                                                <div class="form-holder">
+                                                    <div class="form-content">
+                                                        <div class="form-items">
+                                                            <h3 class="text-center">Buscar Producto</h3>
+                                                            <p></p>
+                                                            <form class="requires-validation" autocomplete="off">
+                                                                <div class="col-md-12 form-element">
+                                                                    <input class="form-control fc" type="text"
+                                                                           name="txtNombre" placeholder="Nombre"/>
+                                                                </div>
 
-                    <div class="modal fade" id="exampleModalLong1" role="dialog" style="color: black;"
-                         data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" style="width: 30px;" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">X</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="form-holder">
-                                                <div class="form-content">
-                                                    <div class="form-items">
-                                                        <h3 class="text-center">Buscar Producto</h3>
-                                                        <p></p>
-                                                        <form class="requires-validation" autocomplete="off">
-                                                            <div class="col-md-12 form-element">
-                                                                <input class="form-control fc" type="text"
-                                                                       name="txtNombre" placeholder="Nombre"/>
-                                                            </div>
-
-                                                            <div class="form-button mt-3 text-center">
-                                                                <button type="submit"
-                                                                        class="btn btn-primary">
-                                                                    Agregar
-                                                                </button>
-                                                            </div>
-                                                        </form>
+                                                                <div class="form-button mt-3 text-center">
+                                                                    <button type="submit"
+                                                                            class="btn btn-primary">
+                                                                        Agregar
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,25 +161,24 @@
                                 </div>
                             </div>
                         </div>
+
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit">Logout</button>
+                        </form>
+
                     </div>
-
-                    <form th:action="@{/logout}" method="post">
-                        <button type="submit">Logout</button>
-                    </form>
-
-                    <!-- -->
                 </div>
             </div>
-        </div>
-
+        </section>
 
     </div>
-    <div th:replace="componentes/footer :: footer_html"></div>
-</div>
+<!--    <div th:replace="componentes/footer :: footer_html"></div>-->
+
 
 
 <!-- Scripts -->
 <div th:replace="componentes/script :: scripts_html"></div>
+    <script src="/customjs/main.js"></script>
 <script>
     $(document).ready(function () {
         $("#example").DataTable();

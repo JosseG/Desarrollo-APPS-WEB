@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="componentes/style :: head_html"></head>
+<title>Home</title>
+<link rel="stylesheet" href="/customcss/index.css">
+<body>
+
+<!-- HEADER FRAGMENT -->
+<nav th:replace="componentes/header :: Nav">
+    <!--    <section class="nav-container">
+            <img class="logo" src="/img/logo.png">
+            <div class="user-container">
+                <h3 class="h3__name_nav">Josefina Humala</h3>
+                <h4 class="h4__name_nav">Administradora</h4>
+            </div>
+        </section>-->
+</nav>
+
+<!-- HEADER FRAGMENT -->
+<div class="container__all">
+    <!-- NAV FRAGMENT -->
+
+    <nav th:replace="componentes/menu :: menu_html"></nav>
+
+    <!--<nav class="nav">
+        <div class="container__info">
+            <div class="img__user_container">
+                <img class="img__user" src="/img/carnet.jpg" alt="logo">
+            </div>
+            <div class="user__container_text">
+                <h3 class="h3__name_info">Josefina Humala</h3>
+                <h4 class="h4__name_info">Administradora</h4>
+            </div>
+        </div>
+
+        <ul class="list">
+            <li class="list__item list__item&#45;&#45;click">
+                <div class="list__button list__button&#45;&#45;click">
+                    <img src="assets/consulta.svg" class="list__img">
+                    <a href="#" class="nav__link">Mantenimiento</a>
+                    <img src="./assets/arrow.svg" class="list__arrow">
+                </div>
+                <ul class="list__show">
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
+                    </li>
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="list__item list__item&#45;&#45;click">
+                <div class="list__button list__button&#45;&#45;click">
+                    <img src="assets/consulta.svg" class="list__img">
+                    <a href="#" class="nav__link">Reportes</a>
+                    <img src="./assets/arrow.svg" class="list__arrow">
+                </div>
+                <ul class="list__show">
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
+                    </li>
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="list__item list__item&#45;&#45;click">
+                <div class="list__button list__button&#45;&#45;click">
+                    <img src="assets/consulta.svg" class="list__img">
+                    <a href="#" class="nav__link">Transacciones</a>
+                    <img src="./assets/arrow.svg" class="list__arrow">
+                </div>
+                <ul class="list__show">
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
+                    </li>
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="list__item list__item&#45;&#45;click">
+                <div class="list__button list__button&#45;&#45;click">
+                    <img src="assets/consulta.svg" class="list__img">
+                    <a href="#" class="nav__link">Consultas</a>
+                    <img src="./assets/arrow.svg" class="list__arrow">
+                </div>
+                <ul class="list__show">
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
+                    </li>
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>-->
+
+    <!-- NAV FRAGMENT -->
+    <section class="container__section">
+        <img src="/img/carnet.jpg" alt="">
+    </section>
+
+    <div th:replace="componentes/script :: scripts_html"></div>
+</div>
+
+
+</body>
+</html>

@@ -1,49 +1,105 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="style :: head_html"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/customcss/index.css">
+</head>
 <body>
 
-<div th:fragment="menu_html" class="bg-dark m-auto vh-100">
-
-    <div class="card m-auto bg-dark text-white">
-
-        <picture class="bg-dark text-center m-auto" style="width: 100%;">
-            <img src="/img/perfil.png" class="img-fluid rounded-circle mt-2" alt="..." style="width: 50%;">
-        </picture>
-
-
-        <div class="card-body text-center bg-dark text-white">
-            <h5 class="card-title">DANIEL HUMALA</h5>
-            <h6 class="card-text">Administrador</h6>
+<nav class="nav" th:fragment="menu_html">
+    <div class="container__info">
+        <div class="img__user_container">
+            <img class="img__user" src="/img/carnet.jpg" alt="logo">
         </div>
+        <div class="user__container_text">
+            <h3 class="h3__name_info">Josefina Humala</h3>
+            <h4 class="h4__name_info">Administradora</h4>
+        </div>
+    </div>
 
-
-        <div class="offcanvas-body">
-
-            <ul th:each="M : ${listadoMenu}" class="navbar-nav flex-grow-1 pe-3 navbar-brand text-start">
-
-
-                <li class="nav-item"><a
-                        class="nav-link dropdown-toggle d-block text-white" href="#"
-                        id="offcanvasNavbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                    <i th:class="${M.icono}"></i><span th:text="${M.descripcion}"/></a>
-
-                    <ul th:each="SUBM : ${listadoSubMenu}" th:if="${SUBM.idMenu}==${M.id}"
-                        class="dropdown-menu dropdown-menu-dark fondonavbody ms-5"
-                        aria-labelledby="offcanvasNavbarDropdown">
-
-                        <li><a class="dropdown-item" th:href="${SUBM.url_acceso}" th:text="${SUBM.nombre}"></a></li>
-
-                    </ul>
+    <ul class="list">
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <img src="/assets/consulta.svg" class="list__img">
+                <a class="nav__link">Mantenimiento</a>
+                <img src="/assets/arrow.svg" class="list__arrow">
+            </div>
+            <ul class="list__show">
+                <li class="list__inside">
+                    <a th:href="@{/ordenCompra/cargarTodos}" class="nav__link nav__link--inside">Orden Compra</a>
+                </li>
+                <li class="list__inside">
+                    <a href="#" class="nav__link nav__link--inside">*****</a>
+                </li>
+            </ul>
+        </li>
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <img src="/assets/consulta.svg" class="list__img">
+                <a class="nav__link">Reportes</a>
+                <img src="/assets/arrow.svg" class="list__arrow">
+            </div>
+            <ul class="list__show">
+                <li class="list__inside">
+                    <a th:href="@{/inventario/reportes}" class="nav__link nav__link--inside">Inventario</a>
+                </li>
+                <li class="list__inside">
+                    <a href="#" class="nav__link nav__link--inside">*****</a>
                 </li>
 
+                <li class="list__inside">
+                    <a href="#" class="nav__link nav__link--inside">*****</a>
+                </li>
             </ul>
-        </div>
+        </li>
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <img src="/assets/consulta.svg" class="list__img">
+                <a  class="nav__link">Transacciones</a>
+                <img src="/assets/arrow.svg" class="list__arrow">
+            </div>
+            <ul class="list__show">
+                <li class="list__inside">
+                    <a th:href="@{/inventario/orden/genera}"  class="nav__link nav__link--inside">Inventario</a>
+                </li>
+                <li class="list__inside">
+                    <a href="#" class="nav__link nav__link--inside">*****</a>
+                </li>
+            </ul>
+        </li>
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <img src="/assets/consulta.svg" class="list__img">
+                <a class="nav__link">Consultas</a>
+                <img src="/assets/arrow.svg" class="list__arrow">
+            </div>
+            <ul class="list__show">
+                <li class="list__inside">
+                    <a th:href="@{/consulta/producto}" class="nav__link nav__link--inside">Producto</a>
+                </li>
+                <li class="list__inside">
+                    <a href="#" class="nav__link nav__link--inside">*****</a>
+                </li>
+            </ul>
+        </li>
 
-    </div>
-</div>
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <img src="/assets/consulta.svg" class="list__img">
+                <a class="nav__link">Configuración</a>
+                <img src="/assets/arrow.svg" class="list__arrow">
+            </div>
+            <ul class="list__show">
+                <li class="list__inside">
+                    <a th:href="@{/configuracion/roles}" class="nav__link nav__link--inside">Rol</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
 
 </body>
 </html>

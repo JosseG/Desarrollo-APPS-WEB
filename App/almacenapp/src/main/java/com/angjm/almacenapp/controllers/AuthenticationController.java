@@ -6,7 +6,6 @@ import com.angjm.almacenapp.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
@@ -29,8 +28,13 @@ public class AuthenticationController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        return (auth.getPrincipal().equals("anonymousUser")) ? "login" : "redirect:/inventario/orden/genera";
+        return (auth.getPrincipal().equals("anonymousUser")) ? "login" : "redirect:/homep";
 
+    }
+
+    @GetMapping("/homep")
+    public String enHome(Model model) {
+        return "home_p";
     }
 
 

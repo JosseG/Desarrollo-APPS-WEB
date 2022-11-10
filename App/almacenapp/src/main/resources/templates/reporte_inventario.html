@@ -2,17 +2,69 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <title> Reporte Inventario</title>
 <head th:replace="componentes/style :: head_html"></head>
-
+<link rel="stylesheet" href="/customcss/index.css">
 <body>
 
 
-<div class="container-fluid">
-    <nav th:replace="componentes/header :: Nav"></nav>
+<nav th:replace="componentes/header :: Nav"></nav>
 
-    <div class="row m-2 text-center">
+<div class="container__all">
 
-        <div class="col-2 vh-auto" style="background-color:  #E0FFFF;">
+
+    <div th:replace="componentes/menu :: menu_html"></div>
+
+
+    <div class="w-75 mx-auto mt-5">
+
+        <!-- <div class="col-2 vh-auto" style="background-color:  #E0FFFF;">
             <div th:replace="componentes/menu :: menu_html"></div>
+        </div> -->
+
+        <div class="page-title">
+            <div class="title_center text-center">
+                <h3>Reporte</h3>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="billing-first-name" class="form-label">Fecha Inicio</label>
+                    <input class="form-control" type="text" placeholder="Ingresar Fecha" id="billing-first-name">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="billing-last-name" class="form-label">Fecha Final</label>
+                    <input class="form-control" type="text" placeholder="Ingresar Fecha" id="billing-last-name">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="products-datatable_length">
+                    <label class="form-label">
+                        Mostrar
+                        <select class="form-select form-select-sm ms-1 me-1">
+                            <option value="10">10</option>
+                            <option value="all">15</option>
+                        </select>
+                        entradas
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <div id="products-datatable_filter" class="dataTables_filter">
+                    <label class="form-label">
+                        Buscar:
+                        <input type="search" class="form-control form-control-sm" placeholder=""
+                               aria-controls="products-datatable">
+                    </label>
+                </div>
+            </div>
         </div>
 
 
@@ -21,6 +73,11 @@
                 <button type="button" class="btn btn-dark btn-generaFichaDevol btn-roud" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">Generar Reporte Inventario
                 </button>
+
+                <button type="button" class="btn btn-dark btn-generaFichaDevol btn-roud" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Limpiar
+                </button>
+
             </div>
 
             <div class="col col-sm-12 mt-4 table-responsive">
@@ -74,15 +131,17 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- Footer -->
-            <div th:replace="componentes/footer :: footer_html"></div>
         </div>
+
+
+        <!-- Footer -->
+        <!--<div th:replace="componentes/footer :: footer_html"></div>-->
 
 
         <!-- Scripts -->
         <div th:replace="componentes/script :: scripts_html"></div>
     </div>
+
 </div>
 </body>
 

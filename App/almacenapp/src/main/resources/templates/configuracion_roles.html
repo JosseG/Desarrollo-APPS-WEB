@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="componentes/style :: head_html"></head>
+<title>Configuracion Roles</title>
+<link rel="stylesheet" href="/customcss/index.css">
+<body>
+
+<!-- HEADER FRAGMENT -->
+<header th:replace="componentes/header :: Nav">
+    <!--    <section class="nav-container">
+            <img class="logo" src="/img/logo.png">
+            <div class="user-container">
+                <h3 class="h3__name_nav">Josefina Humala</h3>
+                <h4 class="h4__name_nav">Administradora</h4>
+            </div>
+        </section>-->
+</header>
+
+<!-- HEADER FRAGMENT -->
+<div class="container__all">
+    <!-- NAV FRAGMENT -->
+
+    <nav th:replace="componentes/menu :: menu_html"></nav>
+
+
+    <!-- NAV FRAGMENT -->
+    <section class="container__section">
+        <div style="height: 150px; overflow: hidden;">
+            <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                <path d="M0.00,49.98 C88.88,184.05 274.54,31.09 500.00,49.98 L500.00,0.00 L0.00,0.00 Z"
+                      style="stroke: none; fill: #22282F;"></path>
+            </svg>
+        </div>
+        <div class="section__part1">
+            <div class="text-input_sect1">
+                <h1>BUSCAR</h1>
+                <div class="input-pers">
+                    <input type="text" placeholder="Buscar...">
+                    <div class="container__button_buscar">
+                        <button class="button__buscar">BUSCAR</button>
+                    </div>
+                </div>
+                <article class="container__table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th class="th_especial">Apellidos y Nombres</th>
+                            <th>Cargo</th>
+                            <th>Login</th>
+                            <th>Contraseña</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                        </tr>
+                        <tr>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                        </tr>
+                        <tr>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                        </tr>
+                        <tr>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                            <td>****</td>
+                        </tr>
+                    </table>
+                </article>
+                <form action="POST" class="form-mod">
+                    <div class="container__form_1">
+                        <div class="container__form_1-sect1">
+                            <label for="">Código</label>
+                            <input style="border-radius: 5em;" type="text">
+                        </div>
+                        <div class="container__form_1-sect2">
+                            <label for="">Usuario</label>
+                            <input style="border-radius: 5em" type="text">
+                        </div>
+                    </div>
+                    <div class="container__form_2">
+                        <div class="container__form_1-sect3">
+                            <label for="">Rol</label>
+                            <select class="container__select_one" name="" id="">
+                                <option value="">Seleccione...</option>
+                                <option value="">****</option>
+                                <option value="">****</option>
+                            </select>
+                        </div>
+                        <div class="container__form_1-sect4">
+                            <label for="">Acceso</label>
+                            <select class="container__select_two" name="" id="">
+                                <option value="">Seleccione...</option>
+                                <option value="">****</option>
+                                <option value="">****</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="container__buttons">
+                        <div class="container__button_buscar--active" style="margin-left:8px;">
+                            <button class="button__buscar-active">REGISTRAR</button>
+                        </div>
+                        <div class="container__button_buscar--active">
+                            <button class="button__buscar-active">CANCELAR</button>
+                        </div>
+                    </div>
+
+                </form>
+                <!--</div>-->
+                <!--            <div class="container__button_buscar">
+                                <button class="button__buscar">BUSCAR</button>
+                            </div>-->
+                <!--        </div>-->
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<script src="/customjs/main.js"></script>
+</body>
+</html>

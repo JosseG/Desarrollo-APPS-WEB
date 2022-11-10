@@ -57,7 +57,7 @@ public class WebSecurityConfig {
                     .loginPage("/login")
                     .permitAll()
                     .failureUrl("/login?error=true")
-                    .defaultSuccessUrl("/inventario/orden/genera")
+                    .defaultSuccessUrl("/homep",true)
                     .usernameParameter("username")
                     .passwordParameter("password")
                     .and()
