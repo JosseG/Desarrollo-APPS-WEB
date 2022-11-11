@@ -179,3 +179,7 @@ body {
 .subcontainer_informe>img{
     width: 100%;
 }
+
+#tbexample{
+    margin: 0 !important;
+}

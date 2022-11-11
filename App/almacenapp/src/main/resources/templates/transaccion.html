@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-
-    <link th:href="@{/customcss/estilos.css}" rel="stylesheet">
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"><!--
-    <link th:href="@{/css/header.css}" rel="stylesheet">-->
+    <head th:replace="componentes/style :: head_html"></head>
     <link rel="stylesheet" href="/customcss/index.css">
 </head>
 <body>
@@ -21,7 +18,7 @@
 
 
 
-        <section class="container__section">
+        <section class="container__section" style="padding: 0 !important;">
             <div style="height: 150px; overflow: hidden;">
                 <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
                     <path d="M0.00,49.98 C88.88,184.05 274.54,31.09 500.00,49.98 L500.00,0.00 L0.00,0.00 Z"
@@ -161,10 +158,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <form th:action="@{/logout}" method="post">
-                            <button type="submit">Logout</button>
-                        </form>
 
                     </div>
                 </div>
