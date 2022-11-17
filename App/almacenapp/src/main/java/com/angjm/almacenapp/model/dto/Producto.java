@@ -24,6 +24,9 @@ public class Producto {
     @Column(name = "marca_producto")
     private String marca;
 
+    @Column(name = "stock_producto")
+    private String stock;
+
     @Column(name = "estado")
     private boolean estado = true;
 

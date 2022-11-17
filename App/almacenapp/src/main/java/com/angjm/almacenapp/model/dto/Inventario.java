@@ -2,6 +2,7 @@ package com.angjm.almacenapp.model.dto;
 
 
 
+import com.angjm.almacenapp.services.ordencompra.OrdenCompraService;
 import jakarta.persistence.*;
 import lombok.*;
 @Setter
@@ -16,8 +17,8 @@ public class Inventario {
     @Column(name = "id_inventario", nullable = false)
     private String id;
 
-    @Column(name = "id_producto", nullable = false)
-    private String idProducto;
+    @Column(name = "id_orden_compra", nullable = false)
+    private int idOrdenCompra;
 
     @Column(name = "id_tipoinventario", nullable = false)
     private String idTipoInventario;
@@ -42,8 +43,8 @@ public class Inventario {
     private TipoInventario objTipoInve;
     
     @ManyToOne
-    @JoinColumn(name="id_producto", insertable=false, updatable=false)
-    private Producto objProducto;
+    @JoinColumn(name="id_orden_compra", insertable=false, updatable=false)
+    private OrdenCompra objOrdenCompra;
 
     @ManyToOne
     @JoinColumn(name="id_almacen", insertable=false, updatable=false)
