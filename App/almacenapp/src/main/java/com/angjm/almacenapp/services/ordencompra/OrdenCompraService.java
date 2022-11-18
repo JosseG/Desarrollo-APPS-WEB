@@ -24,11 +24,15 @@ public class OrdenCompraService {
         return ordenCompraRepository.findByFechaentrega(fecha,pageable);
     }
     public Page<OrdenCompra> buscarResultadosPaginadosPorFechaEmision(LocalDate fecha, int pageNo, int pageSize){
-
         Pageable pageable = PageRequest.of(pageNo, pageSize);
-        ordenCompraRepository.findAll();
         return ordenCompraRepository.findByFechaOrdenCompra(fecha,pageable);
     }
+
+    public Page<OrdenCompra> buscarResultadosPaginados( int pageNo, int pageSize){
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return ordenCompraRepository.findAll(pageable);
+    }
+
 
 
 }

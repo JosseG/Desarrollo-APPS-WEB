@@ -342,8 +342,21 @@ insert into  tb_ordencompra VALUES(null,1,'OC00000010','2022/10/16','2022/10/16'
 insert into  tb_ordencompra VALUES(null,1,'OC00000011','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
 insert into  tb_ordencompra VALUES(null,1,'OC00000012','2022/10/16','2022/10/16','CONTADO','con transporte',1000.00,1);
 
-/* INSERT ORDENCOMPRA */
 
+insert into  tb_ordencompra VALUES(null,1,'OC00000013','2021/10/16','2021/10/22','CONTADO','con transporte',1250.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000014','2021/10/16','2021/10/22','CONTADO','con transporte',1154.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000015','2021/10/16','2021/10/22','CONTADO','con transporte',1877.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000016','2021/10/15','2021/10/20','CONTADO','con transporte',1952.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000017','2020/10/16','2020/10/22','CONTADO','con transporte',1120.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000018','2020/10/17','2020/10/25','CONTADO','con transporte',1645.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000019','2020/10/18','2020/10/25','CONTADO','con transporte',1784.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000020','2020/10/13','2020/10/19','CONTADO','con transporte',1111.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000021','2019/10/11','2019/10/16','CONTADO','con transporte',1321.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000022','2019/10/10','2019/10/15','CONTADO','con transporte',1011.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000023','2019/10/13','2019/10/19','CONTADO','con transporte',1841.00,1);
+insert into  tb_ordencompra VALUES(null,1,'OC00000024','2019/10/14','2019/10/19','CONTADO','con transporte',1642.00,1);
+
+/* INSERT ORDENCOMPRA */
 
 
 
