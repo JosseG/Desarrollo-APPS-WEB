@@ -14,24 +14,27 @@ public class Producto {
     @Id
     @Column(name = "id_producto", nullable = false)
     private String id;
-
-    @Column(name = "codigobar_producto")
+   /* @Column(name = "id_tipoprod", nullable = false)
+    private String tipo;
+*/
+    
+    @Column(name = "codigobar_producto", nullable = false)
     private String codigoBarras;
 
-    @Column(name = "descripcion_producto")
+    @Column(name = "descripcion_producto", nullable = false)
     private String descripcion;
 
-    @Column(name = "marca_producto")
+    @Column(name = "marca_producto", nullable = false)
     private String marca;
 
-    @Column(name = "stock_producto")
+    @Column(name = "stock_producto", nullable = false)
     private String stock;
 
-    @Column(name = "estado")
+    @Column(name = "estado", nullable = false)
     private boolean estado = true;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipoprod")
+    @JoinColumn(name = "id_tipoprod", insertable=false, updatable=false)
     private TipoProducto tipoProducto;
 
 }

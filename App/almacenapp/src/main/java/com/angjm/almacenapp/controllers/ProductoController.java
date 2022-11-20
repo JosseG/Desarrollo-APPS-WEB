@@ -1,6 +1,7 @@
 package com.angjm.almacenapp.controllers;
 
 
+
 import com.angjm.almacenapp.model.dto.Producto;
 import com.angjm.almacenapp.repository.IProductoRepository;
 import com.angjm.almacenapp.repository.ITipoProductoRepository;
@@ -41,24 +42,24 @@ public class ProductoController {
     }
 
 
-    @GetMapping(value="/productos/agregar")
+    /*@GetMapping(value="/productos/agregar")
     public String agregarProducto(Model model){
 
         model.addAttribute("tipoProductos",tipoProductoRepository.findAll());
         model.addAttribute("producto",new Producto());
 
         return "insertar_producto";
-    }
+    }*/
 
-    @PostMapping(value="/productos/agregar")
+    /*@PostMapping("/productos/agregar")
     public String agregarProducto(@Valid @ModelAttribute("producto") Producto producto, Model model, BindingResult result){
         if(result.hasErrors()){
 
         }else {
             productoRepository.save(producto);
         }
-        return "redirect:/productos";
-    }
+        return "mantenimiento_producto";
+    }*/
 
     @GetMapping(value="/productos/actualizar/{id}")
     public String actualizarProducto(@PathVariable String id, Model model){
@@ -85,6 +86,18 @@ public class ProductoController {
 
         return "redirect:/productos";
     }
+    
+    
+    @GetMapping("/productos/cargartodos")
+    public String listarOrdenesCompra(Model model) {
+    	 model.addAttribute("producto",new Producto());
+    	 model.addAttribute("lsProductos", productoRepository.findAll());
+
+      
+
+        return "mantenimiento_producto";
+    }
+    
     
     //CONSULTA DE PRODUCTO
     

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title> Mantenimiento de Producto</title>
+<head th:replace="componentes/style :: head_html"></head>
+<link rel="stylesheet" href="/customcss/index.css">
+<body>
+
+<!--<div class="container-fluid">-->
+    <nav th:replace="componentes/header :: Nav"></nav>
+
+    <div class="container__all">
+        <div th:replace="componentes/menu :: menu_html"></div>
+<!--        <div class="col-2 vh-auto" style="background-color:  #E0FFFF;">
+            <div th:replace="componentes/menu :: menu_html"></div>
+        </div>-->
+  <div class="container__section" style="background-color:  #F8F8FF;">
+          
+          <div class="container shadow-lg rounded-3 p-2 mt-5  " style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
+            <div  class="row align-items-center d-flex justify-content-between">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-2">
+                            <i class="far fa-list-alt"></i>
+                            </div>
+                            <div class="col-10 text-start">
+                                <h6 class="fw-bold text-dark">Listado de Productos</h6>
+                 
+                            </div>
+                        </div>
+                   </div>
+                 
+                <div class="col-5 d-flex justify-content-end">
+                    <div class="row p-1 justify-content-end">
+                        <div class="col-10">
+                             <button type="button" class="btn btn-generaFichaDevol btn-roud border border border-success" data-bs-toggle="modal"
+                       					 data-bs-target="#exampleModal">Generar Producto
+               				 </button>
+                        </div>
+                        <div class="col-2 col-xs-12">
+                           <img src="/img/ordenCompra.svg" class="d-none d-md-block" style="width: 35px"/>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+			<!-- Modal  para Actualizar  Registrar Orden Compra-->
+			<div th:replace="componentes/RegistrarProducto:: RegistrarProducto_html"></div>
+			
+            <div class="col col-sm-12 mt-4 table-responsive">
+                <table id="tbexample" class="table table-striped mb-2" style="width: 100%; font-size: 10px">
+                    <thead class="table-dark">
+                    <tr class="table-primary">
+                        <th>N° </th>
+                        <th>TIPO</th>
+                        <th>MARCA</th>
+                        <th>STOCK</th>
+                        <th>ESTADO</th>
+                        
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="row : ${lsProductos}" class="align-middle shadow-lg p-3 mb-5 bg-body rounded"
+                        style="font-size: 10px">
+                        <td th:text="${row.id}"></td>
+                        <td th:text="${row.tipoProducto.nombre}"></td>
+                       
+                     
+                        <td th:text="${row.marca}"></td>
+                        <td th:text="${row.stock}"></td>
+                  
+                        <td th:text="${row.estado}"></td>
+
+                        <td class="px-0 text-center">
+                            <button type="button" class="btn btn-outline-dark btn-editar  text-center px-2 py-0"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModalActualizarOC">
+                                <i class="fas fa-edit"></i></button>
+                        </td>
+                        <td class="px-0 text-center">
+                            <button type="button" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModalEditarDetalleOC">
+                                <i class="fas fa-binoculars"></i></button>
+                        </td>
+                        <td class="px-0 text-center">
+                            <button type="button"
+                                    class="btn btn-outline-danger btn-eliminar-Devolucion text-center px-2 py-0"
+                                    data-bs-toggle="modal" data-bs-target="#modalElimimar">
+                                <i class="fas fa-backspace"></i></button>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+				
+			 <!-- Modal  para Actualizar  Orden Compra-->
+			<div th:replace="componentes/ActualizarProducto:: Actualizar_Producto_html"></div>
+            <!-- Modal  para ver detalle de Orden Compra-->
+            <div th:replace="componentes/DetalleProducto:: Detalle_Producto_html"></div>
+			
+
+            <!-- Modal para Eliminar OC-->
+            <div class="modal fade mt-5" id="modalElimimar" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-xs">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h7 class="modal-title" id="exampleModalLabel">Sistema</h7>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form  
+                                 >
+                                <input type="hidden" class="form-control" name="id"
+                                       id="id">
+                                <h6>¿Seguro de eliminar?</h6>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">SI</button>
+                                    <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">NO
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- Footer -->
+    <!--<div th:replace="componentes/footer :: footer_html"></div>-->
+<!--</div>-->
+
+
+<!-- Scripts -->
+<div th:replace="componentes/script :: scripts_html"></div>
+
+
+</body>
+</html>

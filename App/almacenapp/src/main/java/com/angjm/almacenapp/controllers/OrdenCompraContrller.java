@@ -16,7 +16,7 @@ import com.angjm.almacenapp.repository.IProveedorRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.Date;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
