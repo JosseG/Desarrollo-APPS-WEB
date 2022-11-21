@@ -231,7 +231,7 @@ public class ProductoController {
   		  
 		return "mantenimiento_producto/ActualizarProducto";
   	}
-   @GetMapping("/productos/eliminar")
+   @PostMapping("/productos/eliminar")
   	public String eliminarProducto(@PathVariable String id,  
 			  Model model) {
 	   productoRepository.deleteById(id);
