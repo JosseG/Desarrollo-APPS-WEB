@@ -133,6 +133,30 @@ public class ProductoController {
 		  model.addAttribute("productoMarca",productoRepository.findByMarca(marca));
 		   return "consultar_producto";
 	    }
+   @GetMapping("/productos/grabarConsu")
+  	public String detalleProducto(
+  				  Model model) {
+  		
+      	  model.addAttribute("producto", new Producto());
+      	  // productoRepository.save(p); 
+    	model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
+    
+  		return "detalle_consult_pro";
+  	} 
+    @GetMapping("/productos/detalleConsuProducto/{id}")
+   	public String detalleProducto(@PathVariable String id, 
+ 			  Model model) {
+        Optional<Producto> producto = productoRepository.findById(id);
+
+ 	
+ 	  model.addAttribute("producto", producto);
+ 	  // productoRepository.save(p); 
+ 		model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
+
+ 		return "detalle_consult_pro";
+    }
+
+    /***************/
 	   
    //Filtrar por tipo
  /*  @GetMapping("/buscarPorTipo")
@@ -187,29 +211,7 @@ public class ProductoController {
 		  
 		return "mantenimiento_producto";
 	}
-   @GetMapping("/productos/grabarConsu")
- 	public String detalleProducto(
- 				  Model model) {
- 		
-     	  model.addAttribute("producto", new Producto());
-     	  // productoRepository.save(p); 
-   	model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
-   
- 		return "detalle_consult_pro";
- 	} 
-   @GetMapping("/productos/detalleConsuProducto/{id}")
-  	public String detalleProducto(@PathVariable String id, 
-			  Model model) {
-       Optional<Producto> producto = productoRepository.findById(id);
-
-	
-	  model.addAttribute("producto", producto);
-	  // productoRepository.save(p); 
-		model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
-
-		return "detalle_consult_pro";
-}
-
+ 
    
    /*@GetMapping("/productos/editar")
    public String editarProducto(Model model) {
@@ -227,15 +229,14 @@ public class ProductoController {
 	  // productoRepository.save(p); 
 	  // model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
   		  
-		return "mantenimiento_producto";
+		return "mantenimiento_producto/ActualizarProducto";
   	}
-   /*@PostMapping("/productos/eliminar")
-  	public String eliminarProducto(@ModelAttribute Producto p, 
-  				  Model model) {
-	   model.addAttribute("producto", productoRepository.findById(p.getId()));
-	   productoRepository.delete(p);
-  		model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
+   @GetMapping("/productos/eliminar")
+  	public String eliminarProducto(@PathVariable String id,  
+			  Model model) {
+	   productoRepository.deleteById(id);
+
   		  
-  		return "mantenimiento_producto";
-  	}*/
+       return "mantenimiento_producto";
+  	}
 }

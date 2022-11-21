@@ -29,10 +29,14 @@
 							  </div>
 							   <div class="col-md-5">
 							    <label for="validationCustom04" class="form-label">Tipo Producto</label>
-							    <select class="form-select" id="validationCustom04" th:field="*{tipoProducto}"  required>
+							    <select class="form-select" id="validationCustom04" th:field="*{tipo}"  required>
 							     
+							   	<option value="0" selected>Seleccione...</option>
 							   
-						<option th:each="tipo : ${tipoProductos}" th:value="${tipo.getId()}" th:text="${tipo.getNombre()}"></option>
+									<option th:each="c : ${lstTiposPro}"  
+											th:value="${c.id}" 
+											th:text="${c.nombre}">
+									</option>
 							    </select>
 							    <div class="invalid-feedback">
 							      Please select a valid state.
