@@ -33,9 +33,13 @@
                 <div class="col-5 d-flex justify-content-end">
                     <div class="row p-1 justify-content-end">
                         <div class="col-10">
-                             <button type="button" class="btn btn-generaFichaDevol btn-roud border border border-success" data-bs-toggle="modal"
-                       					 data-bs-target="#exampleModal">Generar Producto
-               				 </button>
+                           <form action="/productos/grabar" method ="get">
+								   <button type="button" class="btn btn-generaFichaDevol btn-roud border border border-success" data-bs-toggle="modal"
+                       					 data-bs-target="#exampleModal">
+                                     Generar Producto
+                                </button>
+								</form>
+               				 
                         </div>
                         <div class="col-2 col-xs-12">
                            <img src="/img/ordenCompra.svg" class="d-none d-md-block" style="width: 35px"/>
@@ -64,32 +68,44 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="row : ${lsProductos}" class="align-middle shadow-lg p-3 mb-5 bg-body rounded"
+                    <tr th:each="pro : ${lsProductos}" class="align-middle shadow-lg p-3 mb-5 bg-body rounded"
                         style="font-size: 10px">
-                        <td th:text="${row.id}"></td>
-                        <td th:text="${row.tipoProducto.nombre}"></td>
+                        <td th:text="${pro.id}"></td>
+                        <td th:text="${pro.tipoProducto.nombre}"></td>
                        
                      
-                        <td th:text="${row.marca}"></td>
-                        <td th:text="${row.stock}"></td>
+                        <td th:text="${pro.marca}"></td>
+                        <td th:text="${pro.stock}"></td>
                   
-                        <td th:text="${row.estado}"></td>
+                        <td th:text="${pro.estado}"></td>
 
                         <td class="px-0 text-center">
-                            <button type="button" class="btn btn-outline-dark btn-editar  text-center px-2 py-0"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalActualizarOC">
+	                        <form action="/productos/editar" method ="post">
+								<input type="hidden" th:value="${pro.id}" name ="id">
+								  <button type="button" class="btn btn-outline-dark btn-editar  text-center px-2 py-0"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModalActualizarPro">
                                 <i class="fas fa-edit"></i></button>
+								</form>
+	                          
                         </td>
                         <td class="px-0 text-center">
-                            <button type="button" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
+                          <form action="/productos/detalleProducto" method ="post">
+								<input type="hidden" th:value="${pro.id}" name ="id">
+								  <button type="button" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
                                     data-bs-toggle="modal" data-bs-target="#exampleModalEditarDetalleOC">
                                 <i class="fas fa-binoculars"></i></button>
+								</form>
+                          
                         </td>
                         <td class="px-0 text-center">
-                            <button type="button"
+                          <form action="/productos/eliminar" method ="post">
+								<input type="hidden" th:value="${pro.id}" name ="id">
+								   <button type="button"
                                     class="btn btn-outline-danger btn-eliminar-Devolucion text-center px-2 py-0"
                                     data-bs-toggle="modal" data-bs-target="#modalElimimar">
                                 <i class="fas fa-backspace"></i></button>
+								</form>
+                           
                         </td>
 
                     </tr>

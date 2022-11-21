@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-auto" style="padding-top: 8px">
                         <input type="text" th:field="*{estado}" class="form-control" id="inputPassword2"
-                               placeholder="Ingrese tipo de inventario">
+                               placeholder="Estado de inventario">
 
                     </div>
                     <div class="col-auto" style="padding-top: 8px">
@@ -47,11 +47,9 @@
                             <th>Código</th>
                             <th>Tipo</th>
                             <th>Almacen</th>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Descripcion</th>
+                 
                             <th>Estado</th>
-                            <th>Empleado</th>
+                		       <th></th>
 
                         </tr>
                         </thead>
@@ -60,12 +58,15 @@
                             <td th:text="${in.id}"></td>
                             <td th:text="${in.objTipoInve.nombre}"></td>
                             <td th:text="${in.objAlmacen.direccion}"></td>
-                            <td th:text="${in.objProducto.descripcion}"></td>
-                            <td th:text="${in.cantidad}"></td>
-                            <td th:text="${in.descripcion}"></td>
                             <td th:text="${in.estado}"></td>
-                            <td th:text="${in.objEmpleado.nombre + in.objEmpleado.apellido}"></td>
-
+							 <td class="px-0 text-center">
+                           <a th:href="@{/productos/detalleConsuProducto/}+${p.id}" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0">
+                     
+                                <i class="fas fa-binoculars"></i>
+								</a>
+	                          
+                          
+                   			     </td>
 
                         </tr>
                         </tbody>

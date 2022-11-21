@@ -14,9 +14,9 @@ public class Producto {
     @Id
     @Column(name = "id_producto", nullable = false)
     private String id;
-   /* @Column(name = "id_tipoprod", nullable = false)
-    private String tipo;
-*/
+    @Column(name = "id_tipoprod", nullable = false)
+    private int tipo;
+
     
     @Column(name = "codigobar_producto", nullable = false)
     private String codigoBarras;
