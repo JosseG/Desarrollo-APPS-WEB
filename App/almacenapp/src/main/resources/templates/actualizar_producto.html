@@ -1,45 +1,122 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link th:href="@{/customcss/estilos.css}" rel="stylesheet">
-</head>
-<body class="vh-100 vw-100 d-flex">
-<div class="m-auto w-25">
-    <form action="" th:action="@{/productos/actualizar}" method="post" th:object="${producto}">
-        <h2 class="text-center">Producto</h2>
-        <div class="mb-3">
-            <label for="inputId" class="form-label">Id</label>
-            <input type="text" class="form-control" th:field="*{id}" id="inputId">
-        </div>
-        <div class="mb-3">
-            <label for="inputIdTipoProducto" class="form-label">IdTipoProducto</label>
-            <select id="inputIdTipoProducto" th:field="*{tipoProducto}">
-                <option th:each="tipo : ${tipoProductos}" th:value="${tipo.getId()}"
-                        th:selected="*{tipoProducto.getId()}" th:text="${tipo.getNombre()}">1
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="inputCodigoBarras" class="form-label">Código de barras</label>
-            <input type="text" th:field="*{codigoBarras}" class="form-control" id="inputCodigoBarras">
-        </div>
-        <div class="mb-3">
-            <label for="inputDescripcion" class="form-label">Descripción</label>
-            <input type="text" th:field="*{descripcion}" class="form-control" id="inputDescripcion">
-        </div>
-        <div class="mb-3">
-            <label for="inputMarca" class="form-label">Marca</label>
-            <input type="text" th:field="*{marca}" class="form-control" id="inputMarca">
-        </div>
-        <button type="submit" name="btnIngresar" value="enviar" class="btn btn-primary">Enviar</button>
+<meta charset="UTF-8">
+<title> Mantenimiento de Producto</title>
+<head th:replace="componentes/style :: head_html"></head>
+<link rel="stylesheet" href="/customcss/index.css">
+<body>
 
-    </form>
-</div>
-<script src="/js/bootstrap.bundle.min.js"></script>
+<!--<div class="container-fluid">-->
+    <nav th:replace="componentes/header :: Nav"></nav>
+
+    <div class="container__all">
+        <div th:replace="componentes/menu :: menu_html"></div>
+<!--        <div class="col-2 vh-auto" style="background-color:  #E0FFFF;">
+            <div th:replace="componentes/menu :: menu_html"></div>
+        </div>-->
+  <div class="container__section" style="background-color:  #F8F8FF;">
+  
+
+          
+           <div class="row">
+			      <div class=" col-md-12">
+			      		<form action="/productos/grabar"  method="post" 
+					th:object="${producto}" class="row shadow-sm g-3 mt-0 needs-validation align-items-center d-flex justify-content-between me-3 ms-3" novalidate style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
+	
+			      			  <div class="col-md-5">
+							    <label for="validationCustom02" class="form-label">Código</label>
+							    <input type="text" class="form-control" id="validationCustom02" value="Otto"  th:field="*{id}" required>
+							    <div class="valid-feedback">
+							      Looks good!
+							    </div>
+							  </div>
+							   <div class="col-md-5">
+							    <label for="validationCustom04" class="form-label">Tipo Producto</label>
+							    <select class="form-select" id="validationCustom04" th:field="*{tipo}"  required>
+							     
+							   	<option value="0" selected>Seleccione...</option>
+							   
+									<option th:each="c : ${lstTiposPro}"  
+											th:value="${c.id}" 
+											th:text="${c.nombre}">
+									</option>
+							    </select>
+							    <div class="invalid-feedback">
+							      Please select a valid state.
+							    </div>
+							       
+							  </div>
+							  
+							  <div class="col-md-5">
+							    <label for="validationCustom02" class="form-label">Codigo Bar</label>
+							    <input type="text" class="form-control" id="validationCustom02" value="Otto" required th:field="*{codigoBarras}">
+							    <div class="valid-feedback">
+							      Looks good!
+							    </div>
+							  </div>
+							  <div class="col-md-5">
+							    <label for="validationCustom02" class="form-label">Descripción</label>
+							    <input type="text" class="form-control" id="validationCustom02" value="Otto" required th:field="*{descripcion}">
+							    <div class="valid-feedback">
+							      Looks good!
+							    </div>
+							  </div>
+							   <div class="col-md-5">
+							    <label for="validationCustom01" class="form-label">Marca</label>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" required th:field="*{marca}">
+							    <div class="valid-feedback">
+							      Looks good!
+							    </div>
+							  </div>
+					
+								 <div class="col-md-5">
+							    <label for="validationCustom01" class="form-label">Stock</label>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark"  th:field="*{stock}">
+							    <div class="valid-feedback">
+							      Looks good!
+							    </div>
+							  </div>
+					
+							  <div class="col-md-5">
+							      <label for="validationCustom04" class="form-label">Estado Producto</label>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{estado}"  >
+							  
+							   
+							    <div class="invalid-feedback">
+							      Please select a valid state.
+							    </div>
+							  </div>
+						
+							
+						 <div class="col-12" style="margin-bottom: 10px ;">
+							    	<div class="col-md-12 text-end mt-4 mb-5" style="margin: 0 !important;">
+									<button type="submit" id="Guardar" class="btn btn-primary me-2 btn-registrar"><i class="fas fa-save"></i> Registrar</button>
+									<button type="button" id="Cancelar" class="btn btn-danger ms-2 cancelar" data-dismiss="modal"><i class="fas fa-undo-alt"></i> Cancelar</button>
+							         </div> 
+							  </div> 
+					 </form>
+			      </div>
+			      </div> 
+			<!-- Modal  para Actualizar  Registrar Orden Compra
+			<div th:replace="componentes/RegistrarProducto:: RegistrarProducto_html"></div>-->
+			
+          
+				
+		
+        </div>
+
+
+    </div>
+
+
+    <!-- Footer -->
+    <!--<div th:replace="componentes/footer :: footer_html"></div>-->
+<!--</div>-->
+
+
+<!-- Scripts -->
+<div th:replace="componentes/script :: scripts_html"></div>
+
 
 </body>
-
 </html>

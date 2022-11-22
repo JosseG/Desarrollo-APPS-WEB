@@ -34,7 +34,7 @@
 							  </div>
 							   <div class="col-md-5">
 							    <label for="validationCustom04" class="form-label">Tipo Producto</label>
-							    <select class="form-select" id="validationCustom04" th:field="*{tipo}"  >
+							    <select class="form-select" id="validationCustom04" th:field="*{tipo}" disabled="disabled" >
 							      	<option value="0" selected>Seleccione...</option>
 							   
 									<option th:each="c : ${lstTiposPro}"  

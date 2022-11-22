@@ -324,7 +324,8 @@ insert into tb_producto values('PROD000035','3','900197466333',"Cámara digital 
 insert into tb_producto values('PROD000036','3','900486748681',"Cámara profesional Alpha a7 III Full Frame Mirrorless, una super camara, de alta calidad de fotos y video.",'SONY',19,true);
 insert into tb_producto values('PROD000037','3','900987376363',"Audifonos Noise Cancelling Sony WH-1000XM4 con Bluetooth, alta calidad de sonido y cancelacion de ruido",'SONY',65,true);
 insert into tb_producto values('PROD000038','3','900153521909',"Audifonos Beats Studio3 Wireless Shadow Gray, excelente calidad de sonido con acústica refinada y Pure ANC",'BEATS',75,true);
-
+insert into tb_producto values('PROD000039','1','900153521910',"Prueba",'PRUEBA',21,true);
+insert into tb_producto values('PROD000040',2,'900153521911',"Prueba2",'PRUEBA2',11,true);
 /* INSERT USUARIO, CARGO, USUARIO-CARGO */
 
 

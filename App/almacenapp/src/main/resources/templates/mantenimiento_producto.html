@@ -15,6 +15,8 @@
             <div th:replace="componentes/menu :: menu_html"></div>
         </div>-->
   <div class="container__section" style="background-color:  #F8F8FF;">
+  
+
           
           <div class="container shadow-lg rounded-3 p-2 mt-5  " style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
             <div  class="row align-items-center d-flex justify-content-between">
@@ -33,13 +35,11 @@
                 <div class="col-5 d-flex justify-content-end">
                     <div class="row p-1 justify-content-end">
                         <div class="col-10">
-                           <form action="/productos/grabar" method ="get">
-								   <button type="button" class="btn btn-generaFichaDevol btn-roud border border border-success" data-bs-toggle="modal"
-                       					 data-bs-target="#exampleModal">
+                         
+								   <a href="/productos/grabar" class="btn btn-generaFichaDevol btn-roud border border border-success" >
                                      Generar Producto
-                                </button>
-								</form>
-               				 
+                                </a>
+               				   
                         </div>
                         <div class="col-2 col-xs-12">
                            <img src="/img/ordenCompra.svg" class="d-none d-md-block" style="width: 35px"/>
@@ -49,8 +49,8 @@
                 </div>
             </div>
             </div>
-			<!-- Modal  para Actualizar  Registrar Orden Compra-->
-			<div th:replace="componentes/RegistrarProducto:: RegistrarProducto_html"></div>
+			<!-- Modal  para Actualizar  Registrar Orden Compra
+			<div th:replace="componentes/RegistrarProducto:: RegistrarProducto_html"></div>-->
 			
             <div class="col col-sm-12 mt-4 table-responsive">
                 <table id="tbexample" class="table table-striped mb-2" style="width: 100%; font-size: 10px">
@@ -80,21 +80,19 @@
                         <td th:text="${pro.estado}"></td>
 
                         <td class="px-0 text-center">
-	                        <form action="/productos/editar" method ="post">
-								<input type="hidden" th:value="${pro.id}" name ="id">
-								  <button type="button" class="btn btn-outline-dark btn-editar  text-center px-2 py-0"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalActualizarPro">
-                                <i class="fas fa-edit"></i></button>
-								</form>
+	                    
+							 <a th:href="@{/productos/actualizarProducto/}+${pro.id}" class="btn btn-outline-dark btn-editar  text-center px-2 py-0"
+                                   >
+                                <i class="fas fa-edit"></i></a>
+								
 	                          
                         </td>
                         <td class="px-0 text-center">
-                          <form action="/productos/detalleProducto" method ="post">
-								<input type="hidden" th:value="${pro.id}" name ="id">
-								  <button type="button" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalEditarDetalleOC">
-                                <i class="fas fa-binoculars"></i></button>
-								</form>
+                         
+								  <a th:href="@{/productos/detalleConsuProducto/}+${pro.id}" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
+                                    >
+                                <i class="fas fa-binoculars"></i></a>
+								
                           
                         </td>
                         <td class="px-0 text-center">
@@ -114,10 +112,10 @@
                 </table>
             </div>
 				
-			 <!-- Modal  para Actualizar  Orden Compra-->
-			<div th:replace="componentes/ActualizarProducto:: Actualizar_Producto_html"></div>
-            <!-- Modal  para ver detalle de Orden Compra-->
-            <div th:replace="componentes/DetalleProducto:: Detalle_Producto_html"></div>
+			 <!-- Modal  para Actualizar  Orden Compra
+			<div th:replace="componentes/ActualizarProducto:: Actualizar_Producto_html"></div>-->
+            <!-- Modal  para ver detalle de Orden Compra
+            <div th:replace="componentes/DetalleProducto:: Detalle_Producto_html"></div>-->
 			
 
             <!-- Modal para Eliminar OC-->
@@ -130,11 +128,11 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="id" method="post"
-                                  action="/productos/eliminar"> 
+                           <!--  <form  method="post"
+                                  action="/"> 
                                  
-                                <input type="hidden" class="form-control" name="id"
-                                       id="id">
+                                <input type="" class="form-control" name="id"
+                                       id="id">-->
                                 <h6>¿Seguro de eliminar?</h6>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">SI</button>

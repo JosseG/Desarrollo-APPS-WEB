@@ -16,7 +16,7 @@ public class TipoProducto {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_tipoprod", nullable = false)
     private int id;
 
