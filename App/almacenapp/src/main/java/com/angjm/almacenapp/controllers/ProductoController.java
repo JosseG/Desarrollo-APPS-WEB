@@ -156,15 +156,7 @@ public class ProductoController {
 		  model.addAttribute("productoTipo",productoRepository.findByMarca(marca));
 		   return "consultar_producto";
 	    }*/
-	   
-   /*@GetMapping("/productos/detalleProducto/{id}")
-   public String abrirConsultPro(@ModelAttribute Producto p, 
-			  Model model) {
-	   model.addAttribute("producto", productoRepository.findById(p.getId()));
-		
-		model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
-	   return "consultar_producto";
-   }*/
+
    @GetMapping("/productos/cargartodos")
    public String listarOrdenesCompra(Model model) {
    model.addAttribute("producto",new Producto());
