@@ -96,13 +96,10 @@
                           
                         </td>
                         <td class="px-0 text-center">
-                          <form action="/productos/eliminar" method ="post">
-								<input type="hidden" th:value="${pro.id}" name ="id">
-								   <button type="button"
+                          <a th:href="@{/productos/eliminar/}+${pro.id}" 
                                     class="btn btn-outline-danger btn-eliminar-Devolucion text-center px-2 py-0"
-                                    data-bs-toggle="modal" data-bs-target="#modalElimimar">
-                                <i class="fas fa-backspace"></i></button>
-								</form>
+                                    >
+                                <i class="fas fa-backspace"></i></a>
                            
                         </td>
 
@@ -118,7 +115,7 @@
             <div th:replace="componentes/DetalleProducto:: Detalle_Producto_html"></div>-->
 			
 
-            <!-- Modal para Eliminar OC-->
+            <!-- Modal para Eliminar OC
             <div class="modal fade mt-5" id="modalElimimar" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog modal-xs">
@@ -128,23 +125,19 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                           <!--  <form  method="post"
-                                  action="/"> 
-                                 
-                                <input type="" class="form-control" name="id"
-                                       id="id">-->
-                                <h6>¿Seguro de eliminar?</h6>
+                          
+								
+                                <h6>Se ha eliminado con exito</h6>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">SI</button>
-                                    <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">NO
-                                    </button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
                                 </div>
-                            </form>
+                        
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
+  
         </div>
 
 

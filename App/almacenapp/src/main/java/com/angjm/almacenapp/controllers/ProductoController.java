@@ -81,34 +81,6 @@ public class ProductoController {
     }
   
     
-    @GetMapping("/productos/cargartodos")
-    public String listarOrdenesCompra(Model model) {
-    //	 model.addAttribute("producto",new Producto());
-    	 model.addAttribute("lsProductos", productoRepository.findAll());
-
-      
-
-        return "mantenimiento_producto";
-    }
-  /*  @PostMapping("/productos/editar")
-	public String editarProducto(@ModelAttribute Producto p, 
-				  Model model) {
-		
-    	  model.addAttribute("producto", productoRepository.findById(p.getId()));
-  		
-  		model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
-  
-		return "ActualizarProducto";
-	}
-	@PostMapping("/productos/grabar")
-	public String grabarProducto(@ModelAttribute Producto producto, 
-				  Model model) {
-		productoRepository.save(producto); 
-		model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
-		  
-		return "RegistrarProducto";
-	}*/
-    
     //CONSULTA DE PRODUCTO
     
     //abrir pagina consulta producto 
@@ -117,7 +89,7 @@ public class ProductoController {
 	  model.addAttribute("produc",new Producto());
 	  
 	   return "consultar_producto";
-    }
+    }*/
    
    //Filtrar por marca
    @GetMapping("/buscarPorMarca")
@@ -148,33 +120,23 @@ public class ProductoController {
  		return "detalle_consult_pro";
     }
 
-    /***************/
+  
 	   
-   //Filtrar por tipo
+  
  /*  @GetMapping("/buscarPorTipo")
    public String buscarPorTipo(@RequestParam String tipo, Model model,@ModelAttribute("product") Producto producto) {
 		  model.addAttribute("productoTipo",productoRepository.findByMarca(marca));
 		   return "consultar_producto";
 	    }*/
-
+//MANTENIMIENTO PRODUCTO, SE REUTILIZA EL METODO DETALLE
    @GetMapping("/productos/cargartodos")
    public String listarOrdenesCompra(Model model) {
    model.addAttribute("producto",new Producto());
    	 model.addAttribute("lsProductos", productoRepository.findAll());
-//	model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
-
 
        return "mantenimiento_producto";
    }
-   
-   /*@GetMapping("/productos/detalleProducto")
-   public String detalleProducto(Model model) {
-   	 model.addAttribute("producto",new Producto());
-   	model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
-     
 
-       return "DetalleProducto";
-   }*/
   
    @PostMapping("/productos/grabar")
 	public String grabarProducto(@Valid @ModelAttribute Producto producto,BindingResult result ,
@@ -199,13 +161,13 @@ public class ProductoController {
        return "insertar_producto";
    }
 
-   @PostMapping("/productos/eliminar")
+   @GetMapping("/productos/eliminar/{id}")
   	public String eliminarProducto(@PathVariable String id,  
 			  Model model) {
 	   productoRepository.deleteById(id);
 
   		  
-       return "mantenimiento_producto";
+       return "redirect:/productos/cargartodos";
   	}
    
    @GetMapping("/productos/actualizarProducto/{id}")
