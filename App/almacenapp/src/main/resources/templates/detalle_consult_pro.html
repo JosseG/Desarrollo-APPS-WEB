@@ -23,16 +23,25 @@
 			      </div>
 			      <div class="modal-body">  --> 
 			       <div class="container__section">
-			      <div class="row">
-			      <div class=" col-md-12">
-			      		<form action="/productos/grabarConsu" th:object="${producto}" method="get" class="row shadow-sm g-3 mt-0 needs-validation align-items-center d-flex justify-content-between me-3 ms-3" novalidate style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
+			      <div class="detalle_consu">
+			       <h1 style="padding-top:15px;padding-bottom:15px; margin-left: 130px;
+			       ">Detalle del Producto</h1>
+			      <div class=" col-md-7">
+			      		<form action="/productos/grabarConsu" th:object="${producto}" method="get" class="detalle col-auto mx-2 row shadow-sm g-3 mt-0 needs-validation align-items-center d-flex justify-content-between " novalidate style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
 		
-								<div class="col-md-5">
+								<div class="col-auto">
 							    <label for="validationCustom02" class="form-label">Código</label>
 							    <input type="text" class="form-control" id="validationCustom02" value="Otto" th:field="*{id}" readonly>
 							    
 							  </div>
-							   <div class="col-md-5">
+							  
+ 								
+							  <div class="col-auto">
+							    <label for="validationCustom02" class="form-label">Codigo Bar</label>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{codigoBarras}"readonly>
+							    
+							  </div>
+							   <div class="col-auto">
 							    <label for="validationCustom04" class="form-label">Tipo Producto</label>
 							    <select class="form-select" id="validationCustom04" th:field="*{tipo}" disabled="disabled" >
 							      	<option value="0" selected>Seleccione...</option>
@@ -44,39 +53,39 @@
 							    </select>
 							   
 							  </div>
- 								
-							  <div class="col-md-5">
-							    <label for="validationCustom02" class="form-label">Codigo Bar</label>
-							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{codigoBarras}"readonly>
-							    
-							  </div>
-							  <div class="col-md-5">
-							    <label for="validationCustom01" class="form-label">Descripción</label>
-							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{descripcion}"  readonly>
-							   
-							  </div>
-							   <div class="col-md-5">
+							
+							   <div class="col-auto">
 							    <label for="validationCustom01" class="form-label">Marca</label>
 							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{marca}" readonly>
 							  
 							  </div>
 					
-								 <div class="col-md-5">
+								 <div class="col-auto">
 							    <label for="inputStock" class="form-label">Stock</label>
 							    <input type="text" class="form-control" id="inputStock" value="Mark" th:field="*{stock}"  readonly>
 							  
 							  </div>
 					
-							  <div class="col-md-5">
+							  <div class="col-auto">
 							    <label for="validationCustom04" class="form-label">Estado Producto</label>
 							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{estado}"  readonly>
 							  
 							   
 							  </div>
-						
+						  <div class="col-auto">
+							    <label for="validationCustom01" class="form-label">Descripción</label>
+							    <textarea  style="width: 290px; height : 120px" class="form-control" id="validationCustom01" th:field="*{descripcion}"  readonly></textarea>
+							   
+							  </div>
+							  
+ 							<div class="col-12" style="margin-bottom: 10px ;">
+ 							<div class="col-md-12 text-end mt-4 mb-5" style="margin: 0 !important;">
+ 						 <a href="/consulta/producto" class="btn btn-danger ms-2 cancelar" ><i class="fas fa-undo-alt"></i> Volver</a>
  							
-							 	 
+ 							</div>
+							 </div>	 
 					 </form>
+					 
 			      </div>
 			      	 </div>  <!--   		
 			      <div class="modal-footer h-auto">
@@ -97,9 +106,8 @@
     <!-- Footer -->
 
 <!--</div>-->
-
-<script th:replace="componentes/script :: scripts_html"></script>
-
-
+<!--</div>-->
+<div th:replace="componentes/script :: scripts_html"></div>
+<script src="/customjs/main.js"></script>
 </body>
 </html>

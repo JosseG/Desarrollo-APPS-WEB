@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.angjm.almacenapp.model.dto.OrdenCompra;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Repository

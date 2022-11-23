@@ -183,3 +183,15 @@ body {
 #tbexample{
     margin: 0 !important;
 }
+
+
+/*ESTILOS PARA DETALLE DE CONSULTA DE PRODUCTO*/
+.detalle{
+	width: 570px;
+	margin-bottom: 60px;
+}
+.detalle_consu{
+	margin-left: 160px;
+	margin-top: 20px;
+}
+

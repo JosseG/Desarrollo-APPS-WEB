@@ -5,19 +5,26 @@ package com.angjm.almacenapp.controllers;
 import com.angjm.almacenapp.model.dto.Producto;
 import com.angjm.almacenapp.repository.IProductoRepository;
 import com.angjm.almacenapp.repository.ITipoProductoRepository;
+import com.angjm.almacenapp.services.ordencompra.ProductoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class ProductoController {
-
+	final int PAGESIZE = 10;
+	 @Autowired
+	    private ProductoService productoService;
     IProductoRepository productoRepository;
     ITipoProductoRepository tipoProductoRepository;
 
@@ -92,11 +99,84 @@ public class ProductoController {
     }*/
    
    //Filtrar por marca
-   @GetMapping("/buscarPorMarca")
-   public String buscarPorMarca(@RequestParam String marca, Model model,@ModelAttribute("produc") Producto producto) {
-		  model.addAttribute("productoMarca",productoRepository.findByMarca(marca));
-		   return "consultar_producto";
-	    }
+    @GetMapping("/consulta/producto")
+    public String reporteOrdenCompra(Model model) {
+        model.addAttribute("listProductos", new ArrayList<>());
+        return "consultar_producto";
+    }
+
+    @GetMapping("/productos/consulta/marcaPro/{pageNo}")
+    public String consultaPorMarcaPaginacion(@PathVariable(value = "pageNo") int pageNo,
+                                      @RequestParam("marca") String marca,
+                                      Model model) {
+
+        try{
+            Page<Producto> page = productoService.buscarResultadosPaginadosPorMarca(marca, pageNo, PAGESIZE);
+            List<Producto> listaProductoMarca = page.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", page.getTotalPages());
+            model.addAttribute("totalElementos", page.getTotalElements());
+            model.addAttribute("valorFiltro",marca);
+            model.addAttribute("listProductos", listaProductoMarca);
+            model.addAttribute("campoRequestFiltro","marca");
+            model.addAttribute("tipoFiltro","marcaPro");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
+
+        return "consultar_producto";
+    }
+
+   
+    @GetMapping("/productos/consulta/codigoBarPro/{pageNo}")
+    public String consultaPorCodigoBarPaginacion(@PathVariable(value = "pageNo") int pageNo,
+                                      @RequestParam("codigoBarras") String codigoBarras,
+                                      Model model) {
+
+        try{
+            Page<Producto> page = productoService.buscarResultadosPaginadosPorfindByCodigoBarras(codigoBarras, pageNo, PAGESIZE);
+            List<Producto> listaProductoMarca = page.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", page.getTotalPages());
+            model.addAttribute("totalElementos", page.getTotalElements());
+            model.addAttribute("valorFiltro",codigoBarras);
+            model.addAttribute("listProductos", listaProductoMarca);
+            model.addAttribute("campoRequestFiltro","codigoBarras");
+            model.addAttribute("tipoFiltro","codigoBarPro");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
+
+        return "consultar_producto";
+    }
+    @GetMapping("/productos/consulta/idPro/{pageNo}")
+    public String consultaPorIdPaginacion(@PathVariable(value = "pageNo") int pageNo,
+                                      @RequestParam("id") String id,
+                                      Model model) {
+
+        try{
+            Page<Producto> page = productoService.buscarResultadosPaginadosPorId(id, pageNo, PAGESIZE);
+            List<Producto> listaProductoMarca = page.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", page.getTotalPages());
+            model.addAttribute("totalElementos", page.getTotalElements());
+            model.addAttribute("valorFiltro",id);
+            model.addAttribute("listProductos", listaProductoMarca);
+            model.addAttribute("campoRequestFiltro","id");
+            model.addAttribute("tipoFiltro","idPro");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
+
+        return "consultar_producto";
+    }
+   
    @GetMapping("/productos/grabarConsu")
   	public String detalleProducto(
   				  Model model) {

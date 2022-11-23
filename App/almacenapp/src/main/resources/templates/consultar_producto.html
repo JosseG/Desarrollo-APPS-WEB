@@ -15,27 +15,68 @@
         <div th:replace="componentes/menu :: menu_html"></div>
         <!-- Criterios de Búsqueda -->
         <div class="container__section">
-            <h1 style="padding-top:15px;padding-bottom:15px">Consulta de Producto por Marca</h1>
+            <h1 style="padding-top:15px;padding-bottom:15px">Consultas de Productos </h1>
             <div class="partOne" style="background-color:white;padding: 20px; margin-top: 13px;
 	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
-
-                <form class="row g-3" action="/buscarPorMarca" th:object="${produc}" method="get">
-                    <div class="col-auto" style="padding-top: 11px">
-                        <label for="exampleInputPassword1">Consultar por:</label>
-
-                    </div>
-                    <div class="col-auto" style="padding-top: 8px">
-                        <input type="text" th:field="*{marca}" class="form-control" id="inputPassword2"
-                               placeholder="Ingrese Marca">
+  <div class="row g-3">
+      <form class="col-auto mx-3" th:action="@{'/productos/consulta/idPro/0'}" method="get">
+                    <div class="col-auto " style="padding-top: 11px">
+                        <label >Consultar por Código: </label>
 
                     </div>
                     <div class="col-auto" style="padding-top: 8px">
+                        <input class="form-control" type="text" name="id">
 
-                        <button type="submit" class="btn btn-secondary mb-3" id="btn-consultar">Consultar</button>
+                    </div>
+
+
+                    <div class="col-auto" style="padding-top: 8px">
+
+                        <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-entrega">Consultar</button>
                     </div>
                 </form>
                 
+                
+                
              
+              <form class="col-auto mx-3" th:action="@{'/productos/consulta/marcaPro/0'}" method="get">
+                    <div class="col-auto " style="padding-top: 11px">
+                        <label >Consultar por Marca: </label>
+
+                    </div>
+                    <div class="col-auto" style="padding-top: 8px">
+                        <input class="form-control" type="text" name="marca">
+
+                    </div>
+
+
+                    <div class="col-auto" style="padding-top: 8px">
+
+                        <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-entrega">Consultar</button>
+                    </div>
+                </form>
+              
+                
+                 <form class="col-auto mx-3" th:action="@{'/productos/consulta/codigoBarPro/0'}" method="get">
+                    <div class="col-auto " style="padding-top: 11px">
+                        <label >Consultar por Codigo Bar: </label>
+
+                    </div>
+                    <div class="col-auto" style="padding-top: 8px">
+                        <input class="form-control" type="text" name="codigoBarras">
+
+                    </div>
+
+
+                    <div class="col-auto" style="padding-top: 8px">
+
+                        <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-entrega">Consultar</button>
+                    </div>
+                </form>
+                
+           
+                </div>
+                
             </div>
 
 
@@ -50,18 +91,18 @@
                             <th>Código</th>
                             <th>Marca</th>
                             <th>Estado</th>
-                            <th>Tipo</th>
+                            <th>Codigo Bar</th>
 							<th></th>
 
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="p : ${productoMarca}" class="align-middle shadow-lg p-3 mb-5 bg-body rounded"
+                        <tr th:each="p : ${listProductos}" class="align-middle shadow-lg p-3 mb-5 bg-body rounded"
                         style="font-size: 10px">
                             <td th:text="${p.id}"></td>
                             <td th:text="${p.marca}"></td>
                             <td th:text="${p.estado}"></td>
-                            <td th:text="${p.tipoProducto.nombre}"></td>
+                            <td th:text="${p.codigoBarras}"></td>
                             <td class="px-0 text-center">
                            <a th:href="@{/productos/detalleConsuProducto/}+${p.id}" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0">
                      
@@ -74,6 +115,31 @@
                         </tr>
                         </tbody>
                     </table>
+                       <div th:if="${totalPags > 1}">
+                    <div class="row col-12">
+                        <div class="col-auto">
+                            Total Filas: [[${totalElementos}]]
+                        </div>
+                        <div class="col-auto">
+					<span th:each="i: ${#numbers.sequence(0, (totalPags - 1))}" style="margin-right: 3px;">
+						<a th:if="${pagActual != i}"
+                           th:href="@{'/ordencompra/reporte/'+${tipoFiltro}+'/'  + ${i}+'?'+${campoRequestFiltro}+'='+${valorFiltro}}"> [[${i}]] </a>
+						<span th:unless="${pagActual != i}"> [[${i}]] </span>
+					</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <a th:if="${pagActual < totalPags - 1}"
+                               th:href="@{'/ordencompra/reporte/'+${tipoFiltro}+'/'  + ${pagActual + 1}+'?'+${campoRequestFiltro}+'='+${valorFiltro}}">Siguiente</a>
+                            <span th:unless="${pagActual < totalPags}">Siguiente</span>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <a th:if="${pagActual < totalPags - 1}"
+                               th:href="@{'/ordencompra/reporte/'+${tipoFiltro}+'/' + ${totalPags - 1}+'?'+${campoRequestFiltro}+'='+${valorFiltro}}">Último</a>
+                            <span th:unless="${pagActual < totalPags}">Último</span>
+                        </div>
+                    </div>
+                </div>
                 </div>
                 
                  
@@ -85,9 +151,7 @@
     <!-- Footer -->
 
 <!--</div>-->
-
-<script th:replace="componentes/script :: scripts_html"></script>
-
-
+<div th:replace="componentes/script :: scripts_html"></div>
+<script src="/customjs/main.js"></script>
 </body>
 </html>

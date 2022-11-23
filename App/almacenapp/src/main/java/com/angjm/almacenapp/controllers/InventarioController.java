@@ -39,14 +39,7 @@ public class InventarioController {
     }
 
 
-    //Filtrar por tipo inventario
-    @GetMapping("/buscarPorTipoInventario")
-    public String buscarPorTipo(@RequestParam String estado, Model model, @ModelAttribute("inve") Inventario inventario) {
-        //  model.addAttribute("inventarioTipo",repoInve.findAllByObjTipoInveNombre(nombre));
-        model.addAttribute("inventarioEstado", repoInve.findAllByEstado(estado));
-        return "consultar_inventario";
-    }
-
+  
    // Detalle del inventario
     @GetMapping("/inventario/grabarInve")
   	public String detalleProducto(
@@ -95,11 +88,11 @@ public class InventarioController {
         return "";
     }
 
-    @PostMapping("/inventario/editar")
+    /*@PostMapping("/inventario/editar")
     public String editarInventario(@ModelAttribute Inventario in, Model model) {
         model.addAttribute("inventario", repoInve.findById(in.getId()));
         return "";
-    }
+    }*/
 
     @GetMapping(value = "/inventario/orden/genera")
     public String generarOrden(Model model) {
