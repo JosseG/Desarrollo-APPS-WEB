@@ -1,25 +1,30 @@
 package com.angjm.almacenapp.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.angjm.almacenapp.model.dto.Inventario;
-import com.angjm.almacenapp.model.dto.Producto;
 
 import com.angjm.almacenapp.repository.IInventarioRepository;
+import com.angjm.almacenapp.services.ordencompra.InventarioService;
 
 @Controller
 public class InventarioController {
+	 final int PAGESIZE = 10;
     @Autowired
     private IInventarioRepository repoInve;
+   
+	 @Autowired
+	    private InventarioService inventarioService;
 	/*@Autowired
 	private ITipoInventarioRepository repoTipoInve;
 	
@@ -31,17 +36,110 @@ public class InventarioController {
 	private IEmpleadoRepository repoEmpleado;*/
     //CONSULTA DE INVENTARIO
 
-    //abrir pagina de consulta inventario (prueba)
+    //CONSULTA INVENTARIO
+ 
     @GetMapping("/consulta/inventario")
     public String paginaConsultInve(Model model) {
-        model.addAttribute("inve", new Inventario());
+        model.addAttribute("listInventarios", new ArrayList<>());
+        return "consultar_inventario";
+    }
+    @GetMapping("/inventario/consulta/empleadoInve/{pageNo}")
+    public String consultaPorEmpleadoPaginacion(@PathVariable(value = "pageNo") int pageNo,
+                                      @RequestParam("apellido") String apellido,
+                                      Model model) {
+
+        try{
+            Page<Inventario> page = inventarioService.buscarResultadosPaginadosPorEmpleado(apellido, pageNo, PAGESIZE);
+            List<Inventario> listaInventarios = page.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", page.getTotalPages());
+            model.addAttribute("totalElementos", page.getTotalElements());
+            model.addAttribute("valorFiltro",apellido);
+            model.addAttribute("listInventarios", listaInventarios);
+            model.addAttribute("campoRequestFiltro","apellido");
+            model.addAttribute("tipoFiltro","empleadoInve");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
+
+        return "consultar_inventario";
+    }
+    
+    @GetMapping("/inventario/consulta/almacenInve/{pageNo}")
+    public String consultaPorAlmacenPaginacion(@PathVariable(value = "pageNo") int pageNo,
+                                      @RequestParam("direccion") String direccion,
+                                      Model model) {
+
+        try{
+            Page<Inventario> page = inventarioService.buscarResultadosPaginadosPorAlmacen(direccion, pageNo, PAGESIZE);
+            List<Inventario> listaInventarios = page.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", page.getTotalPages());
+            model.addAttribute("totalElementos", page.getTotalElements());
+            model.addAttribute("valorFiltro",direccion);
+            model.addAttribute("listInventarios", listaInventarios);
+            model.addAttribute("campoRequestFiltro","direccion");
+            model.addAttribute("tipoFiltro","almacenInve");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
+
+        return "consultar_inventario";
+    }
+    @GetMapping("/inventario/consulta/tipoInve/{pageNo}")
+    public String consultaPorTipoInvePaginacion(@PathVariable(value = "pageNo") int pageNo,
+                                      @RequestParam("nombre") String nombre,
+                                      Model model) {
+
+        try{
+            Page<Inventario> page = inventarioService.buscarResultadosPaginadosPorTipoInventario(nombre, pageNo, PAGESIZE);
+            List<Inventario> listaInventarios = page.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", page.getTotalPages());
+            model.addAttribute("totalElementos", page.getTotalElements());
+            model.addAttribute("valorFiltro",nombre);
+            model.addAttribute("listInventarios", listaInventarios);
+            model.addAttribute("campoRequestFiltro","nombre");
+            model.addAttribute("tipoFiltro","tipoInve");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
+
+        return "consultar_inventario";
+    }
+    @GetMapping("/inventario/consulta/ordenInve/{pageNo}")
+    public String consultaPorOrdenPaginacion(@PathVariable(value = "pageNo") int pageNo,
+                                      @RequestParam("NOrdenCompra") String NOrdenCompra,
+                                      Model model) {
+
+        try{
+            Page<Inventario> page = inventarioService.buscarResultadosPaginadosPorOrden(NOrdenCompra, pageNo, PAGESIZE);
+            List<Inventario> listaInventarios = page.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", page.getTotalPages());
+            model.addAttribute("totalElementos", page.getTotalElements());
+            model.addAttribute("valorFiltro",NOrdenCompra);
+            model.addAttribute("listInventarios", listaInventarios);
+            model.addAttribute("campoRequestFiltro","NOrdenCompra");
+            model.addAttribute("tipoFiltro","ordenInve");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
+
         return "consultar_inventario";
     }
 
-
   
    // Detalle del inventario
-    @GetMapping("/inventario/grabarInve")
+   @GetMapping("/inventario/grabarInve")
   	public String detalleProducto(
   				  Model model) {
   		
@@ -51,10 +149,10 @@ public class InventarioController {
     
   		return "detalle_consult_inve";
   	} 
- /*   @GetMapping("/inventario/detalleConsuInve/{id}")
-   	public String detalleProducto(@PathVariable String id, 
+  @GetMapping("/inventario/detalleConsuInve/{id}")
+   	public String detalleProducto(@PathVariable int id, 
  			  Model model) {
-        Optional<Inventario> inventario = repoInve.findById(id).
+        Optional<Inventario> inventario = repoInve.findById(id);
 
  	
  	  model.addAttribute("inventario", inventario);
@@ -62,37 +160,10 @@ public class InventarioController {
  		//model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
 
   		return "detalle_consult_inve";
- }*/
+ }
 
-    
-    // **************************
-
-    @GetMapping("/inventario/cargarListado")
-    public String abrirPagProd(Model model) {
-        model.addAttribute("producto", new Producto());
-        // para cargar combo, solo si hay o se elimina
-        model.addAttribute("lst", repoInve.findAll());
-        return "";
-    }
-
-    //listado
-    @GetMapping("/inventario/listado")
-    public String abrirListado(Model model) {
-        model.addAttribute("listadoInventarios", repoInve.findAll());
-        return "";
-    }
-
-    @PostMapping("/inventario/grabar")
-    public String grabarInventario(@ModelAttribute Inventario inventa) {
-        repoInve.save(inventa);
-        return "";
-    }
-
-    /*@PostMapping("/inventario/editar")
-    public String editarInventario(@ModelAttribute Inventario in, Model model) {
-        model.addAttribute("inventario", repoInve.findById(in.getId()));
-        return "";
-    }*/
+   
+ // **************************************************
 
     @GetMapping(value = "/inventario/orden/genera")
     public String generarOrden(Model model) {

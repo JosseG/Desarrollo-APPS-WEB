@@ -21,7 +21,7 @@
   <div class="row g-3">
       <form class="col-auto mx-3" th:action="@{'/productos/consulta/idPro/0'}" method="get">
                     <div class="col-auto " style="padding-top: 11px">
-                        <label >Consultar por Código: </label>
+                        <label >Código del Producto: </label>
 
                     </div>
                     <div class="col-auto" style="padding-top: 8px">
@@ -41,7 +41,7 @@
              
               <form class="col-auto mx-3" th:action="@{'/productos/consulta/marcaPro/0'}" method="get">
                     <div class="col-auto " style="padding-top: 11px">
-                        <label >Consultar por Marca: </label>
+                        <label >Marca: </label>
 
                     </div>
                     <div class="col-auto" style="padding-top: 8px">
@@ -59,11 +59,28 @@
                 
                  <form class="col-auto mx-3" th:action="@{'/productos/consulta/codigoBarPro/0'}" method="get">
                     <div class="col-auto " style="padding-top: 11px">
-                        <label >Consultar por Codigo Bar: </label>
+                        <label >Codigo Bar: </label>
 
                     </div>
                     <div class="col-auto" style="padding-top: 8px">
                         <input class="form-control" type="text" name="codigoBarras">
+
+                    </div>
+
+
+                    <div class="col-auto" style="padding-top: 8px">
+
+                        <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-entrega">Consultar</button>
+                    </div>
+                </form>
+                
+                   <form class="col-auto mx-3" th:action="@{'/productos/consulta/tipoPro/0'}" method="get">
+                    <div class="col-auto " style="padding-top: 11px">
+                        <label >Tipo de Producto:</label>
+
+                    </div>
+                    <div class="col-auto" style="padding-top: 8px">
+                        <input class="form-control" type="text" name="nombre">
 
                     </div>
 
@@ -90,7 +107,7 @@
                     <tr class="table-primary">
                             <th>Código</th>
                             <th>Marca</th>
-                            <th>Estado</th>
+                            <th>Tipo Producto</th>
                             <th>Codigo Bar</th>
 							<th></th>
 
@@ -101,7 +118,7 @@
                         style="font-size: 10px">
                             <td th:text="${p.id}"></td>
                             <td th:text="${p.marca}"></td>
-                            <td th:text="${p.estado}"></td>
+                            <td th:text="${p.tipoProducto.nombre}"></td>
                             <td th:text="${p.codigoBarras}"></td>
                             <td class="px-0 text-center">
                            <a th:href="@{/productos/detalleConsuProducto/}+${p.id}" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0">

@@ -21,9 +21,9 @@ public class ProductoService {
 	        Pageable pageable = PageRequest.of(pageNo, pageSize);
 	        return productoRepository.findByMarca(marca, pageable);
 	    }
-	    public Page<Producto> buscarResultadosPaginadosPorEstado(String estado, int pageNo, int pageSize){
+	    public Page<Producto> buscarResultadosPaginadosPorTipo(String nombre, int pageNo, int pageSize){
 	        Pageable pageable = PageRequest.of(pageNo, pageSize);
-	        return productoRepository.findByEstado(estado, pageable);
+	        return productoRepository.findByTipoProducto_Nombre(nombre, pageable);
 	    }
 	    public Page<Producto> buscarResultadosPaginadosPorfindByCodigoBarras(String codigoBarras, int pageNo, int pageSize){
 	        Pageable pageable = PageRequest.of(pageNo, pageSize);

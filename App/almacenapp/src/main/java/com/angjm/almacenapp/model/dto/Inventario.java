@@ -2,7 +2,6 @@ package com.angjm.almacenapp.model.dto;
 
 
 
-import com.angjm.almacenapp.services.ordencompra.OrdenCompraService;
 import jakarta.persistence.*;
 import lombok.*;
 @Setter

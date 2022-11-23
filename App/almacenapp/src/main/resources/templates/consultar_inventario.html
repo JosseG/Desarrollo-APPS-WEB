@@ -14,23 +14,78 @@
         <!-- Criterios de Búsqueda -->
         <div class="container__section">
 
-            <h1 style="padding-top:15px;padding-bottom:15px">Consulta de Inventario por Estado</h1>
+            <h1 style="padding-top:15px;padding-bottom:15px">Consulta de Inventario </h1>
 
             <div class="partOne" style="background-color:white;padding: 20px; margin-top: 13px;
 			box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
-                <form class="row g-3" action="/buscarPorTipoInventario" th:object="${inve}" method="get">
-                    <div class="col-auto" style="padding-top: 11px">
-                        <label for="exampleInputPassword1">Consultar por:</label>
+               <form class="col-auto mx-3" th:action="@{'/inventario/consulta/empleadoInve/0'}" method="get">
+                    <div class="col-auto " style="padding-top: 11px">
+                        <label >Apellido del Empleado: </label>
 
                     </div>
                     <div class="col-auto" style="padding-top: 8px">
-                        <input type="text" th:field="*{estado}" class="form-control" id="inputPassword2"
-                               placeholder="Estado de inventario">
+                        <input class="form-control" type="text" name="apellido">
+
+                    </div>
+
+
+                    <div class="col-auto" style="padding-top: 8px">
+
+                        <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-entrega">Consultar</button>
+                    </div>
+                </form>
+                
+                
+                 <form class="col-auto mx-3" th:action="@{'/inventario/consulta/ordenInve/0'}" method="get">
+                    <div class="col-auto " style="padding-top: 11px">
+                        <label >Orden de Compra: </label>
 
                     </div>
                     <div class="col-auto" style="padding-top: 8px">
+                        <input class="form-control" type="text" name="NOrdenCompra">
 
-                        <button type="submit" class="btn btn-secondary mb-3" id="btn-consultar">Consultar</button>
+                    </div>
+
+
+                    <div class="col-auto" style="padding-top: 8px">
+
+                        <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-entrega">Consultar</button>
+                    </div>
+                </form>
+                
+                
+                 <form class="col-auto mx-3" th:action="@{'/inventario/consulta/tipoInve/0'}" method="get">
+                    <div class="col-auto " style="padding-top: 11px">
+                        <label >Tipo de Inventario: </label>
+
+                    </div>
+                    <div class="col-auto" style="padding-top: 8px">
+                        <input class="form-control" type="text" name="nombre">
+
+                    </div>
+
+
+                    <div class="col-auto" style="padding-top: 8px">
+
+                        <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-entrega">Consultar</button>
+                    </div>
+                </form>
+                
+                
+                 <form class="col-auto mx-3" th:action="@{'/inventario/consulta/almacenInve/0'}" method="get">
+                    <div class="col-auto " style="padding-top: 11px">
+                        <label >Dirección del almacen: </label>
+
+                    </div>
+                    <div class="col-auto" style="padding-top: 8px">
+                        <input class="form-control" type="text" name="direccion">
+
+                    </div>
+
+
+                    <div class="col-auto" style="padding-top: 8px">
+
+                        <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-entrega">Consultar</button>
                     </div>
                 </form>
             </div>
@@ -45,22 +100,24 @@
                         <thead>
                         <tr class="table-primary">
                             <th>Código</th>
-                            <th>Tipo</th>
+                            <th>Tipo Inventario</th>
                             <th>Almacen</th>
                  
-                            <th>Estado</th>
+                            <th>Empleado</th>
+                            <th>N° Orden</th>
                 		       <th></th>
 
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="in : ${inventarioEstado}">
+                        <tr th:each="in : ${listInventarios}">
                             <td th:text="${in.id}"></td>
                             <td th:text="${in.objTipoInve.nombre}"></td>
                             <td th:text="${in.objAlmacen.direccion}"></td>
-                            <td th:text="${in.estado}"></td>
+                            <td th:text="${in.objEmpleado.apellido}"></td>
+                            <td th:text="${in.objOrdenCompra.NOrdenCompra}"></td>
 							 <td class="px-0 text-center">
-                           <a th:href="@{/productos/detalleConsuProducto/}+${p.id}" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0">
+                           <a th:href="@{/inventario/detalleConsuInve/}+${in.id}" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0">
                      
                                 <i class="fas fa-binoculars"></i>
 								</a>

@@ -14,7 +14,7 @@ public interface IProductoRepository extends JpaRepository<Producto,String> {
 	
 
 	Page<Producto> findByMarca(String marca, Pageable pageable);
-    Page<Producto> findByEstado(String estado, Pageable pageable);
+    Page<Producto> findByTipoProducto_Nombre (String nombre, Pageable pageable);
     Page<Producto> findByCodigoBarras(String codigoBarras, Pageable pageable);
     Page<Producto> findById(String id, Pageable pageable);
 	Producto findFirstByIdIsAfterOrderByIdDesc(String id);

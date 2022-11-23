@@ -86,19 +86,14 @@ public class ProductoController {
 
         return "redirect:/mantenimiento_producto";
     }
-  
+  */
     
     //CONSULTA DE PRODUCTO
     
-    //abrir pagina consulta producto 
-   @GetMapping("/consulta/producto")
-    public String abrirConsultPro(Model model) {
-	  model.addAttribute("produc",new Producto());
-	  
-	   return "consultar_producto";
-    }*/
+ 
    
-   //Filtrar por marca
+   //CONSULTAS 
+    
     @GetMapping("/consulta/producto")
     public String reporteOrdenCompra(Model model) {
         model.addAttribute("listProductos", new ArrayList<>());
@@ -176,13 +171,37 @@ public class ProductoController {
 
         return "consultar_producto";
     }
+    
+    @GetMapping("/productos/consulta/tipoPro/{pageNo}")
+    public String consultaPorTipoPaginacion(@PathVariable(value = "pageNo") int pageNo,
+                                      @RequestParam("nombre") String nombre,
+                                      Model model) {
+
+        try{
+            Page<Producto> page = productoService.buscarResultadosPaginadosPorTipo(nombre, pageNo, PAGESIZE);
+            List<Producto> listaProductoMarca = page.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", page.getTotalPages());
+            model.addAttribute("totalElementos", page.getTotalElements());
+            model.addAttribute("valorFiltro",nombre);
+            model.addAttribute("listProductos", listaProductoMarca);
+            model.addAttribute("campoRequestFiltro","nombre");
+            model.addAttribute("tipoFiltro","tipoPro");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
+
+        return "consultar_producto";
+    }
+
    
    @GetMapping("/productos/grabarConsu")
   	public String detalleProducto(
   				  Model model) {
   		
       	  model.addAttribute("producto", new Producto());
-      	  // productoRepository.save(p); 
     	model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
     
   		return "detalle_consult_pro";
@@ -200,14 +219,7 @@ public class ProductoController {
  		return "detalle_consult_pro";
     }
 
-  
-	   
-  
- /*  @GetMapping("/buscarPorTipo")
-   public String buscarPorTipo(@RequestParam String tipo, Model model,@ModelAttribute("product") Producto producto) {
-		  model.addAttribute("productoTipo",productoRepository.findByMarca(marca));
-		   return "consultar_producto";
-	    }*/
+
 //MANTENIMIENTO PRODUCTO, SE REUTILIZA EL METODO DETALLE
    @GetMapping("/productos/cargartodos")
    public String listarOrdenesCompra(Model model) {
