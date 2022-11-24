@@ -41,18 +41,12 @@
 							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{codigoBarras}"readonly>
 							    
 							  </div>
-							   <div class="col-auto">
-							    <label for="validationCustom04" class="form-label">Tipo Producto</label>
-							    <select class="form-select" id="validationCustom04" th:field="*{tipo}" disabled="disabled" >
-							      	<option value="0" selected>Seleccione...</option>
-							   
-									<option th:each="c : ${lstTiposPro}"  
-											th:value="${c.id}" 
-											th:text="${c.nombre}">
-									</option>
-							    </select>
-							   
+							  <div class="col-auto">
+							    <label for="validationCustom02" class="form-label">Tipo Producto</label>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{tipoProducto.nombre}"readonly>
+							    
 							  </div>
+							  
 							
 							   <div class="col-auto">
 							    <label for="validationCustom01" class="form-label">Marca</label>

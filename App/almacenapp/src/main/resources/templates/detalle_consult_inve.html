@@ -23,9 +23,12 @@
 			      </div>
 			      <div class="modal-body">  --> 
 			       <div class="container__section">
-			      <div class="row">
-			      <div class=" col-md-12">
-			      		<form action="/inventario/grabarInve" th:object="${inventario}" method="get" class="row shadow-sm g-3 mt-0 needs-validation align-items-center d-flex justify-content-between me-3 ms-3" novalidate style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
+			         <div class="detalle_consu">
+			       <h1 style="padding-top:15px;padding-bottom:15px; margin-left: 130px;
+			       ">Detalle del Inventario</h1>
+			      <div class=" col-md-7">
+			      
+			      		<form action="/inventario/grabarInve" th:object="${inventario}" method="get" class="detalle col-auto mx-2 row  shadow-sm g-3 mt-0 needs-validation align-items-center d-flex justify-content-between me-3 ms-3" novalidate style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
 		
 								<div class="col-md-5">
 							    <label for="validationCustom02" class="form-label">Código</label>
@@ -35,7 +38,7 @@
 							  
 							   <div class="col-md-5">
 							    <label for="validationCustom02" class="form-label">N° Orden de Compra</label>
-							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{NOrdenCompra}"readonly>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{objOrdenCompra.NOrdenCompra}"readonly>
 							    
 							  </div>
 							  
@@ -45,18 +48,18 @@
 							 
 							  <div class="col-md-5">
 							    <label for="validationCustom01" class="form-label">Tipo Inventario</label>
-							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{nombre}"  readonly>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{objTipoInve.nombre}"  readonly>
 							   
 							  </div>
 							   <div class="col-md-5">
 							    <label for="validationCustom01" class="form-label">Dirección de Almacen</label>
-							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{direccion}" readonly>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{objAlmacen.direccion}" readonly>
 							  
 							  </div>
 					
 								 <div class="col-md-5">
 							    <label for="inputStock" class="form-label">Apellido del Empleado</label>
-							    <input type="text" class="form-control" id="inputStock" value="Mark" th:field="*{apellido}"  readonly>
+							    <input type="text" class="form-control" id="inputStock" value="Mark" th:field="*{objEmpleado.apellido}"  readonly>
 							  
 							  </div>
 					

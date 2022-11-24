@@ -14,7 +14,7 @@ public class Inventario {
 
     @Id
     @Column(name = "id_inventario", nullable = false)
-    private String id;
+    private int id;
 
     @Column(name = "id_orden_compra", nullable = false)
     private int idOrdenCompra;
