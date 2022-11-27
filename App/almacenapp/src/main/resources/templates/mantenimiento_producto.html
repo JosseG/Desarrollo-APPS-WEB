@@ -70,6 +70,10 @@
                     <tbody>
                     <tr th:each="pro : ${lsProductos}" class="align-middle shadow-lg p-3 mb-5 bg-body rounded"
                         style="font-size: 10px">
+                        <th scope="row">
+						<img alt="" th:src="${'/registrosimgs/'+ pro.id+'.png'}"
+						width="100px" height="100px">
+						</th>
                         <td th:text="${pro.id}"></td>
                         <td th:text="${pro.tipoProducto.nombre}"></td>
                        
