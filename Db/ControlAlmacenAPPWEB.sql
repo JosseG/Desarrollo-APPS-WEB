@@ -394,4 +394,3 @@ select * from tb_almacen;
 select * from tb_empleado;
 select * from tb_inventario;
 select * from tb_proveedor;
-
