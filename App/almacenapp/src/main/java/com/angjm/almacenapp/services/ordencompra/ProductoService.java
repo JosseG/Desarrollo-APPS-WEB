@@ -37,5 +37,10 @@ public class ProductoService {
 	        Pageable pageable = PageRequest.of(pageNo, pageSize);
 	        return productoRepository.findAll(pageable);
 	    }
+	    public Page<Producto> buscarTodos( int pageNo, int pageSize){
+	        Pageable pageable = PageRequest.of(pageNo, pageSize);
+	        return productoRepository.findAll(pageable);
+	    }
+
 
 }

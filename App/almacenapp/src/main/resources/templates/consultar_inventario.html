@@ -129,6 +129,31 @@
                         </tr>
                         </tbody>
                     </table>
+                          <div th:if="${totalPags > 1}">
+                    <div class="row col-12">
+                        <div class="col-auto">
+                            Total Filas: [[${totalElementos}]]
+                        </div>
+                        <div class="col-auto">
+					<span th:each="i: ${#numbers.sequence(0, (totalPags - 1))}" style="margin-right: 3px;">
+						<a th:if="${pagActual != i}"
+                           th:href="@{'/inventario/consulta/'+${tipoFiltro}+'/'  + ${i}+'?'+${campoRequestFiltro}+'='+${valorFiltro}}"> [[${i}]] </a>
+						<span th:unless="${pagActual != i}"> [[${i}]] </span>
+					</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <a th:if="${pagActual < totalPags - 1}"
+                               th:href="@{'/inventario/consulta/'+${tipoFiltro}+'/'  + ${pagActual + 1}+'?'+${campoRequestFiltro}+'='+${valorFiltro}}">Siguiente</a>
+                            <span th:unless="${pagActual < totalPags}">Siguiente</span>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <a th:if="${pagActual < totalPags - 1}"
+                               th:href="@{'/inventario/consulta/'+${tipoFiltro}+'/' + ${totalPags - 1}+'?'+${campoRequestFiltro}+'='+${valorFiltro}}">Último</a>
+                            <span th:unless="${pagActual < totalPags}">Último</span>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

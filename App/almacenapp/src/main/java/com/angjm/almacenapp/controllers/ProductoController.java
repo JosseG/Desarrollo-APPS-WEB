@@ -222,12 +222,13 @@ public class ProductoController {
 
 //MANTENIMIENTO PRODUCTO
    @GetMapping("/productos/cargartodos")
-   public String listarOrdenesCompra(Model model) {
-   model.addAttribute("producto",new Producto());
-   	 model.addAttribute("lsProductos", productoRepository.findAll());
+   public String listarProductoos(Model model) {
+	   model.addAttribute("producto",new Producto());
+	   	 model.addAttribute("lsProductos", productoRepository.findAll());
 
-       return "mantenimiento_producto";
-   }
+	       return "mantenimiento_producto";
+	   }
+
 
   
    @PostMapping("/productos/grabar")
