@@ -220,7 +220,7 @@ public class ProductoController {
     }
 
 
-//MANTENIMIENTO PRODUCTO, SE REUTILIZA EL METODO DETALLE
+//MANTENIMIENTO PRODUCTO
    @GetMapping("/productos/cargartodos")
    public String listarOrdenesCompra(Model model) {
    model.addAttribute("producto",new Producto());
@@ -274,4 +274,18 @@ public class ProductoController {
 
 		return "actualizar_producto";
    }
+   
+   @GetMapping("/productos/detallProducto/{id}")
+  	public String detalProducto(@PathVariable String id, 
+			  Model model) {
+       Optional<Producto> producto = productoRepository.findById(id);
+
+	
+	  model.addAttribute("producto", producto);
+	  // productoRepository.save(p); 
+		model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
+
+		return "detalle_producto";
+   }
+
 }

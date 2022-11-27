@@ -18,14 +18,16 @@
   
 
           
-           <div class="row">
+           <div class="row detalle_consu">
+            <h1 style="padding-top:15px;padding-bottom:15px; margin-left: 130px;
+			       ">Actualizar Producto</h1>
 			      <div class=" col-md-12">
 			      		<form action="/productos/grabar"  method="post" 
-					th:object="${producto}" class="row shadow-sm g-3 mt-0 needs-validation align-items-center d-flex justify-content-between me-3 ms-3" novalidate style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
+					th:object="${producto}" class=" detalle row shadow-sm g-3 mt-0 needs-validation align-items-center d-flex justify-content-between me-3 ms-3" novalidate style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
 	
 			      			  <div class="col-md-5">
 							    <label for="validationCustom02" class="form-label">Código</label>
-							    <input type="text" class="form-control" id="validationCustom02" value="Otto"  th:field="*{id}" required>
+							    <input type="text" class="form-control" id="validationCustom02" value="Otto"  th:field="*{id}" readonly>
 							    <div class="valid-feedback">
 							      Looks good!
 							    </div>
@@ -54,13 +56,7 @@
 							      Looks good!
 							    </div>
 							  </div>
-							  <div class="col-md-5">
-							    <label for="validationCustom02" class="form-label">Descripción</label>
-							    <input type="text" class="form-control" id="validationCustom02" value="Otto" required th:field="*{descripcion}">
-							    <div class="valid-feedback">
-							      Looks good!
-							    </div>
-							  </div>
+							 
 							   <div class="col-md-5">
 							    <label for="validationCustom01" class="form-label">Marca</label>
 							    <input type="text" class="form-control" id="validationCustom01" value="Mark" required th:field="*{marca}">
@@ -86,12 +82,21 @@
 							      Please select a valid state.
 							    </div>
 							  </div>
+							  
+							   <div class="col-md-5">
+							    <label for="validationCustom02" class="form-label">Descripción</label>
+							   <textarea  style="width: 290px; height : 120px" class="form-control" id="validationCustom01" th:field="*{descripcion}"  required></textarea>
+							    
+							    <div class="valid-feedback">
+							      Looks good!
+							    </div>
+							  </div>
 						
 							
 						 <div class="col-12" style="margin-bottom: 10px ;">
 							    	<div class="col-md-12 text-end mt-4 mb-5" style="margin: 0 !important;">
-									<button type="submit" id="Guardar" class="btn btn-primary me-2 btn-registrar"><i class="fas fa-save"></i> Registrar</button>
-									<button type="button" id="Cancelar" class="btn btn-danger ms-2 cancelar" data-dismiss="modal"><i class="fas fa-undo-alt"></i> Cancelar</button>
+									<button type="submit" id="Guardar" class="btn btn-primary me-2 btn-registrar"><i class="fas fa-save"></i> Actualizar</button>
+ 									 <a href="/productos/cargartodos" class="btn btn-danger ms-2 cancelar" ><i class="fas fa-undo-alt"></i> Volver</a>
 							         </div> 
 							  </div> 
 					 </form>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="componentes/style :: head_html">
+    <meta charset="UTF-8">
+    <title>Detalle Producto</title>
+</head>
+
+<link th:href="@{/customcss/estilos.css}" rel="stylesheet">
+<link rel="stylesheet" href="/customcss/index.css">
+<body>
+<!--<div class="container-fluid">-->
+    <nav th:replace="componentes/header :: Nav"></nav>
+    <div class="container__all">
+
+        <div th:replace="componentes/menu :: menu_html"></div>
+        <!-- Criterios de Búsqueda -->
+       <!-- 	<div class="modal fade mt-5" id="" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg">
+			    <div class="modal-content">
+			      <div class="modal-header text-white shadow-sm" style="background-image: radial-gradient(circle at 90.52% 50%, #65696f 0, #0b2840 50%, #000018 100%);">
+			        <h5 class="modal-title" id="exampleModalLabel">Detalle del Producto</h5>
+			        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">  --> 
+			       <div class="container__section">
+			      <div class="row detalle_consu">
+			       <h1 style="padding-top:15px;padding-bottom:15px; margin-left: 130px;
+			       ">Detalle del Producto</h1>
+			      <div class=" col-md-7">
+			      		<form action="/productos/grabar" th:object="${producto}" method="get" class="detalle col-auto mx-2 row shadow-sm g-3 mt-0 needs-validation align-items-center d-flex justify-content-between " novalidate style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
+		
+								<div class="col-auto">
+							    <label for="validationCustom02" class="form-label">Código</label>
+							    <input type="text" class="form-control" id="validationCustom02" value="Otto" th:field="*{id}" readonly>
+							    
+							  </div>
+							  
+ 								
+							  <div class="col-auto">
+							    <label for="validationCustom02" class="form-label">Codigo Bar</label>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{codigoBarras}"readonly>
+							    
+							  </div>
+							  <div class="col-auto">
+							    <label for="validationCustom02" class="form-label">Tipo Producto</label>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{tipoProducto.nombre}"readonly>
+							    
+							  </div>
+							  
+							
+							   <div class="col-auto">
+							    <label for="validationCustom01" class="form-label">Marca</label>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{marca}" readonly>
+							  
+							  </div>
+					
+								 <div class="col-auto">
+							    <label for="inputStock" class="form-label">Stock</label>
+							    <input type="text" class="form-control" id="inputStock" value="Mark" th:field="*{stock}"  readonly>
+							  
+							  </div>
+					
+							  <div class="col-auto">
+							    <label for="validationCustom04" class="form-label">Estado Producto</label>
+							    <input type="text" class="form-control" id="validationCustom01" value="Mark" th:field="*{estado}"  readonly>
+							  
+							   
+							  </div>
+						  <div class="col-auto">
+							    <label for="validationCustom01" class="form-label">Descripción</label>
+							    <textarea  style="width: 290px; height : 120px" class="form-control" id="validationCustom01" th:field="*{descripcion}"  readonly></textarea>
+							   
+							  </div>
+							  
+ 							<div class="col-12" style="margin-bottom: 10px ;">
+ 							<div class="col-md-12 text-end mt-4 mb-5" style="margin: 0 !important;">
+ 						 <a href="/productos/cargartodos" class="btn btn-danger ms-2 cancelar" ><i class="fas fa-undo-alt"></i> Volver</a>
+ 							
+ 							</div>
+							 </div>	 
+					 </form>
+					 
+			      </div>
+			      	 </div>  <!--   		
+			      <div class="modal-footer h-auto">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+				</div>
+				</div>
+		</div>--> 
+
+
+        
+        </div>
+         </div>
+        
+
+    
+    <!-- Footer -->
+
+<!--</div>-->
+<!--</div>-->
+<div th:replace="componentes/script :: scripts_html"></div>
+<script src="/customjs/main.js"></script>
+</body>
+</html>

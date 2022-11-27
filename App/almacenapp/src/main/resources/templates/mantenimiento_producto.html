@@ -74,7 +74,7 @@
 						<img alt="" th:src="${'/registrosimgs/'+ pro.id+'.png'}"
 						width="100px" height="100px">
 						</th>
-                        <td th:text="${pro.id}"></td>
+                      
                         <td th:text="${pro.tipoProducto.nombre}"></td>
                        
                      
@@ -93,7 +93,7 @@
                         </td>
                         <td class="px-0 text-center">
                          
-								  <a th:href="@{/productos/detalleConsuProducto/}+${pro.id}" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
+								  <a th:href="@{/productos/detallProducto/}+${pro.id}" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
                                     >
                                 <i class="fas fa-binoculars"></i></a>
 								
