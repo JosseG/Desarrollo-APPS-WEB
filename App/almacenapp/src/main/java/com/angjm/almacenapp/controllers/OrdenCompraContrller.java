@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.angjm.almacenapp.model.dto.OrdenCompra;
 import com.angjm.almacenapp.repository.IAcceso;
@@ -14,12 +16,16 @@ import com.angjm.almacenapp.repository.IMenuReposytory;
 import com.angjm.almacenapp.repository.IOrdenCompraRepository;
 import com.angjm.almacenapp.repository.IProveedorRepository;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 @Controller
 public class OrdenCompraContrller {
@@ -41,19 +47,85 @@ public class OrdenCompraContrller {
     private IAcceso objSubMenu;
 
 
+    
+    //MANTENIMIENTOS
     @GetMapping("/ordencompra/cargartodos")
     public String listarOrdenesCompra(Model model) {
-        model.addAttribute("ordencompra", new OrdenCompra());
+        model.addAttribute("ordenCompra", new OrdenCompra());
         model.addAttribute("lsOrdencompra", objOrdenCompra.findAll());
 
         model.addAttribute("lsProveedor", objProveedor.findAll());
-        model.addAttribute("listadoMenu", objMenu.findAll());
+       model.addAttribute("listadoMenu", objMenu.findAll());
         model.addAttribute("listadoSubMenu", objSubMenu.findAll());
         System.out.println(objSubMenu.findAll());
 
         return "orden_compra";
     }
 
+    @PostMapping("/ordenCompra/grabar")
+   	public String grabarOrden(@Valid @ModelAttribute OrdenCompra ordenCompra,BindingResult result ,
+   				  Model model) {
+   	  
+        	  objOrdenCompra.save(ordenCompra);
+              model.addAttribute("lsProveedor", objProveedor.findAll());
+          
+   	   return "redirect:/ordencompra/cargartodos";		
+   		  
+   		
+   	}
+
+      @GetMapping("/ordenCompra/grabar")
+      public String grabarOrden(Model model) {
+          model.addAttribute("ordenCompra", new OrdenCompra());
+      model.addAttribute("lsProveedor", objProveedor.findAll());
+
+
+          return "insertar_orden";
+      }
+
+      @GetMapping("/ordenCompra/eliminar/{id}")
+     	public String eliminarOrden(@PathVariable int id,  
+   			  Model model) {
+    	  objOrdenCompra.deleteById(id);
+
+     		  
+          return "redirect:/ordencompra/cargartodos";
+     	}
+      
+      @GetMapping("/ordenCompra/actualizarOrden/{id}")
+     	public String editarOrden(@PathVariable int id, 
+   			  Model model) {
+    	  Optional<OrdenCompra> ordenCompra = objOrdenCompra.findById(id);
+
+    	   	
+       	  model.addAttribute("ordenCompra", ordenCompra);
+   	  // productoRepository.save(p); 
+          model.addAttribute("lsProveedor", objProveedor.findAll());
+
+   		return "actualizar_orden";
+      }
+      
+      @GetMapping("/ordenCompra/detallOrden/{id}")
+     	public String detalOrden(@PathVariable int id, 
+   			  Model model) {
+          Optional<OrdenCompra> ordenCompra = objOrdenCompra.findById(id);
+
+   	
+   	  model.addAttribute("ordenCompra", ordenCompra);
+   
+      model.addAttribute("lsProveedor", objProveedor.findAll());
+
+   		return "detalle_orden";
+      }
+
+    
+    
+    
+    
+    
+    
+    
+    //REPORTES
 
     @GetMapping("/ordencompra/reporte")
     public String reporteOrdenCompra(Model model) {

@@ -328,7 +328,7 @@ insert into tb_producto values('PROD000039','1','900153521910',"Prueba",'PRUEBA'
 insert into tb_producto values('PROD000040',2,'900153521911',"Prueba2",'PRUEBA2',11,true);
 /* INSERT USUARIO, CARGO, USUARIO-CARGO */
 
-
+select*from tb_producto;
 
 
 /* INSERT ORDENCOMPRA */
@@ -359,7 +359,7 @@ insert into  tb_ordencompra VALUES(null,4,'OC00000021','2019/10/11','2019/10/16'
 insert into  tb_ordencompra VALUES(null,4,'OC00000022','2019/10/10','2019/10/15','CONTADO','con transporte',1011.00,1);
 insert into  tb_ordencompra VALUES(null,4,'OC00000023','2019/10/13','2019/10/19','CONTADO','con transporte',1841.00,1);
 insert into  tb_ordencompra VALUES(null,4,'OC00000024','2019/10/14','2019/10/19','CONTADO','con transporte',1642.00,1);
-
+insert into  tb_ordencompra VALUES(null,4,'OC00000025','2019/10/15','2019/10/20','CONTADO','con transporte',1345.00,1);
 /* INSERT ORDENCOMPRA */
 
 select * from tb_ordencompra;

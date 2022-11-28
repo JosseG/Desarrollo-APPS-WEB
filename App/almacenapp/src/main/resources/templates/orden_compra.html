@@ -35,9 +35,9 @@
                 <div class="col-5 d-flex justify-content-end">
                     <div class="row p-1 justify-content-end">
                         <div class="col-10">
-                             <button type="button" class="btn btn-generaFichaDevol btn-roud border border border-success" data-bs-toggle="modal"
-                       					 data-bs-target="#exampleModal">Generar Orden de Compra
-               				 </button>
+                        <a href="/ordenCompra/grabar" class="btn btn-generaFichaDevol btn-roud border border border-success" >
+							Generar Orden de Compra
+               				 </a>
                         </div>
                         <div class="col-2 col-xs-12">
                            <img src="/img/ordenCompra.svg" class="d-none d-md-block" style="width: 35px"/>
@@ -47,68 +47,74 @@
                 </div>
             </div>
             </div>
-			<!-- Modal  para Actualizar  Registrar Orden Compra-->
-			<div th:replace="componentes/RegistrarOC:: ModalRegistrar_OC_html"></div>
+			<!-- Modal  para Actualizar  Registrar Orden Compra
+			<div th:replace="componentes/RegistrarOC:: ModalRegistrar_OC_html"></div>-->
 			
             <div class="col col-sm-12 mt-4 table-responsive">
                 <table id="tbexample" class="table table-striped mb-2" style="width: 100%; font-size: 10px">
                     <thead class="table-dark">
                     <tr class="table-primary">
-                        <th>NRO_OC</th>
-                        <th>PROVEEDOR</th>
-                        <th>FECHA_COMP</th>
-                        <th>FECHA_ENTREG</th>
-                        <th>COND_PAGO</th>
-                        <th>TRANSPORTE</th>
-                        <th>IMP_TOTAL</th>
-                        <th>ESTADO</th>
+                        <th>N°</th>
+                        <th>Codigo</th>
+                        <th>Proveedor</th>
+                       
+                        <th>Pago</th>
+                        <th>Transporte</th>
+                        <th>Total</th>
+                       
                         <th></th>
                         <th></th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="row : ${lsOrdencompra}" class="align-middle shadow-lg p-3 mb-5 bg-body rounded"
+                    <tr th:each="ord : ${lsOrdencompra}" class="align-middle shadow-lg p-3 mb-5 bg-body rounded"
                         style="font-size: 10px">
-                        <td th:text="${row.NOrdenCompra}"></td>
-                        <td th:text="${row.objProveedor.nombre}"></td>
-                        <td th:text="${row.fechaOrdenCompra}"></td>
-                        <td th:text="${row.fechaentrega}"></td>
-                        <td th:text="${row.condicionesPago}"></td>
-                        <td th:text="${row.transporte}"></td>
-                        <td th:text="${row.valorTotal}"></td>
-                        <td th:text="${row.estado}"></td>
+                        <td th:text="${ord.id}"></td>
+                        <td th:text="${ord.NOrdenCompra}"></td>
+                        <td th:text="${ord.objProveedor.nombre}"></td>
+                      
+                        <td th:text="${ord.condicionesPago}"></td>
+                        <td th:text="${ord.transporte}"></td>
+                        <td th:text="${ord.valorTotal}"></td>
+                       
 
-                        <td class="px-0 text-center">
-                            <button type="button" class="btn btn-outline-dark btn-editar  text-center px-2 py-0"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalActualizarOC">
-                                <i class="fas fa-edit"></i></button>
+                          <td class="px-0 text-center">
+	                    
+							 <a th:href="@{/ordenCompra/actualizarOrden/}+${ord.id}" class="btn btn-outline-dark btn-editar  text-center px-2 py-0"
+                                   >
+                                <i class="fas fa-edit"></i></a>
+								
+	                          
                         </td>
                         <td class="px-0 text-center">
-                            <button type="button" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModalEditarDetalleOC">
-                                <i class="fas fa-binoculars"></i></button>
+                         
+								  <a th:href="@{/ordenCompra/detallOrden/}+${ord.id}" class="btn btn-outline-success btn-verDetalle text-center px-2 py-0"
+                                    >
+                                <i class="fas fa-binoculars"></i></a>
+								
+                          
                         </td>
                         <td class="px-0 text-center">
-                            <button type="button"
+                          <a th:href="@{/ordenCompra/eliminar/}+${ord.id}" 
                                     class="btn btn-outline-danger btn-eliminar-Devolucion text-center px-2 py-0"
-                                    data-bs-toggle="modal" data-bs-target="#modalElimimar">
-                                <i class="fas fa-backspace"></i></button>
+                                    >
+                                <i class="fas fa-backspace"></i></a>
+                           
                         </td>
-
                     </tr>
 
                     </tbody>
                 </table>
             </div>
 				
-			 <!-- Modal  para Actualizar  Orden Compra-->
+			 <!-- Modal  para Actualizar  Orden Compra
 			<div th:replace="componentes/ActualizarOC:: ModalActualizar_OC_html"></div>
-            <!-- Modal  para ver detalle de Orden Compra-->
-            <div th:replace="componentes/EditarDetalleOC:: ModalEditarDetalle_OC_html"></div>
+            <!-- Modal  para ver detalle de Orden Compra
+            <div th:replace="componentes/EditarDetalleOC:: ModalEditarDetalle_OC_html"></div>-->
 			
 
-            <!-- Modal para Eliminar OC-->
+            <!-- Modal para Eliminar OC
             <div class="modal fade mt-5" id="modalElimimar" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog modal-xs">
@@ -133,7 +139,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
 
 
