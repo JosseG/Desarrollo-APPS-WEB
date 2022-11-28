@@ -17,7 +17,16 @@
   <div class="container__section" style="background-color:  #F8F8FF;">
   
 
-          
+          <div class="alert  alert-success alert-dismissible fade show" role="alert" th:if="${mensaje != null}">
+				<p th:text="${mensaje}"></p>
+			    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  
+			</div>
+			<div class="alert  alert-danger alert-dismissible fade show" role="alert" th:if="${mensajeEliminar != null}">
+				<p th:text="${mensajeEliminar}"></p>
+			    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  
+			</div>
           <div class="container shadow-lg rounded-3 p-2 mt-5  " style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
             <div  class="row align-items-center d-flex justify-content-between">
                     <div class="col-5">
@@ -60,7 +69,6 @@
                         <th>TIPO</th>
                         <th>MARCA</th>
                         <th>STOCK</th>
-                        <th>ESTADO</th>
                         
                         <th></th>
                         <th></th>
@@ -81,7 +89,6 @@
                         <td th:text="${pro.marca}"></td>
                         <td th:text="${pro.stock}"></td>
                   
-                        <td th:text="${pro.estado}"></td>
 
                         <td class="px-0 text-center">
 	                    

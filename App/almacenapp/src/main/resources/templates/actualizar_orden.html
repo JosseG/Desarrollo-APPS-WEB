@@ -24,7 +24,13 @@
 			      <div class=" col-md-12">
 			      		<form action="/ordenCompra/grabar"  method="post" 
 					th:object="${ordenCompra}" class=" detalle row shadow-sm g-3 mt-0 needs-validation align-items-center d-flex justify-content-between me-3 ms-3" novalidate style="background-image: radial-gradient(circle at 73.6% 36.37%, #fffbfb 0, #fef6f6 25%, #f4f0f0 50%, #eaeaea 75%, #e0e5e4 100%);">
-				
+	<div class="col-md-5">
+							    <label for="validationCustom02" class="form-label">N°</label>
+							    <input type="text" class="form-control" id="validationCustom02" value="Otto"  th:field="*{id}" readonly>
+							    <div class="valid-feedback">
+							      Looks good!
+							    </div>
+							  </div>
 			      			  <div class="col-md-5">
 							    <label for="validationCustom02" class="form-label">Codigo</label>
 							    <input type="text" class="form-control" id="validationCustom02" value="Otto"  th:field="*{NOrdenCompra}" readonly>

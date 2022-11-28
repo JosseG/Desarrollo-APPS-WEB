@@ -18,7 +18,7 @@ import com.angjm.almacenapp.repository.IProveedorRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -63,12 +63,13 @@ public class OrdenCompraContrller {
     }
 
     @PostMapping("/ordenCompra/grabar")
-   	public String grabarOrden(@Valid @ModelAttribute OrdenCompra ordenCompra,BindingResult result ,
+   	public String grabarOrden(@Valid @ModelAttribute OrdenCompra ordenCompra,BindingResult result , RedirectAttributes attributes,
    				  Model model) {
    	  
         	  objOrdenCompra.save(ordenCompra);
               model.addAttribute("lsProveedor", objProveedor.findAll());
-          
+        		attributes.addFlashAttribute("mensaje", "¡Se guardó correctamente el orden de compra!");
+
    	   return "redirect:/ordencompra/cargartodos";		
    		  
    		
@@ -84,16 +85,17 @@ public class OrdenCompraContrller {
       }
 
       @GetMapping("/ordenCompra/eliminar/{id}")
-     	public String eliminarOrden(@PathVariable int id,  
+     	public String eliminarOrden(@PathVariable int id,   RedirectAttributes attributes,
    			  Model model) {
     	  objOrdenCompra.deleteById(id);
+    		attributes.addFlashAttribute("mensajeEliminar", "¡Se eliminó correctamente el orden de compra!");
 
      		  
           return "redirect:/ordencompra/cargartodos";
      	}
       
       @GetMapping("/ordenCompra/actualizarOrden/{id}")
-     	public String editarOrden(@PathVariable int id, 
+     	public String editarOrden(@PathVariable int id, RedirectAttributes attributes,
    			  Model model) {
     	  Optional<OrdenCompra> ordenCompra = objOrdenCompra.findById(id);
 

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -232,13 +233,14 @@ public class ProductoController {
 
   
    @PostMapping("/productos/grabar")
-	public String grabarProducto(@Valid @ModelAttribute Producto producto,BindingResult result ,
+	public String grabarProducto(@Valid @ModelAttribute Producto producto,BindingResult result , RedirectAttributes attributes,
 				  Model model) {
 	   if(result.hasErrors()){
 		   System.out.println("Existe error");
        }else {
     	   productoRepository.save(producto); 
    		model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
+   		attributes.addFlashAttribute("mensaje", "¡Se guardó correctamente el producto!");
        }
 	   return "redirect:/productos/cargartodos";		
 		  
@@ -255,9 +257,10 @@ public class ProductoController {
    }
 
    @GetMapping("/productos/eliminar/{id}")
-  	public String eliminarProducto(@PathVariable String id,  
+  	public String eliminarProducto(@PathVariable String id,  RedirectAttributes attributes,
 			  Model model) {
 	   productoRepository.deleteById(id);
+  		attributes.addFlashAttribute("mensajeEliminar", "¡Se eliminó correctamente el producto!");
 
   		  
        return "redirect:/productos/cargartodos";
