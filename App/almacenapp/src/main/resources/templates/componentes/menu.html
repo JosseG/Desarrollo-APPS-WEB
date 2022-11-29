@@ -12,12 +12,15 @@
 
 <nav class="nav" th:fragment="menu_html">
     <div class="container__info">
-        <div class="img__user_container">
-            <img class="img__user" src="/img/carnet.jpg" alt="logo">
+        <div class="img__user_container" th:switch="${#strings.toString(session.empleadorol)}">
+            <img th:case="'ROLE_ADMINISTRADOR'" class="img__user" src="/img/administrador.png" alt="logo">
+            <img th:case="'ROLE_VENDEDOR'" class="img__user" src="/img/vendor.png" alt="logo">
+            <img th:case="'ROLE_ASISTENTE'" class="img__user" src="/img/asistente.png" alt="logo">
+            <img th:case="*"class="img__user" src="/img/vendor.png" alt="logo">
         </div>
         <div class="user__container_text">
-            <h3 class="h3__name_info">Josefina Humala</h3>
-            <h4 class="h4__name_info">Administradora</h4>
+            <h3 class="h3__name_info" th:text="${session.empleadonombre}"></h3>
+            <h4 class="h4__name_info" th:text="${session.empleadorol}"></h4>
         </div>
     </div>
 
@@ -30,10 +33,10 @@
             </div>
             <ul class="list__show">
                 <li class="list__inside">
-                    <a th:href="@{/ordencompra/cargartodos}" class="nav__link nav__link--inside">Orden Compra</a>
+                    <a th:href="@{/ordencompra/cargartodos/0}" class="nav__link nav__link--inside">Orden Compra</a>
                 </li>
                 <li class="list__inside">
-                    <a href="/productos/cargartodos" class="nav__link nav__link--inside">Producto</a>
+                    <a th:href="@{/productos/cargartodos/0}" class="nav__link nav__link--inside">Producto</a>
                 </li>
             </ul>
         </li>
@@ -50,10 +53,6 @@
                 <li class="list__inside">
                     <a th:href="@{/ordencompra/reporte}" class="nav__link nav__link--inside">Orden de Compra</a>
                 </li>
-
-                <li class="list__inside">
-                    <a href="#" class="nav__link nav__link--inside">*****</a>
-                </li>
             </ul>
         </li>
         <li class="list__item list__item--click">
@@ -65,9 +64,6 @@
             <ul class="list__show">
                 <li class="list__inside">
                     <a th:href="@{/inventario/orden/genera}"  class="nav__link nav__link--inside">Inventario</a>
-                </li>
-                <li class="list__inside">
-                    <a href="#" class="nav__link nav__link--inside">*****</a>
                 </li>
             </ul>
         </li>

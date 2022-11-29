@@ -359,7 +359,9 @@ insert into  tb_ordencompra VALUES(null,4,'OC00000021','2019/10/11','2019/10/16'
 insert into  tb_ordencompra VALUES(null,4,'OC00000022','2019/10/10','2019/10/15','CONTADO','con transporte',1011.00,1);
 insert into  tb_ordencompra VALUES(null,4,'OC00000023','2019/10/13','2019/10/19','CONTADO','con transporte',1841.00,1);
 insert into  tb_ordencompra VALUES(null,4,'OC00000024','2019/10/14','2019/10/19','CONTADO','con transporte',1642.00,1);
-insert into  tb_ordencompra VALUES(null,4,'OC00000025','2019/10/15','2019/10/20','CONTADO','con transporte',1345.00,1);
+
+insert into  tb_ordencompra VALUES(null,4,'OC00000025','2022/11/27','2022/12/19','CONTADO','con transporte',1632.00,1);
+insert into  tb_ordencompra VALUES(null,4,'OC00000026','2022/11/24','2022/12/19','CONTADO','con transporte',1832.00,1);
 /* INSERT ORDENCOMPRA */
 
 select * from tb_ordencompra;
@@ -394,3 +396,5 @@ select * from tb_almacen;
 select * from tb_empleado;
 select * from tb_inventario;
 select * from tb_proveedor;
+
+select p1_0.id_producto,p1_0.codigobar_producto,p1_0.descripcion_producto,p1_0.estado,p1_0.marca_producto,p1_0.stock_producto,p1_0.id_tipoprod from tb_producto p1_0 where p1_0.id_producto='PR00000002'

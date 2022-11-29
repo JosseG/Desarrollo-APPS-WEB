@@ -15,4 +15,7 @@ public interface IOrdenCompraRepository extends JpaRepository<OrdenCompra, Integ
     Page<OrdenCompra> findByFechaentrega(LocalDate fecha, Pageable pageable);
     Page<OrdenCompra> findByFechaOrdenCompra(LocalDate fecha, Pageable pageable);
 
+    Page<OrdenCompra> findByFechaOrdenCompraBetween(LocalDate fechaOrdenCompra, LocalDate fechaOrdenCompra2,Pageable pageable);
+
+
 }

@@ -22,90 +22,23 @@
 
     <nav th:replace="componentes/menu :: menu_html"></nav>
 
-    <!--<nav class="nav">
-        <div class="container__info">
-            <div class="img__user_container">
-                <img class="img__user" src="/img/carnet.jpg" alt="logo">
+    <section class="container__section" style="padding: 0;">
+        <div class="imagen-home" style="background-image: url(/img/imagen_home.jpg);
+    background-position: center center;
+    background-size: cover;
+    flex: 0 0 calc(60%); height: 100%;">
+
+            <div class="contenedor"
+                 style="margin: 0 auto;height: 100%; max-width: 1200px; width: 100%; background-position: center center;background-size: cover;font-size: 30px;padding: 50px;display: flex;align-items: center;">
+                <h1 style="background-color: rgba(128, 128, 128,30%);border-radius: 10px;color: white;position: center;padding: 50px;text-align: center;">¿QUIENES SOMOS? <br> Somos un grupo de programadores, hemos desarrollado un sistema para
+                    gestionar tanto a los
+                    trabajadores, además de la gestion de inventario y ordende compra de los productos
+                    electronicos. Otorgamos un buen soporte y calidad de la aplicación.</h1>
             </div>
-            <div class="user__container_text">
-                <h3 class="h3__name_info">Josefina Humala</h3>
-                <h4 class="h4__name_info">Administradora</h4>
-            </div>
+
         </div>
 
-        <ul class="list">
-            <li class="list__item list__item&#45;&#45;click">
-                <div class="list__button list__button&#45;&#45;click">
-                    <img src="assets/consulta.svg" class="list__img">
-                    <a href="#" class="nav__link">Mantenimiento</a>
-                    <img src="./assets/arrow.svg" class="list__arrow">
-                </div>
-                <ul class="list__show">
-                    <li class="list__inside">
-                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
-                    </li>
-                    <li class="list__inside">
-                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="list__item list__item&#45;&#45;click">
-                <div class="list__button list__button&#45;&#45;click">
-                    <img src="assets/consulta.svg" class="list__img">
-                    <a href="#" class="nav__link">Reportes</a>
-                    <img src="./assets/arrow.svg" class="list__arrow">
-                </div>
-                <ul class="list__show">
-                    <li class="list__inside">
-                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
-                    </li>
-                    <li class="list__inside">
-                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
-                    </li>
 
-                    <li class="list__inside">
-                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="list__item list__item&#45;&#45;click">
-                <div class="list__button list__button&#45;&#45;click">
-                    <img src="assets/consulta.svg" class="list__img">
-                    <a href="#" class="nav__link">Transacciones</a>
-                    <img src="./assets/arrow.svg" class="list__arrow">
-                </div>
-                <ul class="list__show">
-                    <li class="list__inside">
-                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
-                    </li>
-                    <li class="list__inside">
-                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="list__item list__item&#45;&#45;click">
-                <div class="list__button list__button&#45;&#45;click">
-                    <img src="assets/consulta.svg" class="list__img">
-                    <a href="#" class="nav__link">Consultas</a>
-                    <img src="./assets/arrow.svg" class="list__arrow">
-                </div>
-                <ul class="list__show">
-                    <li class="list__inside">
-                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
-                    </li>
-                    <li class="list__inside">
-                        <a href="#" class="nav__link nav__link&#45;&#45;inside">*****</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </nav>-->
-
-    <!-- NAV FRAGMENT -->
-    <section class="container__section">
-        <img src="/img/carnet.jpg" alt="">
-        Hola
-        Hola de nuevo
     </section>
 
     <div th:replace="componentes/script :: scripts_html"></div>

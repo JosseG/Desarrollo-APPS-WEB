@@ -118,6 +118,32 @@
 
                     </tbody>
                 </table>
+
+                <div style="margin-top: 25px;" th:if="${totalPags > 1}">
+                    <div class="row col-12">
+                        <div class="col-auto">
+                            Total Filas: [[${totalElementos}]]
+                        </div>
+                        <div class="col-auto">
+					<span th:each="i: ${#numbers.sequence(0, (totalPags - 1))}" style="margin-right: 3px;">
+						<a th:if="${pagActual != i}"
+                           th:href="@{'/productos/cargartodos/'  + ${i}}"> [[${i}]] </a>
+						<span th:unless="${pagActual != i}"> [[${i}]] </span>
+					</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <a th:if="${pagActual < totalPags - 1}"
+                               th:href="@{'/productos/cargartodos/'  + ${pagActual + 1}}">Siguiente</a>
+                            <span th:unless="${pagActual < totalPags}">Siguiente</span>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <a th:if="${pagActual < totalPags - 1}"
+                               th:href="@{'/productos/cargartodos/'  + ${totalPags - 1}}">Último</a>
+                            <span th:unless="${pagActual < totalPags}">Último</span>
+                        </div>
+                    </div>
+                </div>
                    
             </div>
 				

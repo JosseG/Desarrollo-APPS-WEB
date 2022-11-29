@@ -26,9 +26,15 @@ public class OrdenCompraService {
         return ordenCompraRepository.findByFechaOrdenCompra(fecha,pageable);
     }
 
-    public Page<OrdenCompra> buscarResultadosPaginados( int pageNo, int pageSize){
+    public Page<OrdenCompra> listarResultadosPaginados(int pageNo, int pageSize){
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         return ordenCompraRepository.findAll(pageable);
+    }
+
+
+    public Page<OrdenCompra> buscarResultadosPorDiasPaginados(LocalDate fecha1,LocalDate fecha2, int pageNo, int pageSize){
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+        return ordenCompraRepository.findByFechaOrdenCompraBetween(fecha1,fecha2,pageable);
     }
 
 

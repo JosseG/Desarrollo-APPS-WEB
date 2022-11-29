@@ -49,46 +49,23 @@
                         <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-entrega">Filtrar</button>
                     </div>
                 </form>
-                <form class="col-auto mx-3" method="get">
+                <form class="col-auto mx-3" th:action="@{'/ordencompra/reporte/ultimosdias/0'}" method="get">
                     <div class="col-auto " style="padding-top: 11px">
                         <label >Filtrar por órdenes emitidas hace: </label>
 
                     </div>
                     <div class="col-auto" style="padding-top: 8px">
-                        <select name="" class="form-control">
-                            <option value="1">1 día</option>
-                            <option value="2">7 días</option>
-                            <option value="3">15 días</option>
-                            <option value="3">1 mes</option>
+                        <select name="" class="form-control" th:name="ultimosXdias">
+                            <option value="-1">1 día</option>
+                            <option value="-7">7 días</option>
+                            <option value="-15">15 días</option>
+                            <option value="-30">1 mes</option>
                         </select>
 
                     </div>
 
-
                     <div class="col-auto" style="padding-top: 8px">
-
                         <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-rango-fecha">Filtrar</button>
-                    </div>
-                </form>
-                <form class="col-auto mx-3" method="get">
-                    <div class="col-auto " style="padding-top: 11px">
-                        <label >Filtrar por órdenes realizadas por: </label>
-
-                    </div>
-                    <div class="col-auto" style="padding-top: 8px">
-                        <select name="listaCargos" id="" class="form-control">
-                            <option value="1">Juan</option>
-                            <option value="2">Pepe</option>
-                            <option value="3">Sofía</option>
-                            <option value="3">Ana</option>
-                        </select>
-
-                    </div>
-
-
-                    <div class="col-auto" style="padding-top: 8px">
-
-                        <button type="submit" class="btn btn-secondary mb-3" id="btn-filtrar-cargo">Filtrar</button>
                     </div>
                 </form>
             </div>
@@ -145,8 +122,9 @@
                     </div>
                 </div>
                 <div class="" style="text-align: end;">
-                    <a class="btn btn-info"  th:if="${listaOrdenesC.size()>0}"
-                       >Generar Reporte</a>
+                    <a target="_blank" th:href="@{'/ordencompra/reportepdf/'+${tipoFiltro}+'?'+${campoRequestFiltro}+'='+${valorFiltro}}" class="btn btn-info" th:if="${listaOrdenesC.size()>0}"
+                    >Generar Reporte</a>
+
 
                 </div>
             </div>

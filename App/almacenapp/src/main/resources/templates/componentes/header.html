@@ -13,10 +13,10 @@
 
 <header th:fragment="Nav">
     <section class="nav-container">
-        <img class="logo" src="/img/imagen_logo.png">
+        <a href="/homep"><img class="logo" src="/img/imagen_logo.png"></a>
         <div class="user-container">
-            <h3 class="h3__name_nav">Josefina Humala</h3>
-            <h4 class="h4__name_nav">Administradora</h4>
+            <h3 class="h3__name_nav" th:text="${session.empleadonombre}"></h3>
+            <h4 class="h4__name_nav" th:text="${session.empleadorol}"></h4>
         </div>
     </section>
 </header>
