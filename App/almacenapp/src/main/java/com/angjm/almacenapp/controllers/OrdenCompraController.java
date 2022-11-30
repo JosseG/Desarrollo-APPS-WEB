@@ -86,7 +86,7 @@ public class OrdenCompraController {
               model.addAttribute("lsProveedor", objProveedor.findAll());
         		attributes.addFlashAttribute("mensaje", "¡Se guardó correctamente el orden de compra!");
 
-   	   return "redirect:/ordencompra/cargartodos";		
+   	   return "redirect:/ordencompra/cargartodos/0";		
    		  
    		
    	}
@@ -107,7 +107,7 @@ public class OrdenCompraController {
     		attributes.addFlashAttribute("mensajeEliminar", "¡Se eliminó correctamente el orden de compra!");
 
      		  
-          return "redirect:/ordencompra/cargartodos";
+          return "redirect:/ordencompra/cargartodos/0";
      	}
       
       @GetMapping("/ordenCompra/actualizarOrden/{id}")

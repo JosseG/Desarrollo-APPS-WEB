@@ -1,7 +1,6 @@
 package com.angjm.almacenapp.controllers;
 
 
-import com.angjm.almacenapp.model.dto.OrdenCompra;
 import com.angjm.almacenapp.model.dto.Producto;
 import com.angjm.almacenapp.repository.IProductoRepository;
 import com.angjm.almacenapp.repository.ITipoProductoRepository;
@@ -258,7 +257,7 @@ public class ProductoController {
             model.addAttribute("lstTiposPro", tipoProductoRepository.findAll());
             attributes.addFlashAttribute("mensaje", "¡Se guardó correctamente el producto!");
         }
-        return "redirect:/productos/cargartodos";
+        return "redirect:/productos/cargartodos/0";
 
 
     }
@@ -279,7 +278,7 @@ public class ProductoController {
         attributes.addFlashAttribute("mensajeEliminar", "¡Se eliminó correctamente el producto!");
 
 
-        return "redirect:/productos/cargartodos";
+        return "redirect:/productos/cargartodos/0";
     }
 
     @GetMapping("/productos/actualizarProducto/{id}")

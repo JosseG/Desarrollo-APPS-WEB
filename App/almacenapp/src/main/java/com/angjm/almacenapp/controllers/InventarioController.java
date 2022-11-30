@@ -193,10 +193,10 @@ public class InventarioController {
         return "reporte_inventario";
     }
 
-    @GetMapping(value = "/inventario/reportes/filtrado/empleado/{0}")
+    /*@GetMapping(value = "/inventario/reportes/filtrado/empleado/{0}")
     public String reporteInventariosPorFiltroNombre(Model model) {
 
         return "reporte_inventario";
-    }
+    }*/
 
 }
