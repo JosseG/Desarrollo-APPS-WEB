@@ -1,9 +1,11 @@
 package com.angjm.almacenapp.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.angjm.almacenapp.model.dto.OrdenCompra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -187,16 +189,66 @@ public class InventarioController {
         return "preview_o_inventario";
     }
 
-    @GetMapping(value = "/inventario/reportes")
-    public String reporteInventarios(Model model) {
+    @GetMapping(value = "/inventario/reportes/ordencompra/{pageNo}")
+    public String reporteInventariosOrdencompra(@PathVariable(value = "pageNo") int pageNo,
+                                     @RequestParam("ordenc") String ordenCompra,
+                                     Model model) {
+        int tamanoPag = 6;
+
+        try{
+            Page<Inventario> pagina = inventarioService.buscarResultadosPaginadosPorOrden(ordenCompra, pageNo, tamanoPag);
+            List<Inventario> listaInventariosOrden = pagina.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", pagina.getTotalPages());
+            model.addAttribute("totalElementos", pagina.getTotalElements());
+            model.addAttribute("valorFiltro",ordenCompra);
+            model.addAttribute("listInventarios", listaInventariosOrden);
+            model.addAttribute("campoRequestFiltro","ordenc");
+            model.addAttribute("tipoFiltro","ordencompra");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
+        return "reporte_inventario";
+    }
+
+
+    @GetMapping(value = "/inventario/reportes/empleado/{pageNo}")
+    public String reporteInventariosEmpleado(@PathVariable(value = "pageNo") int pageNo,
+                                     @RequestParam("empleado") String empleado,
+                                     Model model) {
+
+        int tamanoPag = 6;
+
+        try{
+            Page<Inventario> pagina = inventarioService.buscarResultadosPaginadosPorEmpleadoNombre(empleado, pageNo, tamanoPag);
+            List<Inventario> listaInventariosEmpleadoNombre = pagina.getContent();
+
+            model.addAttribute("pagActual", pageNo);
+            model.addAttribute("totalPags", pagina.getTotalPages());
+            model.addAttribute("totalElementos", pagina.getTotalElements());
+            model.addAttribute("valorFiltro",empleado);
+
+            model.addAttribute("listInventarios", listaInventariosEmpleadoNombre);
+            model.addAttribute("campoRequestFiltro","empleado");
+            model.addAttribute("tipoFiltro","empleado");
+
+        }catch (Exception e){
+            System.out.println("Hola");
+        }
 
         return "reporte_inventario";
     }
 
-    /*@GetMapping(value = "/inventario/reportes/filtrado/empleado/{0}")
-    public String reporteInventariosPorFiltroNombre(Model model) {
+
+
+
+
+    @GetMapping(value = "/inventario/reportes/filtrado/empleado/{pageNo}")
+    public String reporteInventariosPorFiltroNombre(Model model ) {
 
         return "reporte_inventario";
-    }*/
+    }
 
 }

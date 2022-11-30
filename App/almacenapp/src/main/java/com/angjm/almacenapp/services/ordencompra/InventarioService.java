@@ -34,6 +34,12 @@ public class InventarioService {
 	        Pageable pageable = PageRequest.of(pageNo, pageSize);
 	        return inventarioRepository.findByObjOrdenCompra_NOrdenCompra(NOrdenCompra, pageable);
 	    }
+
+	public Page<Inventario> buscarResultadosPaginadosPorEmpleadoNombre(String nombre, int pageNo, int pageSize){
+
+		Pageable pageable = PageRequest.of(pageNo, pageSize);
+		return inventarioRepository.findByObjEmpleado_Nombre(nombre, pageable);
+	}
 	   
 	    public Page<Inventario> buscarResultadosPaginados( int pageNo, int pageSize){
 	        Pageable pageable = PageRequest.of(pageNo, pageSize);

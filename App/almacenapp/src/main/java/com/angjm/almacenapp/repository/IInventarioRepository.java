@@ -16,6 +16,8 @@ public interface IInventarioRepository  extends JpaRepository<Inventario, Intege
 	Page<Inventario> findByObjTipoInve_Nombre (String nombre, Pageable pageable);
 	Page<Inventario> findByObjAlmacen_Direccion (String direccion, Pageable pageable);
 	Page<Inventario> findByObjEmpleado_Apellido(String apellido, Pageable pageable);
+
+	Page<Inventario> findByObjEmpleado_Nombre(String objEmpleado_nombre, Pageable pageable);
 	Page<Inventario> findByObjOrdenCompra_NOrdenCompra(String NOrdenCompra, Pageable pageable);
 	
 }
