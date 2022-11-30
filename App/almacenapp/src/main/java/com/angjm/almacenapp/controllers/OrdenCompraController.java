@@ -4,7 +4,6 @@ package com.angjm.almacenapp.controllers;
 import com.angjm.almacenapp.services.ordencompra.OrdenCompraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.angjm.almacenapp.model.dto.OrdenCompra;
-import com.angjm.almacenapp.repository.IAcceso;
+import com.angjm.almacenapp.repository.IAccesoRepository;
 import com.angjm.almacenapp.repository.IMenuReposytory;
 import com.angjm.almacenapp.repository.IOrdenCompraRepository;
 import com.angjm.almacenapp.repository.IProveedorRepository;
@@ -47,7 +46,7 @@ public class OrdenCompraController {
     private IMenuReposytory objMenu;
 
     @Autowired
-    private IAcceso objSubMenu;
+    private IAccesoRepository objSubMenu;
 
 
     

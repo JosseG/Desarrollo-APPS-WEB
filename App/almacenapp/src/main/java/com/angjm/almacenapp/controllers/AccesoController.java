@@ -9,10 +9,19 @@ public class AccesoController {
 
 
 
+
     @GetMapping("/configuracion/roles")
     public String configRoles(Model model) {
 
+
+
         return "configuracion_roles";
+    }
+
+
+    @GetMapping("/accesocargo/lista")
+    public String listarAccesoCargo(Model model){
+        return "";
     }
 
 

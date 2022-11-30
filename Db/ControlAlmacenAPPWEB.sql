@@ -373,6 +373,9 @@ select o1_0.id_orden_compra,o1_0.nro_orden_compra,o1_0.condicionespago,o1_0.esta
 /* INSERT INVENTARIO */
 
 insert into tb_inventario values(1,1,'TI00000001','AL00000001','EM00000001',2,'descripcion','activo');
+insert into tb_inventario values(2,2,'TI00000001','AL00000001','EM00000001',2,'descripcion','activo');
+insert into tb_inventario values(3,3,'TI00000001','AL00000001','EM00000001',2,'descripcion','activo');
+insert into tb_inventario values(4,4,'TI00000001','AL00000001','EM00000001',2,'descripcion','activo');
 
 /* INSERT INVENTARIO */
 

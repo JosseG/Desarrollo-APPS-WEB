@@ -24,7 +24,7 @@ public class InventarioController {
     private IInventarioRepository repoInve;
    
 	 @Autowired
-	    private InventarioService inventarioService;
+     private InventarioService inventarioService;
 	/*@Autowired
 	private ITipoInventarioRepository repoTipoInve;
 	
@@ -37,7 +37,18 @@ public class InventarioController {
     //CONSULTA DE INVENTARIO
 
     //CONSULTA INVENTARIO
- 
+
+
+
+
+
+
+
+
+
+
+
+
     @GetMapping("/consulta/inventario")
     public String paginaConsultInve(Model model) {
         model.addAttribute("listInventarios", new ArrayList<>());
@@ -178,6 +189,13 @@ public class InventarioController {
 
     @GetMapping(value = "/inventario/reportes")
     public String reporteInventarios(Model model) {
+
+        return "reporte_inventario";
+    }
+
+    @GetMapping(value = "/inventario/reportes/filtrado/empleado/{0}")
+    public String reporteInventariosPorFiltroNombre(Model model) {
+
         return "reporte_inventario";
     }
 

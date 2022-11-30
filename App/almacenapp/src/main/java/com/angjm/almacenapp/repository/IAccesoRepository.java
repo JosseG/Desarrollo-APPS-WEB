@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.angjm.almacenapp.model.dto.Acceso;
 
 @Repository
-public interface IAcceso extends JpaRepository<Acceso, Integer>{
+public interface IAccesoRepository extends JpaRepository<Acceso, Integer>{
 
 }
